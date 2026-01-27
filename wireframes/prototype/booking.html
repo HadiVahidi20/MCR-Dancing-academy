@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Booking - MCR Dance & Cheer Academy</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo">MCR DANCE & CHEER ACADEMY</div>
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <a href="classes.html">Classes</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="faq.html">FAQ</a>
+        </nav>
+        <div class="actions">
+          <a class="button" href="classes.html">Book a Class</a>
+          <a class="button primary" href="booking.html">Free Trial</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section full hero">
+        <div class="section-inner">
+          <div class="eyebrow">Booking</div>
+          <h1>Book a Class</h1>
+          <div class="stepper" style="margin: 16px 0 28px;">
+            <span class="step highlight">1. Student Info</span>
+            <span class="step">2. Payment</span>
+            <span class="step">3. Confirmation</span>
+          </div>
+
+          <div class="split">
+            <div class="card">
+              <h3>Student Information</h3>
+              <form class="form">
+                <label>Student First Name</label>
+                <input type="text" placeholder="e.g., Ava" />
+                <label>Student Last Name</label>
+                <input type="text" placeholder="e.g., Khan" />
+                <label>Date of Birth / Age</label>
+                <input type="text" placeholder="e.g., 2016-04-10" />
+                <label>Parent/Guardian Name</label>
+                <input type="text" placeholder="e.g., Sara Khan" />
+                <label>Parent/Guardian Phone</label>
+                <input type="text" placeholder="e.g., 07xxx" />
+                <label>Parent/Guardian Email</label>
+                <input type="email" placeholder="e.g., parent@email.com" />
+                <label>Medical / Learning Needs (optional)</label>
+                <textarea rows="3" placeholder="Allergies, SEN/SEND support, etc."></textarea>
+                <label>Emergency Contact (optional)</label>
+                <input type="text" placeholder="Name and phone" />
+                <label>
+                  <input type="checkbox" /> I agree to the policies and consent form
+                </label>
+              </form>
+            </div>
+
+            <div class="card">
+              <h3>Booking Summary</h3>
+              <div class="panel">
+                <strong>Hip Hop Upskill</strong>
+                <p class="meta">Wednesday · 6:30-7:30 PM · Ages 7+</p>
+                <p class="meta">Plan: Monthly (placeholder)</p>
+                <p class="meta">Price: GBP 30 / month</p>
+              </div>
+
+              <h3 style="margin-top: 16px;">Payment (Stripe)</h3>
+              <div class="panel">
+                <p class="meta">Stripe payment element placeholder</p>
+                <div class="placeholder small"></div>
+              </div>
+
+              <div class="panel" style="margin-top: 10px;">
+                <strong>Select plan</strong>
+                <div class="form">
+                  <label><input type="radio" name="plan" checked /> Monthly (GBP 30/mo)</label>
+                  <label><input type="radio" name="plan" /> Upfront (GBP 270 total)</label>
+                  <label><input type="radio" name="plan" /> Drop-in (GBP 6.50)</label>
+                  <label><input type="radio" name="plan" /> Free Trial</label>
+                </div>
+              </div>
+
+              <a class="button primary" href="confirmation.html" style="margin-top: 12px; display: inline-block;">Pay and Book</a>
+              <div class="notice" style="margin-top: 10px;">All pricing here is placeholder until final rates are confirmed.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>MCR Dance & Cheer Academy</strong>
+          <p class="meta">Ashton-under-Lyne</p>
+        </div>
+        <div>
+          <strong>Contact</strong>
+          <p class="meta">07850 936754</p>
+          <p class="meta">mcrdanceacademy@gmail.com</p>
+        </div>
+        <div>
+          <strong>Social</strong>
+          <p class="meta">Instagram: mcr_danceacademy</p>
+          <p class="meta">TikTok: mcr_danceacademy</p>
+        </div>
+        <div>
+          <strong>Policies</strong>
+          <p class="meta">Cancellation, Make-up classes, Payments</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

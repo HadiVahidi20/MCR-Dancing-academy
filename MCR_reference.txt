@@ -1,0 +1,116 @@
+MCR Dance & Cheer Academy - Reference Notes (compiled 2026-01-27)
+
+SOURCE NOTES
+- Social links provided by client (not crawled here due to access restrictions):
+  Instagram: https://www.instagram.com/mcr_danceacademy/?hl=en
+  TikTok: https://www.tiktok.com/@mcr_danceacademy
+  Facebook: https://www.facebook.com/MCRdanceacademy
+- Text provided by client:
+  "MCR Dance & Cheer Academy is located in Ashton Under Lyne! Hip Hop, Lyrical, Jazz & Cheerleading"
+  Handle: mcr_danceacademy
+  Phone: 07850 936754
+  Email: mcrdanceacademy@gmail.com
+- Poster images provided by client (class schedule + offers + location + pricing). Extracted details below.
+
+BRAND / IDENTITY
+- Name: MCR Dance & Cheer Academy
+- Visual: Bee logo, black + bright yellow palette, bold condensed uppercase type.
+- Positioning keywords seen: Adaptive, Inclusive, Nurturing; Free trial available.
+
+CORE CONTACT
+- Email appears on posters: mcrdanceacademy@gmail.com (also styled as MCRDANCEACADEMY@GMAIL.COM)
+- Phone (client-provided): 07850 936754
+- Social handle (client-provided): mcr_danceacademy
+
+LOCATION (from poster)
+- Ashton-under-Lyne
+- Grosvenor Street
+- OL7 0RG
+
+OFFERS / PRICING (from poster)
+- Free trial available (multiple posters)
+- Saturday pricing: GBP 5 per class; GBP 8 for both (as stated on poster)
+
+CLASSES - INDIVIDUAL POSTERS
+TUESDAYS
+- Cheer for Fun: 5:00-6:00 PM, Ages 7+; focus: Tumble | Stunt | Jumps | Dance; Free trial available.
+- Level 3 Plus Tumble: 6:00-7:00 PM, Ages 7+; focus: Level Up | Dedication | Master; Free trial available.
+- Open Cheerleading: 7:00-8:00 PM, Ages 16+; Free trial available.
+
+WEDNESDAYS
+- SEND Dance Class: 5:30-6:30 PM, Ages 6+; Adaptive | Inclusive | Nurturing; Free trial available.
+- Hip Hop Upskill: 6:30-7:30 PM, Ages 7+; Free trial available.
+- Hip Hop Upskill: 7:30-8:30 PM, Ages 13+; Free trial available.
+
+THURSDAYS
+- Lyrical & Jazz Technique: 6:00-7:00 PM, Ages 13+; Free trial available.
+- Hip Hop Street & Break Dance: 7:00-8:00 PM, Ages 7+; focus: Tricks | Groove | Perform | Fun; Free trial available.
+
+SATURDAYS
+- Tricks and Tumble: 10:00-11:00 & 11:00-12:00, Ages 7+; focus: Stretch | Power | Skills | Practice; Free trial available.
+- Tiny Twisters Hip Hop / Cheer: 10:00-11:00 Hip Hop + 11:00-12:00 Cheerleading, Ages 2-6; focus: Smiles | Rhythm | Skills | Friends; Free trial available.
+
+SATURDAY PROGRAM POSTER (MCR Dance & Cheer Academy)
+- Every Saturday
+- Ages 2-6:
+  * 10:00-11:00 Hip Hop
+  * 11:00-12:00 Cheerleading
+- Ages 7+:
+  * 10:00-11:00 Tricks & Tumble
+  * 11:00-12:00 Stretch & Strength
+- Value message: "Develop rhythm, balance, coordination, gross motor skills, counting & confidence in our dance, tumble and strength classes along with experienced, qualified and professional coaching team!"
+- CTA: "Contact us to book in your free trial..."
+- Email: mcrdanceacademy@gmail.com
+
+SCHEDULE POSTER (summary list)
+Tuesdays
+- Cheer for Fun / 5-6 PM / Ages 7+
+- Level 3 Tumble / 6-7 PM / Ages 7+
+- Open Cheerleading / 7-8 PM / Ages 16+
+
+Wednesdays
+- SEN Dance / 5:30-6:30 PM / Ages 6+
+- Hip Hop Upskill / 6:30-7:30 PM / Ages 7-12
+- Hip Hop Upskill / 7:30-8:30 PM / Ages 13+
+
+Thursdays
+- Lyrical & Jazz Technique / 6-7 PM / Ages 13+
+- Street Dance / 7-8 PM / Ages 7+
+
+Saturdays
+- Tricks & Tumble / 10-12 / Ages 7+
+- Hip Hop / 10-11 / Ages 2-6
+- Cheerleading / 11-12 / Ages 2-6
+
+NOTES / POTENTIAL CLARIFICATIONS
+- "SEND" likely refers to Special Educational Needs and Disabilities (confirm preferred wording).
+- Thursday 7-8 PM is labeled "Street Dance" in the schedule poster and "Hip Hop Street & Break Dance" in the individual poster.
+- Saturday 10-12 for Tricks & Tumble is shown as two adjacent one-hour slots in another poster.
+- Confirm pricing for all days (only Saturday pricing is explicit in poster).
+
+BOOKING SYSTEM REQUIREMENTS (client provided)
+- Current booking is via Coacha; no data migration needed.
+- Use the class schedule from posters as the initial dataset.
+- No parent accounts; only collect student details (parent manages in background).
+- Capacity: unlimited / no fixed cap.
+- Pricing model per term/course with monthly payment option.
+  Example given: 10-month course = GBP 300 total; monthly = GBP 30.
+  Full upfront payment option with 10% discount (example: GBP 270 total).
+- Payments: "everything" (interpretation: support card + Apple Pay + Google Pay at minimum).
+
+CANCELLATION / RESCHEDULE (draft market-standard policy; editable later)
+- Trial class: free trial can be rescheduled once with 24h notice.
+- Monthly plan: cancel before next billing date to stop future charges.
+- No refunds for past attended sessions.
+- Missed class can be made up in another class within 30 days (if suitable age/level).
+- One-off/term payments: refund within 7 days of purchase minus any attended classes.
+
+PAYMENTS
+- Payment provider: Stripe (confirmed).
+
+ESTIMATED PRICING PLACEHOLDERS (for prototype only; replace later)
+- Weekday class drop-in estimate: GBP 6.50 per class.
+- Term plan estimate: GBP 300 total for 10 months.
+- Monthly installment estimate: GBP 30/month.
+- Upfront discount estimate: 10% off (GBP 270 total).
+- Saturday drop-in pricing is confirmed on poster: GBP 5 per class; GBP 8 for both (ages 2-6 blocks).
