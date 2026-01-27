@@ -275,7 +275,7 @@ a {
 
 .placeholder {
   width: 100%;
-  height: 160px;
+  height: 140px;
   border: 1.5px dashed var(--line-strong);
   background: repeating-linear-gradient(
     45deg,
@@ -284,15 +284,27 @@ a {
     #f0f0f0 10px,
     #f0f0f0 20px
   );
-  border-radius: 18px;
+  border-radius: 16px;
 }
 
 .placeholder.small {
-  height: 80px;
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
 }
 
 .placeholder.tall {
-  height: 220px;
+  height: 200px;
+}
+
+.placeholder.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+}
+
+.placeholder.wide {
+  width: 100%;
 }
 
 .line {
