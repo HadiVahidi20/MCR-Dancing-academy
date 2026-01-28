@@ -48,19 +48,31 @@
       toggle.addEventListener('click', function () {
         var isOpen = header.classList.toggle('nav-open');
         toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        // Lock body scroll when mobile menu is open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
       });
 
       header.querySelectorAll('.nav a').forEach(function (link) {
         link.addEventListener('click', function () {
           header.classList.remove('nav-open');
           toggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
         });
+      });
+
+      // Close menu on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && header.classList.contains('nav-open')) {
+          header.classList.remove('nav-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
       });
     }
 
     var wasCompact = false;
     function onScroll() {
-      var makeCompact = window.scrollY > 40;
+      var makeCompact = window.scrollY > 60;
       if (makeCompact !== wasCompact) {
         header.classList.toggle('compact', makeCompact);
         wasCompact = makeCompact;
@@ -82,11 +94,10 @@
   function initHeroWheel() {
     var section = document.querySelector('[data-hero-wheel]');
     if (!section) return;
-    var wheel = section.querySelector('.hero-wheel');
-    if (!wheel) return;
+    var items = Array.prototype.slice.call(section.querySelectorAll('.hero-wheel-item'));
+    if (!items.length) return;
 
     var ticking = false;
-    var maxRotation = 240;
 
     function update() {
       ticking = false;
@@ -97,8 +108,20 @@
 
       var progress = (viewport - rect.top) / scrollable;
       progress = Math.max(0, Math.min(1, progress));
-      var rotation = progress * maxRotation;
-      wheel.style.setProperty('--wheel-rot', (-rotation).toFixed(2) + 'deg');
+      var total = items.length;
+      var step = progress * total;
+
+      items.forEach(function (item, index) {
+        var dist = Math.abs(step - (index + 0.5));
+        var visible = Math.max(0, 1 - dist / 0.6);
+        var eased = visible * visible * (3 - 2 * visible);
+        var spin = (1 - eased) * 16;
+        var rise = (1 - eased) * 60;
+        item.style.setProperty('--spin', spin.toFixed(2) + 'deg');
+        item.style.setProperty('--rise', rise.toFixed(1) + 'px');
+        item.style.opacity = eased.toFixed(2);
+        item.style.zIndex = Math.round(eased * 10);
+      });
     }
 
     function onScroll() {
