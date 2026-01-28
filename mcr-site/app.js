@@ -1,3 +1,9 @@
+import { Application } from '@splinetool/runtime';
+
+const canvas = document.getElementById('canvas3d');
+const app = new Application(canvas);
+app.load('https://prod.spline.design/FVPd0-V56bCHl9b3/scene.splinecode');
+
 (function () {
   function normalizePath(pathname) {
     var path = pathname.split('?')[0].split('#')[0];

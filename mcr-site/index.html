@@ -24,6 +24,9 @@
             <video class="hero-video" autoplay muted loop playsinline poster="REPLACE_WITH_POSTER_IMAGE.jpg">
               <source src="https://www.pexels.com/download/video/2795736/" type="video/mp4" />
             </video>
+            <div class="hero-spline" aria-hidden="true">
+              <canvas id="canvas3d"></canvas>
+            </div>
             <div class="hero-overlay"></div>
             <div class="section-inner hero-grid hero-content">
               <div>
@@ -220,6 +223,13 @@
     <!-- Footer Include (Start) -->
 <div id="site-footer"></div>
 <!-- Footer Include (End) -->
-      <script src="app.js"></script>
+      <script type="importmap">
+        {
+          "imports": {
+            "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@1.5.5/build/runtime.js"
+          }
+        }
+      </script>
+      <script type="module" src="app.js"></script>
   </body>
 </html>
