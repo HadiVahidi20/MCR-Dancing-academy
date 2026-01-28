@@ -79,13 +79,14 @@
       .then(function (html) { target.outerHTML = html; });
   }
 
-  function initScrollWheel() {
-    var section = document.querySelector('[data-scroll-wheel]');
+  function initHeroWheel() {
+    var section = document.querySelector('[data-hero-wheel]');
     if (!section) return;
-    var wheel = section.querySelector('.wheel');
+    var wheel = section.querySelector('.hero-wheel');
     if (!wheel) return;
 
     var ticking = false;
+    var maxRotation = 240;
 
     function update() {
       ticking = false;
@@ -96,8 +97,8 @@
 
       var progress = (viewport - rect.top) / scrollable;
       progress = Math.max(0, Math.min(1, progress));
-      var rotation = progress * 360;
-      wheel.style.transform = 'rotateX(' + (-rotation) + 'deg)';
+      var rotation = progress * maxRotation;
+      wheel.style.setProperty('--wheel-rot', (-rotation).toFixed(2) + 'deg');
     }
 
     function onScroll() {
@@ -117,7 +118,7 @@
       .then(function () {
         setActiveNav();
         initHeader();
-        initScrollWheel();
+        initHeroWheel();
         return include('#site-footer', 'footer.html');
       })
       .catch(function (err) {
