@@ -67,13 +67,19 @@ a {
 }
 
 .header.compact {
-  padding: 8px 0;
+  padding: 16px 0;
+  pointer-events: none; /* let clicks pass through the empty bar */
 }
 
+/* Hide the full bar background in compact mode */
 .header.compact::before {
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(30px) saturate(200%);
-  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Hide glow line in compact */
+.header.compact .header-glow {
+  opacity: 0;
 }
 
 /* Animated glow line under header */
@@ -365,7 +371,7 @@ a {
   width: 20px;
 }
 
-/* ── Compact mode: collapse into hamburger-only ──────── */
+/* ── Compact mode: floating logo + floating hamburger ── */
 .header.compact .nav-panel {
   display: none;
 }
@@ -376,6 +382,89 @@ a {
 
 .header.compact.nav-open .nav-panel {
   display: flex;
+}
+
+/* Floating logo pill */
+.header.compact .logo {
+  pointer-events: auto;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  padding: 8px 16px 8px 8px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.4s ease,
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+}
+
+.header.compact .logo:hover {
+  transform: translateY(-2px);
+  background: rgba(10, 10, 10, 0.75);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35),
+              0 0 20px rgba(244, 212, 15, 0.1);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.header.compact .logo-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.header.compact .logo-img {
+  height: 20px;
+}
+
+.header.compact .logo-text {
+  font-size: 12px;
+  letter-spacing: 1.8px;
+}
+
+/* Floating hamburger button */
+.header.compact .nav-toggle {
+  pointer-events: auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s ease,
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.header.compact .nav-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(10, 10, 10, 0.75);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35),
+              0 0 20px rgba(244, 212, 15, 0.15);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.header.compact .hamburger-line {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* When menu is open in compact, re-enable pointer events on the header */
+.header.compact.nav-open {
+  pointer-events: auto;
+}
+
+/* Floating elements stay visible over fullscreen overlay */
+.header.compact.nav-open .logo,
+.header.compact.nav-open .nav-toggle {
+  z-index: 10;
 }
 
 /* ── Buttons ──────────────────────────────────────────── */
