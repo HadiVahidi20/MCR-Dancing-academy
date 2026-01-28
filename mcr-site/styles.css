@@ -585,17 +585,13 @@ a {
 .hero-book-card {
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 50%;
+  translate: -50% 0;
   width: 100%;
   height: auto;
-  border-radius: 0;
-  overflow: hidden;
-  background: #0a0a0a;
+  background: transparent;
   border: none;
-  border-top: 1.5px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 -10px 60px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.05);
+  box-shadow: none;
   /* Pivot at bottom center — the hinge of the book page */
   transform-origin: 50% 100%;
   /* Initial: folded forward below the bottom edge */
@@ -606,24 +602,10 @@ a {
 }
 
 .hero-book-card img {
-  width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
   display: block;
-}
-
-/* Card label overlay — top of card */
-.hero-book-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 20px 24px;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
-  color: #fff;
-  font-size: clamp(14px, 2vw, 18px);
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  margin: 0 auto;
 }
 
 /* Page counter (top-right) */
@@ -683,15 +665,7 @@ a {
   50% { transform: translateY(6px); }
 }
 
-/* Page shadow — simulates light from above on a physical page */
-.hero-book-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15) 100%);
-  pointer-events: none;
-}
+/* No card overlay — transparent images supported */
 
 /* Mobile adjustments */
 @media (max-width: 720px) {
@@ -702,11 +676,6 @@ a {
   .hero-book-card {
     width: 100%;
     border-radius: 0;
-  }
-
-  .hero-book-label {
-    padding: 14px 18px;
-    font-size: 13px;
   }
 
   .hero-book-counter {
