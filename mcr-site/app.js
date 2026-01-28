@@ -70,12 +70,25 @@
       });
     }
 
+    function closeMenu() {
+      header.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
     var wasCompact = false;
     function onScroll() {
       var makeCompact = window.scrollY > 60;
       if (makeCompact !== wasCompact) {
         header.classList.toggle('compact', makeCompact);
         wasCompact = makeCompact;
+        // Close menu when transitioning out of compact (scrolled back to top)
+        if (!makeCompact && header.classList.contains('nav-open')) {
+          // Only auto-close on desktop; on mobile the menu stays
+          if (window.innerWidth > 960) {
+            closeMenu();
+          }
+        }
       }
     }
 
