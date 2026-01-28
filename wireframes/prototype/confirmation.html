@@ -3,13 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Booking Confirmed - MCR Dance & Cheer Academy</title>
+    <title>Booking Confirmed - MCR Dance &amp; Cheer Academy</title>
+    <meta name="description" content="Your class booking at MCR Dance & Cheer Academy has been confirmed." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="header">
       <div class="container header-inner">
-        <div class="logo">MCR DANCE & CHEER ACADEMY</div>
+        <a href="index.html" class="logo"><img src="logo-bee.svg" alt="MCR" class="logo-img" /> MCR DANCE &amp; CHEER ACADEMY</a>
         <nav class="nav">
           <a href="index.html">Home</a>
           <a href="classes.html">Classes</a>
@@ -19,34 +21,55 @@
         </nav>
         <div class="actions">
           <a class="button" href="classes.html">Book a Class</a>
-          <a class="button primary" href="booking.html">Free Trial</a>
+          <a class="button primary" href="free-trial.html">Free Trial</a>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="section full hero">
+      <section class="section hero">
         <div class="section-inner">
+          <nav class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>Booking Confirmed</span>
+          </nav>
+
           <div class="eyebrow">Confirmation</div>
           <h1>Booking Confirmed</h1>
-          <div class="card">
-            <p class="meta">Reference: MCR-2026-0001</p>
-            <div class="panel">
+          <div class="card" style="margin-top: 8px;">
+            <p class="meta">Reference: <strong>MCR-2026-0001</strong></p>
+            <div class="panel" style="margin-top: 12px;">
               <strong>Hip Hop Upskill</strong>
-              <p class="meta">Wednesday · 6:30-7:30 PM · Ages 7+</p>
-              <p class="meta">Plan: Monthly (placeholder)</p>
+              <p class="meta">Wednesday &middot; 6:30-7:30 PM &middot; Ages 7+</p>
+              <p class="meta">Plan: Monthly (&pound;30/mo)</p>
               <p class="meta">Next class: Next Wednesday</p>
             </div>
-            <div class="actions" style="margin-top: 12px;">
+            <div class="actions" style="margin-top: 16px;">
               <a class="button" href="#">Add to Calendar</a>
               <a class="button" href="#">Download Receipt</a>
               <a class="button primary" href="manage-booking.html">Manage Booking</a>
             </div>
           </div>
-          <div class="grid-3" style="margin-top: 24px;">
-            <div class="card">Arrive 10 minutes early for your first session.</div>
-            <div class="card">Bring water and comfortable clothing.</div>
-            <div class="card">Need help? Contact us anytime.</div>
+        </div>
+      </section>
+
+      <section class="section alt">
+        <div class="section-inner">
+          <h2>What to expect</h2>
+          <div class="grid-3" style="margin-top: 16px;">
+            <div class="card">
+              <strong>Arrive early</strong>
+              <p class="meta">Get there 10 minutes before your first session so the coach can welcome you.</p>
+            </div>
+            <div class="card">
+              <strong>What to bring</strong>
+              <p class="meta">Water bottle and comfortable clothing. No special shoes needed for your first class.</p>
+            </div>
+            <div class="card">
+              <strong>Need help?</strong>
+              <p class="meta">Contact us anytime at mcrdanceacademy@gmail.com or 07850 936754.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -55,7 +78,7 @@
     <footer class="footer">
       <div class="container footer-grid">
         <div>
-          <strong>MCR Dance & Cheer Academy</strong>
+          <strong>MCR Dance &amp; Cheer Academy</strong>
           <p class="meta">Ashton-under-Lyne</p>
         </div>
         <div>
@@ -67,10 +90,11 @@
           <strong>Social</strong>
           <p class="meta">Instagram: mcr_danceacademy</p>
           <p class="meta">TikTok: mcr_danceacademy</p>
+          <p class="meta">Facebook: MCRdanceacademy</p>
         </div>
         <div>
           <strong>Policies</strong>
-          <p class="meta">Cancellation, Make-up classes, Payments</p>
+          <a href="faq.html" class="meta">FAQ &amp; Policies</a>
         </div>
       </div>
     </footer>

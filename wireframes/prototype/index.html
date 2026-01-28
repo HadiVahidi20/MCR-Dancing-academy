@@ -3,15 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MCR Dance & Cheer Academy - Prototype</title>
+    <title>MCR Dance &amp; Cheer Academy — Ashton-under-Lyne</title>
+    <meta name="description" content="MCR Dance & Cheer Academy offers Hip Hop, Lyrical, Jazz & Cheerleading classes in Ashton-under-Lyne for ages 2-16+. Free trial available." />
+    <meta property="og:title" content="MCR Dance & Cheer Academy" />
+    <meta property="og:description" content="Hip Hop, Lyrical, Jazz & Cheerleading in Ashton-under-Lyne. Free trial available for all classes." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header class="header">
       <div class="container header-inner">
-        <div class="logo">MCR DANCE & CHEER ACADEMY</div>
+        <a href="index.html" class="logo"><img src="logo-bee.svg" alt="MCR" class="logo-img" /> MCR DANCE &amp; CHEER ACADEMY</a>
         <nav class="nav">
-          <a href="index.html">Home</a>
+          <a href="index.html" class="active">Home</a>
           <a href="classes.html">Classes</a>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
@@ -19,32 +23,33 @@
         </nav>
         <div class="actions">
           <a class="button" href="classes.html">Book a Class</a>
-          <a class="button primary" href="booking.html">Free Trial</a>
+          <a class="button primary" href="free-trial.html">Free Trial</a>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="section hero full">
+      <!-- Hero -->
+      <section class="section hero">
         <div class="section-inner hero-grid">
           <div>
-            <div class="eyebrow">MCR Dance & Cheer Academy</div>
-            <h1>Dance & Cheer in Ashton-under-Lyne</h1>
-            <p class="meta">Hip Hop, Lyrical, Jazz & Cheerleading. Inclusive, nurturing and coached by professionals.</p>
+            <div class="eyebrow">MCR Dance &amp; Cheer Academy</div>
+            <h1>Dance &amp; Cheer in Ashton&#8209;under&#8209;Lyne</h1>
+            <p class="meta">Hip Hop, Lyrical, Jazz &amp; Cheerleading. Inclusive, nurturing and coached by professionals.</p>
             <div class="actions" style="margin-top: 18px;">
               <a class="button primary" href="classes.html">Book a Class</a>
-              <a class="button" href="booking.html">Free Trial</a>
+              <a class="button" href="free-trial.html">Free Trial</a>
             </div>
-            <div class="grid-3" style="margin-top: 24px;">
-              <div class="card">
+            <div class="stat-cards">
+              <div class="stat-card">
                 <div class="eyebrow">Ages</div>
                 <strong>2+ to 16+</strong>
               </div>
-              <div class="card">
+              <div class="stat-card">
                 <div class="eyebrow">Free Trial</div>
                 <strong>Available</strong>
               </div>
-              <div class="card">
+              <div class="stat-card">
                 <div class="eyebrow">Coaches</div>
                 <strong>Qualified Team</strong>
               </div>
@@ -58,14 +63,15 @@
         </div>
       </section>
 
-      <section class="section full alt">
+      <!-- Weekly Schedule -->
+      <section class="section alt">
         <div class="section-inner">
           <div class="split">
             <div>
               <div class="eyebrow">Weekly Schedule</div>
               <h2>Find your perfect class</h2>
               <p class="meta">Browse by day, age and style. Free trial available on most classes.</p>
-              <a class="button" href="classes.html">View all classes</a>
+              <a class="button" href="classes.html" style="margin-top: 12px;">View all classes</a>
             </div>
             <div class="grid-2">
               <div class="card">
@@ -87,8 +93,8 @@
               <div class="card">
                 <h3>Thursdays</h3>
                 <ul class="list">
-                  <li>Lyrical & Jazz Technique / 6-7 PM / Ages 13+</li>
-                  <li>Hip Hop Street & Break Dance / 7-8 PM / Ages 7+</li>
+                  <li>Lyrical &amp; Jazz Technique / 6-7 PM / Ages 13+</li>
+                  <li>Hip Hop Street &amp; Break Dance / 7-8 PM / Ages 7+</li>
                 </ul>
               </div>
               <div class="card">
@@ -96,7 +102,7 @@
                 <ul class="list">
                   <li>Tiny Twisters Hip Hop / 10-11 / Ages 2-6</li>
                   <li>Tiny Twisters Cheerleading / 11-12 / Ages 2-6</li>
-                  <li>Tricks & Tumble / 10-11 and 11-12 / Ages 7+</li>
+                  <li>Tricks &amp; Tumble / 10-11 and 11-12 / Ages 7+</li>
                 </ul>
               </div>
             </div>
@@ -104,47 +110,50 @@
         </div>
       </section>
 
-      <section class="section full">
+      <!-- Free Trial -->
+      <section class="section hero-dark">
         <div class="section-inner split">
           <div>
             <div class="eyebrow">Free Trial</div>
             <h2>Try a class before you join</h2>
-            <p class="meta">Book a free trial and experience the class in person.</p>
-            <a class="button primary" href="booking.html">Book a Free Trial</a>
+            <p class="meta">Book a free trial and experience the class in person. No payment needed.</p>
+            <a class="button primary" href="free-trial.html" style="margin-top: 12px;">Book a Free Trial</a>
           </div>
-          <div class="card">
-            <div class="placeholder"></div>
-            <div class="line"></div>
-            <div class="line short"></div>
+          <div class="hero-card" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15);">
+            <div class="placeholder" style="border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04);"></div>
+            <div class="line" style="background: rgba(255,255,255,0.1);"></div>
+            <div class="line short" style="background: rgba(255,255,255,0.07);"></div>
           </div>
         </div>
       </section>
 
-      <section class="section full alt">
+      <!-- Why MCR -->
+      <section class="section alt">
         <div class="section-inner">
           <div class="eyebrow">Why MCR</div>
-          <h2>Inclusive, professional, and confidence‑building</h2>
+          <h2>Inclusive, professional, and confidence&#8209;building</h2>
           <div class="grid-3" style="margin-top: 24px;">
             <div class="card">
               <div class="placeholder small"></div>
-              <h4>Adaptive & Inclusive</h4>
-              <p class="meta">SEN/SEND friendly classes and supportive coaching.</p>
+              <h4 style="margin-top: 12px;">Adaptive &amp; Inclusive</h4>
+              <p class="meta">SEN/SEND friendly classes and supportive coaching for every learner.</p>
             </div>
             <div class="card">
               <div class="placeholder small"></div>
-              <h4>Professional Coaches</h4>
+              <h4 style="margin-top: 12px;">Professional Coaches</h4>
               <p class="meta">Experienced, qualified and nurturing teaching team.</p>
             </div>
             <div class="card">
               <div class="placeholder small"></div>
-              <h4>Confidence & Community</h4>
+              <h4 style="margin-top: 12px;">Confidence &amp; Community</h4>
               <p class="meta">Build skills, friendships and performance confidence.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section full">
+      <!-- Testimonials -->
+      <section class="section">
         <div class="section-inner">
           <div class="eyebrow">Testimonials</div>
           <h2>Parents and students love MCR</h2>
@@ -165,7 +174,8 @@
         </div>
       </section>
 
-      <section class="section full alt">
+      <!-- Location & Contact -->
+      <section class="section alt">
         <div class="section-inner split">
           <div class="card">
             <h3>Location</h3>
@@ -176,7 +186,7 @@
             <h3>Contact</h3>
             <p class="meta">Phone: 07850 936754</p>
             <p class="meta">Email: mcrdanceacademy@gmail.com</p>
-            <div class="notice">Prices shown in prototype are placeholders.</div>
+            <a class="button" href="contact.html" style="margin-top: 12px;">Get in touch</a>
           </div>
         </div>
       </section>
@@ -185,7 +195,7 @@
     <footer class="footer">
       <div class="container footer-grid">
         <div>
-          <strong>MCR Dance & Cheer Academy</strong>
+          <strong>MCR Dance &amp; Cheer Academy</strong>
           <p class="meta">Ashton-under-Lyne</p>
         </div>
         <div>
@@ -197,10 +207,11 @@
           <strong>Social</strong>
           <p class="meta">Instagram: mcr_danceacademy</p>
           <p class="meta">TikTok: mcr_danceacademy</p>
+          <p class="meta">Facebook: MCRdanceacademy</p>
         </div>
         <div>
           <strong>Policies</strong>
-          <p class="meta">Cancellation, Make-up classes, Payments</p>
+          <a href="faq.html" class="meta">FAQ &amp; Policies</a>
         </div>
       </div>
     </footer>
