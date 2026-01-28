@@ -172,25 +172,25 @@
         var cardLocal = step - i;
 
         if (cardLocal < -0.05) {
-          // Not yet visible — folded flat behind the bottom edge
-          card.style.transform = 'rotateX(90deg)';
-          card.style.opacity = '0';
-          card.style.zIndex = '0';
-          return;
-        }
-
-        if (cardLocal > 1.4) {
-          // Fully exited — folded forward and gone
+          // Not yet visible — folded forward below the bottom edge
           card.style.transform = 'rotateX(-90deg)';
           card.style.opacity = '0';
           card.style.zIndex = '0';
           return;
         }
 
-        // --- ENTERING: card flips up from behind (rotateX 90 → 0) ---
+        if (cardLocal > 1.4) {
+          // Fully exited — folded back behind
+          card.style.transform = 'rotateX(90deg)';
+          card.style.opacity = '0';
+          card.style.zIndex = '0';
+          return;
+        }
+
+        // --- ENTERING: card flips up from front (rotateX -90 → 0) ---
         if (cardLocal < 0.45) {
           var enterT = ease(Math.max(0, (cardLocal + 0.05) / 0.5));
-          var rxIn = lerp(90, 0, enterT);
+          var rxIn = lerp(-90, 0, enterT);
           var opIn = lerp(0, 1, Math.min(enterT * 2, 1));
 
           card.style.transform = 'rotateX(' + rxIn.toFixed(2) + 'deg)';
@@ -207,9 +207,9 @@
           return;
         }
 
-        // --- EXITING: card flips forward and away (rotateX 0 → -90) ---
+        // --- EXITING: card flips back and away (rotateX 0 → 90) ---
         var exitT = ease((cardLocal - 0.65) / 0.5);
-        var rxOut = lerp(0, -90, exitT);
+        var rxOut = lerp(0, 90, exitT);
         var opOut = lerp(1, 0, Math.min(exitT * 2, 1));
 
         card.style.transform = 'rotateX(' + rxOut.toFixed(2) + 'deg)';
