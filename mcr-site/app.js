@@ -76,20 +76,32 @@
       document.body.style.overflow = '';
     }
 
+    var lastScrollY = window.scrollY;
     var wasCompact = false;
+    var scrollThreshold = 60;
+
     function onScroll() {
-      var makeCompact = window.scrollY > 60;
+      var currentY = window.scrollY;
+      var scrollingUp = currentY < lastScrollY;
+      var pastThreshold = currentY > scrollThreshold;
+
+      // Compact when scrolling DOWN past threshold
+      // Full nav when scrolling UP or at the very top
+      var makeCompact = pastThreshold && !scrollingUp;
+
       if (makeCompact !== wasCompact) {
         header.classList.toggle('compact', makeCompact);
         wasCompact = makeCompact;
-        // Close menu when transitioning out of compact (scrolled back to top)
+
+        // Close fullscreen menu when full nav reappears
         if (!makeCompact && header.classList.contains('nav-open')) {
-          // Only auto-close on desktop; on mobile the menu stays
           if (window.innerWidth > 960) {
             closeMenu();
           }
         }
       }
+
+      lastScrollY = currentY;
     }
 
     onScroll();
