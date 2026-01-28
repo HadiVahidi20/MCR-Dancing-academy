@@ -555,8 +555,8 @@ a {
 /* ── Hero Book Flip (Scroll-driven cards) ────────────── */
 .hero-scroll {
   position: relative;
-  /* 1vh for hero + 1vh per card transition = 4 screens total */
-  min-height: 400vh;
+  /* 1vh for hero + scroll space for 3 cards entering (no exit) */
+  min-height: 300vh;
 }
 
 .hero-sticky {

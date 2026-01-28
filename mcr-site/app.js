@@ -168,7 +168,6 @@
 
       cards.forEach(function (card, i) {
         // Each card gets a segment of the scroll progress
-        // Card i is active during step range [i, i+1]
         var cardLocal = step - i;
 
         if (cardLocal < -0.05) {
@@ -179,17 +178,9 @@
           return;
         }
 
-        if (cardLocal > 1.4) {
-          // Fully exited — folded back behind
-          card.style.transform = 'rotateX(90deg)';
-          card.style.opacity = '0';
-          card.style.zIndex = '0';
-          return;
-        }
-
         // --- ENTERING: card flips up from front (rotateX -90 → 0) ---
-        if (cardLocal < 0.45) {
-          var enterT = ease(Math.max(0, (cardLocal + 0.05) / 0.5));
+        if (cardLocal < 0.5) {
+          var enterT = ease(Math.max(0, (cardLocal + 0.05) / 0.55));
           var rxIn = lerp(-90, 0, enterT);
           var opIn = lerp(0, 1, Math.min(enterT * 2, 1));
 
@@ -199,22 +190,10 @@
           return;
         }
 
-        // --- HOLDING: card is upright, fully visible ---
-        if (cardLocal < 0.65) {
-          card.style.transform = 'rotateX(0deg)';
-          card.style.opacity = '1';
-          card.style.zIndex = (i + 1).toString();
-          return;
-        }
-
-        // --- EXITING: card flips back and away (rotateX 0 → 90) ---
-        var exitT = ease((cardLocal - 0.65) / 0.5);
-        var rxOut = lerp(0, 90, exitT);
-        var opOut = lerp(1, 0, Math.min(exitT * 2, 1));
-
-        card.style.transform = 'rotateX(' + rxOut.toFixed(2) + 'deg)';
-        card.style.opacity = opOut.toFixed(3);
-        card.style.zIndex = (total - i).toString();
+        // --- RESTING: card stays flat, stacked on top of previous cards ---
+        card.style.transform = 'rotateX(0deg)';
+        card.style.opacity = '1';
+        card.style.zIndex = (i + 1).toString();
       });
     }
 
