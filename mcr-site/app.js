@@ -167,60 +167,54 @@
       }
 
       cards.forEach(function (card, i) {
-        // Each card gets a segment of the progress
+        // Each card gets a segment of the scroll progress
         // Card i is active during step range [i, i+1]
         var cardLocal = step - i;
 
-        if (cardLocal < -0.1) {
-          // Card hasn't appeared yet — below viewport, tilted
-          card.style.transform = 'translateY(110%) rotateX(-25deg) scale(0.85)';
+        if (cardLocal < -0.05) {
+          // Not yet visible — folded flat behind the bottom edge
+          card.style.transform = 'rotateX(90deg)';
           card.style.opacity = '0';
           card.style.zIndex = '0';
           return;
         }
 
-        if (cardLocal > 1.5) {
-          // Card has fully exited — flipped up and away
-          card.style.transform = 'translateY(-60%) rotateX(20deg) scale(0.8)';
+        if (cardLocal > 1.4) {
+          // Fully exited — folded forward and gone
+          card.style.transform = 'rotateX(-90deg)';
           card.style.opacity = '0';
           card.style.zIndex = '0';
           return;
         }
 
-        // --- ENTERING phase (cardLocal: -0.1 to 0.5) ---
-        if (cardLocal < 0.5) {
-          var enterT = ease(Math.max(0, (cardLocal + 0.1) / 0.6));
-          var ty = lerp(110, 0, enterT);
-          var rx = lerp(-25, 0, enterT);
-          var sc = lerp(0.85, 1, enterT);
-          var op = lerp(0, 1, enterT);
+        // --- ENTERING: card flips up from behind (rotateX 90 → 0) ---
+        if (cardLocal < 0.45) {
+          var enterT = ease(Math.max(0, (cardLocal + 0.05) / 0.5));
+          var rxIn = lerp(90, 0, enterT);
+          var opIn = lerp(0, 1, Math.min(enterT * 2, 1));
 
-          card.style.transform =
-            'translateY(' + ty.toFixed(1) + '%) rotateX(' + rx.toFixed(1) + 'deg) scale(' + sc.toFixed(3) + ')';
-          card.style.opacity = op.toFixed(3);
+          card.style.transform = 'rotateX(' + rxIn.toFixed(2) + 'deg)';
+          card.style.opacity = opIn.toFixed(3);
           card.style.zIndex = (i + 1).toString();
           return;
         }
 
-        // --- HOLDING phase (cardLocal: 0.5 to 0.7) ---
-        if (cardLocal < 0.7) {
-          card.style.transform = 'translateY(0%) rotateX(0deg) scale(1)';
+        // --- HOLDING: card is upright, fully visible ---
+        if (cardLocal < 0.65) {
+          card.style.transform = 'rotateX(0deg)';
           card.style.opacity = '1';
           card.style.zIndex = (i + 1).toString();
           return;
         }
 
-        // --- EXITING phase (cardLocal: 0.7 to 1.3) ---
-        var exitT = ease((cardLocal - 0.7) / 0.6);
-        var tyOut = lerp(0, -60, exitT);
-        var rxOut = lerp(0, 20, exitT);
-        var scOut = lerp(1, 0.8, exitT);
-        var opOut = lerp(1, 0, exitT);
+        // --- EXITING: card flips forward and away (rotateX 0 → -90) ---
+        var exitT = ease((cardLocal - 0.65) / 0.5);
+        var rxOut = lerp(0, -90, exitT);
+        var opOut = lerp(1, 0, Math.min(exitT * 2, 1));
 
-        card.style.transform =
-          'translateY(' + tyOut.toFixed(1) + '%) rotateX(' + rxOut.toFixed(1) + 'deg) scale(' + scOut.toFixed(3) + ')';
+        card.style.transform = 'rotateX(' + rxOut.toFixed(2) + 'deg)';
         card.style.opacity = opOut.toFixed(3);
-        card.style.zIndex = (i + 1).toString();
+        card.style.zIndex = (total - i).toString();
       });
     }
 

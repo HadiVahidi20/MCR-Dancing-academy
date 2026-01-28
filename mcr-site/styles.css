@@ -565,36 +565,45 @@ a {
   height: 100vh;
 }
 
-/* 3D stage covering the full hero viewport */
+/* 3D stage — anchored to the bottom of the hero viewport */
 .hero-book-stage {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55vh;
   z-index: 3;
   pointer-events: none;
-  perspective: 1200px;
+  perspective: 1400px;
+  perspective-origin: 50% 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 }
 
-/* Each card */
+/* Each card — pinned to the bottom, flips around bottom edge */
 .hero-book-card {
   position: absolute;
-  width: min(80vw, 520px);
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: min(75vw, 520px);
   aspect-ratio: 4 / 3;
-  border-radius: 24px;
+  border-radius: 24px 24px 0 0;
   overflow: hidden;
   background: #0a0a0a;
   border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 -10px 60px rgba(0, 0, 0, 0.4),
     0 0 0 1px rgba(255, 255, 255, 0.05);
+  /* Pivot at bottom center — the hinge of the book page */
   transform-origin: 50% 100%;
-  /* Initial state: below viewport, tilted like a book page */
-  transform: translateY(110%) rotateX(-25deg) scale(0.9);
+  /* Initial: flat against the bottom, folded down behind */
+  transform: rotateX(90deg);
   opacity: 0;
   will-change: transform, opacity;
-  transition: none; /* JS handles smooth interpolation */
+  transition: none;
 }
 
 .hero-book-card img {
@@ -604,14 +613,14 @@ a {
   display: block;
 }
 
-/* Card label overlay */
+/* Card label overlay — top of card */
 .hero-book-label {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   padding: 20px 24px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
   color: #fff;
   font-size: clamp(14px, 2vw, 18px);
   font-weight: 700;
@@ -676,23 +685,25 @@ a {
   50% { transform: translateY(6px); }
 }
 
-/* Page shadow effect on cards */
+/* Page shadow — simulates light from above on a physical page */
 .hero-book-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 24px;
-  box-shadow: inset 0 -40px 60px -20px rgba(0, 0, 0, 0.3);
+  border-radius: 24px 24px 0 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15) 100%);
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
 }
 
 /* Mobile adjustments */
 @media (max-width: 720px) {
+  .hero-book-stage {
+    height: 45vh;
+  }
+
   .hero-book-card {
-    width: min(90vw, 360px);
-    border-radius: 18px;
+    width: min(92vw, 360px);
+    border-radius: 18px 18px 0 0;
   }
 
   .hero-book-label {
@@ -708,10 +719,6 @@ a {
 
   .hero-book-current {
     font-size: 16px;
-  }
-
-  .hero-book-card::after {
-    border-radius: 18px;
   }
 }
 
