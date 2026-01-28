@@ -183,6 +183,7 @@ a {
 .section.hero {
   padding: clamp(64px, 8vw, 120px) 0;
   background: linear-gradient(135deg, #ffffff 0%, #f3f3f0 100%);
+  min-height: 100vh;
 }
 
 .section.hero-dark {
