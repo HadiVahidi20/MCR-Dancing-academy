@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Book a Class - MCR Dance &amp; Cheer Academy</title>
+    <meta name="description" content="Book a dance or cheerleading class at MCR Dance & Cheer Academy. Secure online payment via Stripe." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header Include (Start) -->
+<div id="site-header"></div>
+<!-- Header Include (End) -->
+
+    <main>
+      <!-- Section: Book a Class (Start) -->
+<section class="section hero">
+        <div class="section-inner">
+          <nav class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="classes.html">Classes</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="class-detail.html">Hip Hop Upskill</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>Book</span>
+          </nav>
+
+          <div class="eyebrow">Booking</div>
+          <h1>Book a Class</h1>
+          <div class="stepper" style="margin: 16px 0 28px;">
+            <span class="step highlight">1. Student Info</span>
+            <span class="step">2. Payment</span>
+            <span class="step">3. Confirmation</span>
+          </div>
+
+          <div class="split">
+            <div class="card">
+              <h3>Student Information</h3>
+              <form class="form">
+                <label>Student First Name</label>
+                <input type="text" placeholder="e.g., Ava" />
+                <label>Student Last Name</label>
+                <input type="text" placeholder="e.g., Khan" />
+                <label>Date of Birth / Age</label>
+                <input type="text" placeholder="e.g., 2016-04-10" />
+                <label>Parent/Guardian Name</label>
+                <input type="text" placeholder="e.g., Sara Khan" />
+                <label>Parent/Guardian Phone</label>
+                <input type="text" placeholder="e.g., 07xxx" />
+                <label>Parent/Guardian Email</label>
+                <input type="email" placeholder="e.g., parent@email.com" />
+                <label>Medical / Learning Needs (optional)</label>
+                <textarea rows="3" placeholder="Allergies, SEN/SEND support, etc."></textarea>
+                <label>Emergency Contact (optional)</label>
+                <input type="text" placeholder="Name and phone" />
+                <label>
+                  <input type="checkbox" /> I agree to the <a href="faq.html" style="text-decoration: underline;">policies and consent form</a>
+                </label>
+              </form>
+            </div>
+
+            <div class="card">
+              <h3>Booking Summary</h3>
+              <div class="panel">
+                <strong>Hip Hop Upskill</strong>
+                <p class="meta">Wednesday &middot; 6:30-7:30 PM &middot; Ages 7+</p>
+              </div>
+
+              <div class="panel" style="margin-top: 12px;">
+                <strong>Select plan</strong>
+                <div class="form" style="margin-top: 8px;">
+                  <label><input type="radio" name="plan" checked /> Monthly (&pound;30/mo)</label>
+                  <label><input type="radio" name="plan" /> Upfront (&pound;270 total — 10% off)</label>
+                  <label><input type="radio" name="plan" /> Drop-in (&pound;6.50)</label>
+                </div>
+              </div>
+
+              <h3 style="margin-top: 20px;">Payment</h3>
+              <div class="panel">
+                <p class="meta">Stripe payment element placeholder</p>
+                <div class="placeholder small wide" style="height: 48px; margin-top: 8px;"></div>
+                <p class="meta" style="margin-top: 8px;">Accepts card, Apple Pay, Google Pay</p>
+              </div>
+
+              <a class="button primary" href="confirmation.html" style="margin-top: 16px; display: inline-block;">Pay and Book</a>
+              <div class="notice" style="margin-top: 10px;">Prices shown are estimates until final rates are confirmed.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+<!-- Section: Book a Class (End) -->
+    </main>
+
+    <!-- Footer Include (Start) -->
+<div id="site-footer"></div>
+<!-- Footer Include (End) -->
+      <script src="app.js"></script>
+  </body>
+</html>

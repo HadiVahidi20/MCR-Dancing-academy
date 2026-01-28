@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manage Booking - MCR Dance &amp; Cheer Academy</title>
+    <meta name="description" content="Manage your class bookings at MCR Dance & Cheer Academy. Change times or cancel — no account needed." />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Header Include (Start) -->
+<div id="site-header"></div>
+<!-- Header Include (End) -->
+
+    <main>
+      <!-- Section: View and manage your bookings (Start) -->
+<section class="section hero">
+        <div class="section-inner">
+          <nav class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>Manage Booking</span>
+          </nav>
+
+          <div class="eyebrow">Manage Booking</div>
+          <h1>View and manage your bookings</h1>
+          <p class="meta">No account needed. We will verify your identity via a one-time code sent to your email.</p>
+
+          <div class="split" style="margin-top: 28px;">
+            <!-- State 1: Verification -->
+            <div class="card verify-state">
+              <h3>Step 1: Verify your email</h3>
+              <form class="form">
+                <label>Email address</label>
+                <input type="email" placeholder="parent@email.com" />
+                <a class="button" href="#">Send Verification Code</a>
+
+                <label style="margin-top: 12px;">Verification Code</label>
+                <input type="text" placeholder="6-digit code" />
+                <a class="button primary" href="#">Verify &amp; Continue</a>
+              </form>
+            </div>
+
+            <!-- State 2: Bookings list (shown after verification) -->
+            <div class="card bookings-state">
+              <h3>Step 2: Your Bookings</h3>
+
+              <div class="panel" style="margin-top: 12px;">
+                <strong>Hip Hop Upskill</strong>
+                <p class="meta">Wednesday &middot; 6:30-7:30 PM &middot; Ages 7+</p>
+                <p class="meta">Plan: Monthly (&pound;30/mo)</p>
+                <div class="actions" style="margin-top: 10px;">
+                  <a class="button" href="#">Change time</a>
+                  <a class="button" href="#">Cancel</a>
+                </div>
+              </div>
+
+              <div class="panel" style="margin-top: 12px;">
+                <strong>Cheer for Fun</strong>
+                <p class="meta">Tuesday &middot; 5-6 PM &middot; Ages 7+</p>
+                <p class="meta">Plan: Drop-in (&pound;6.50)</p>
+                <div class="actions" style="margin-top: 10px;">
+                  <a class="button" href="#">Change time</a>
+                  <a class="button" href="#">Cancel</a>
+                </div>
+              </div>
+
+              <div class="notice" style="margin-top: 16px;">
+                Cancellations must be made before the next billing date. See <a href="faq.html" style="text-decoration: underline;">FAQ &amp; Policies</a> for details.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+<!-- Section: View and manage your bookings (End) -->
+    </main>
+
+    <!-- Footer Include (Start) -->
+<div id="site-footer"></div>
+<!-- Footer Include (End) -->
+      <script src="app.js"></script>
+  </body>
+</html>

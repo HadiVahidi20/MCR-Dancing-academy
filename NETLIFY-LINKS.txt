@@ -1,0 +1,11 @@
+Netlify Links (MCR Dance Academy)
+
+Prototype site (wireframes/prototype)
+- Production: https://mcr-dancing-academy-prototype-20260127160047.netlify.app
+
+Main site (mcr-site)
+- Production: https://mcr-dance-academy-site-20260128151647.netlify.app
+
+Admin URLs
+- Prototype: https://app.netlify.com/projects/mcr-dancing-academy-prototype-20260127160047
+- Main site: https://app.netlify.com/projects/mcr-dance-academy-site-20260128151647

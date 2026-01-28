@@ -1,2 +1,2 @@
 [build]
-  publish = "wireframes/prototype"
+  publish = "${PUBLISH_DIR}"

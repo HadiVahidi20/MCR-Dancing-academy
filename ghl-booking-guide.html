@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GHL Booking Page Guide - MCR Dance &amp; Cheer Academy</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+        color: #1b1b1b;
+        margin: 24px;
+        background: #ffffff;
+      }
+      h1, h2, h3 {
+        margin: 0 0 10px;
+      }
+      h1 {
+        font-size: 26px;
+      }
+      h2 {
+        font-size: 20px;
+        margin-top: 22px;
+      }
+      h3 {
+        font-size: 16px;
+        margin-top: 16px;
+      }
+      p {
+        margin: 6px 0 12px;
+      }
+      .note {
+        background: #f6f6f6;
+        border: 1px solid #ddd;
+        padding: 10px 12px;
+        border-radius: 6px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 8px;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px 10px;
+        text-align: left;
+      }
+      th {
+        background: #f0f0f0;
+      }
+      ul {
+        margin: 6px 0 12px 18px;
+      }
+      .small {
+        font-size: 13px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>GHL Booking Page Guide (Simple English)</h1>
+    <p>This guide helps you recreate <strong>booking.html</strong> inside GoHighLevel (GHL) and collect payments.</p>
+
+    <h2>1) Payment Setup</h2>
+    <ol>
+      <li>Go to <strong>Settings &gt; Integrations</strong>.</li>
+      <li>Connect <strong>Stripe</strong> (required for online payments).</li>
+    </ol>
+
+    <h2>2) Products &amp; Prices</h2>
+    <p>Create products for each class. Add two prices:</p>
+    <ul>
+      <li><strong>Monthly</strong></li>
+      <li><strong>Upfront (one-time)</strong></li>
+    </ul>
+    <div class="note">
+      Tip: Use the class name as the product name. Example: "Hip Hop Upskill - Wednesday 6:30 PM".
+    </div>
+
+    <h2>3) Order Form (One-Step)</h2>
+    <p>Create a one-step Order Form so the user fills the form and pays on the same page.</p>
+    <h3>Add payment to the form</h3>
+    <ol>
+      <li>Go to <strong>Payments &gt; Order Forms</strong> and open your form.</li>
+      <li>In the form builder, add or select the <strong>Order</strong> element (this is the payment section).</li>
+      <li>Under <strong>Products / Offers</strong>, add your class products with two prices: <strong>Monthly</strong> and <strong>Upfront</strong>.</li>
+      <li>Set the Order Form to <strong>One-Step</strong> so customer details + payment happen together.</li>
+      <li>Enable <strong>Stripe</strong> for the payment method.</li>
+      <li>Save the form.</li>
+    </ol>
+    <h3>Form fields (from booking.html)</h3>
+    <ul>
+      <li>Student First Name</li>
+      <li>Student Last Name</li>
+      <li>Date of Birth / Age</li>
+      <li>Parent/Guardian Name</li>
+      <li>Parent/Guardian Phone</li>
+      <li>Parent/Guardian Email</li>
+      <li>Medical / Learning Needs (optional)</li>
+      <li>Emergency Contact (optional)</li>
+      <li>Checkbox: I agree to policies and consent form</li>
+    </ul>
+
+    <h2>4) Booking Page (Website)</h2>
+    <ol>
+      <li>Go to <strong>Sites &gt; Websites</strong>.</li>
+      <li>Create a page named <strong>booking</strong>.</li>
+      <li>Drag your <strong>Order Form</strong> onto the page.</li>
+      <li>Use the same headings and labels as in booking.html.</li>
+    </ol>
+
+    <h2>5) Success Message (Same Page)</h2>
+    <p>On the Order Form settings, show a success message on the same page.</p>
+    <div class="note">
+      Example success message:<br />
+      <em>"Thank you! Your booking is confirmed. A confirmation email and WhatsApp message have been sent."</em>
+    </div>
+
+    <h2>6) Email + WhatsApp Automation</h2>
+    <ol>
+      <li>Go to <strong>Automation &gt; Workflows</strong>.</li>
+      <li>Trigger: <strong>Order Submitted</strong> or <strong>Payment Successful</strong>.</li>
+      <li>Actions:
+        <ul>
+          <li>Send Email (confirmation)</li>
+          <li>Send WhatsApp message</li>
+          <li>Tag contact (e.g. booked-class)</li>
+        </ul>
+      </li>
+    </ol>
+
+    <h2>Class List (Extracted from Prototype)</h2>
+    <p>These classes are listed in <strong>wireframes/prototype/classes.html</strong>.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Class</th>
+          <th>Day / Time</th>
+          <th>Ages</th>
+          <th>Monthly</th>
+          <th>Upfront</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cheer for Fun</td>
+          <td>Tuesday, 5-6 PM</td>
+          <td>7+</td>
+          <td>GBP 30 / month</td>
+          <td>GBP 270 total</td>
+          <td>Prototype also shows Drop-in GBP 6.50</td>
+        </tr>
+        <tr>
+          <td>Level 3 Plus Tumble</td>
+          <td>Tuesday, 6-7 PM</td>
+          <td>7+</td>
+          <td>GBP 30 / month</td>
+          <td>GBP 270 total</td>
+          <td>Prototype also shows Drop-in GBP 6.50</td>
+        </tr>
+        <tr>
+          <td>Open Cheerleading</td>
+          <td>Tuesday, 7-8 PM</td>
+          <td>16+</td>
+          <td>GBP 30 / month</td>
+          <td>GBP 270 total</td>
+          <td>Prototype also shows Drop-in GBP 6.50</td>
+        </tr>
+        <tr>
+          <td>SEND Dance</td>
+          <td>Wednesday, 5:30-6:30 PM</td>
+          <td>6+</td>
+          <td>GBP 30 / month</td>
+          <td>GBP 270 total</td>
+          <td>Prototype also shows Drop-in GBP 6.50</td>
+        </tr>
+        <tr>
+          <td>Hip Hop Upskill</td>
+          <td>Wednesday, 6:30-7:30 PM</td>
+          <td>7+</td>
+          <td>GBP 30 / month</td>
+          <td>GBP 270 total</td>
+          <td>Prototype also shows Drop-in GBP 6.50</td>
+        </tr>
+        <tr>
+          <td>Hip Hop Upskill</td>
+          <td>Wednesday, 7:30-8:30 PM</td>
+          <td>13+</td>
+          <td>GBP 30 / month</td>
+          <td>GBP 270 total</td>
+          <td>Prototype also shows Drop-in GBP 6.50</td>
+        </tr>
+        <tr>
+          <td>Lyrical &amp; Jazz Technique</td>
+          <td>Thursday, 6-7 PM</td>
+          <td>13+</td>
+          <td>GBP 30 / month</td>
+          <td>GBP 270 total</td>
+          <td>Prototype also shows Drop-in GBP 6.50</td>
+        </tr>
+        <tr>
+          <td>Hip Hop Street &amp; Break Dance</td>
+          <td>Thursday, 7-8 PM</td>
+          <td>7+</td>
+          <td>GBP 30 / month</td>
+          <td>GBP 270 total</td>
+          <td>Prototype also shows Drop-in GBP 6.50</td>
+        </tr>
+        <tr>
+          <td>Tiny Twisters Hip Hop</td>
+          <td>Saturday, 10-11 AM</td>
+          <td>2-6</td>
+          <td>Not listed</td>
+          <td>Not listed</td>
+          <td>Prototype shows Drop-in GBP 5; Both classes GBP 8</td>
+        </tr>
+        <tr>
+          <td>Tiny Twisters Cheerleading</td>
+          <td>Saturday, 11-12 AM</td>
+          <td>2-6</td>
+          <td>Not listed</td>
+          <td>Not listed</td>
+          <td>Prototype shows Drop-in GBP 5; Both classes GBP 8</td>
+        </tr>
+        <tr>
+          <td>Tricks &amp; Tumble</td>
+          <td>Saturday, 10-11 AM or 11-12 AM</td>
+          <td>7+</td>
+          <td>GBP 30 / month</td>
+          <td>GBP 270 total</td>
+          <td>Prototype also shows Drop-in GBP 6.50</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="small">Source: wireframes/prototype/classes.html</p>
+
+    <h2>Next Steps</h2>
+    <ol>
+      <li>Confirm final prices for Tiny Twisters and any other class.</li>
+      <li>Create products + two prices for each class in GHL.</li>
+      <li>Embed the Order Form into the Booking page.</li>
+      <li>Turn on email + WhatsApp automation.</li>
+    </ol>
+  </body>
+</html>
