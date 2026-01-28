@@ -79,11 +79,45 @@
       .then(function (html) { target.outerHTML = html; });
   }
 
+  function initScrollWheel() {
+    var section = document.querySelector('[data-scroll-wheel]');
+    if (!section) return;
+    var wheel = section.querySelector('.wheel');
+    if (!wheel) return;
+
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var rect = section.getBoundingClientRect();
+      var viewport = window.innerHeight || 0;
+      var scrollable = rect.height - viewport;
+      if (scrollable <= 0) return;
+
+      var progress = (viewport - rect.top) / scrollable;
+      progress = Math.max(0, Math.min(1, progress));
+      var rotation = progress * 360;
+      wheel.style.transform = 'rotateX(' + (-rotation) + 'deg)';
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     include('#site-header', 'header.html')
       .then(function () {
         setActiveNav();
         initHeader();
+        initScrollWheel();
         return include('#site-footer', 'footer.html');
       })
       .catch(function (err) {
