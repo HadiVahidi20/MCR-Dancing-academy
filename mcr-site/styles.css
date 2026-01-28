@@ -547,13 +547,16 @@ a {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding-bottom: clamp(200px, 25vh, 280px);
+  padding-bottom: 0;
+  align-self: flex-start;
+  padding-top: clamp(80px, 12vh, 140px);
 }
 
-/* ── Hero Scroll Wheel (3D Images) ───────────────────── */
+/* ── Hero Book Flip (Scroll-driven cards) ────────────── */
 .hero-scroll {
   position: relative;
-  min-height: 220vh;
+  /* 1vh for hero + 1vh per card transition = 4 screens total */
+  min-height: 400vh;
 }
 
 .hero-sticky {
@@ -562,74 +565,153 @@ a {
   height: 100vh;
 }
 
-.hero-wheel-stage {
+/* 3D stage covering the full hero viewport */
+.hero-book-stage {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 260px;
-  z-index: 2;
+  inset: 0;
+  z-index: 3;
   pointer-events: none;
+  perspective: 1200px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
 }
 
-.hero-wheel {
-  position: relative;
-  width: min(70vw, 360px);
-  height: 240px;
-  margin: 0 auto;
-}
-
-.hero-wheel-item {
+/* Each card */
+.hero-book-card {
   position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 320px;
-  height: 200px;
-  transform-origin: 50% 100%;
-  transform: translateX(-50%) translateY(var(--rise, 60px)) rotate(var(--spin, 16deg));
-  opacity: 0;
-  transition: transform 0.06s linear, opacity 0.06s linear;
-}
-
-.hero-wheel-item:first-child {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0) rotate(0deg);
-}
-
-.hero-wheel-card {
-  width: 100%;
-  height: 100%;
-  border-radius: 18px;
+  width: min(80vw, 520px);
+  aspect-ratio: 4 / 3;
+  border-radius: 24px;
   overflow: hidden;
-  border: 1.5px solid var(--line);
-  box-shadow: var(--shadow);
-  background: #111;
+  background: #0a0a0a;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transform-origin: 50% 100%;
+  /* Initial state: below viewport, tilted like a book page */
+  transform: translateY(110%) rotateX(-25deg) scale(0.9);
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: none; /* JS handles smooth interpolation */
 }
 
-.hero-wheel-card img {
+.hero-book-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-@media (max-width: 900px) {
-  .hero-wheel-stage {
-    height: 220px;
+/* Card label overlay */
+.hero-book-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, transparent 100%);
+  color: #fff;
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Page counter (top-right) */
+.hero-book-counter {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 2px;
+  z-index: 5;
+  transition: color 0.4s ease;
+}
+
+.hero-book-current {
+  color: var(--accent);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.hero-book-sep {
+  margin: 0 4px;
+  opacity: 0.4;
+}
+
+/* Scroll hint at bottom */
+.hero-book-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 5;
+  transition: opacity 0.5s ease;
+}
+
+.hero-book-hint-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.hero-book-hint-arrow {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.3);
+  animation: hintBounce 2s ease-in-out infinite;
+}
+
+@keyframes hintBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* Page shadow effect on cards */
+.hero-book-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  box-shadow: inset 0 -40px 60px -20px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 720px) {
+  .hero-book-card {
+    width: min(90vw, 360px);
+    border-radius: 18px;
   }
 
-  .hero-wheel {
-    width: min(80vw, 300px);
-    height: 200px;
+  .hero-book-label {
+    padding: 14px 18px;
+    font-size: 13px;
   }
 
-  .hero-wheel-item {
-    width: 260px;
-    height: 170px;
-    transform: translateX(-50%) translateY(var(--rise, 50px)) rotate(var(--spin, 14deg));
+  .hero-book-counter {
+    top: 16px;
+    right: 20px;
+    font-size: 12px;
+  }
+
+  .hero-book-current {
+    font-size: 16px;
+  }
+
+  .hero-book-card::after {
+    border-radius: 18px;
   }
 }
 

@@ -119,10 +119,24 @@
   function initHeroWheel() {
     var section = document.querySelector('[data-hero-wheel]');
     if (!section) return;
-    var items = Array.prototype.slice.call(section.querySelectorAll('.hero-wheel-item'));
-    if (!items.length) return;
+    var cards = Array.prototype.slice.call(section.querySelectorAll('.hero-book-card'));
+    if (!cards.length) return;
 
+    var counterEl = section.querySelector('.hero-book-current');
+    var hintEl = section.querySelector('.hero-book-hint');
+    var total = cards.length;
     var ticking = false;
+
+    // Smooth interpolation helper
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+
+    // Ease function (smoothstep)
+    function ease(t) {
+      t = Math.max(0, Math.min(1, t));
+      return t * t * (3 - 2 * t);
+    }
 
     function update() {
       ticking = false;
@@ -131,21 +145,82 @@
       var scrollable = rect.height - viewport;
       if (scrollable <= 0) return;
 
-      var progress = (viewport - rect.top) / scrollable;
-      progress = Math.max(0, Math.min(1, progress));
-      var total = items.length;
-      var step = progress * total;
+      // Overall progress: 0 = top of section, 1 = bottom
+      var rawProgress = -rect.top / scrollable;
+      var progress = Math.max(0, Math.min(1, rawProgress));
 
-      items.forEach(function (item, index) {
-        var dist = Math.abs(step - (index + 0.5));
-        var visible = Math.max(0, 1 - dist / 0.6);
-        var eased = visible * visible * (3 - 2 * visible);
-        var spin = (1 - eased) * 16;
-        var rise = (1 - eased) * 60;
-        item.style.setProperty('--spin', spin.toFixed(2) + 'deg');
-        item.style.setProperty('--rise', rise.toFixed(1) + 'px');
-        item.style.opacity = eased.toFixed(2);
-        item.style.zIndex = Math.round(eased * 10);
+      // First 20% of scroll: no cards (just hero content visible)
+      // Remaining 80%: distribute across cards
+      var cardStart = 0.15;
+      var cardProgress = Math.max(0, (progress - cardStart) / (1 - cardStart));
+      var step = cardProgress * total;
+
+      // Update counter
+      var activeIndex = Math.min(Math.floor(step), total - 1);
+      if (cardProgress > 0) {
+        if (counterEl) counterEl.textContent = (activeIndex + 1).toString();
+      }
+
+      // Hide hint after first card starts appearing
+      if (hintEl) {
+        hintEl.style.opacity = cardProgress < 0.05 ? '1' : '0';
+      }
+
+      cards.forEach(function (card, i) {
+        // Each card gets a segment of the progress
+        // Card i is active during step range [i, i+1]
+        var cardLocal = step - i;
+
+        if (cardLocal < -0.1) {
+          // Card hasn't appeared yet — below viewport, tilted
+          card.style.transform = 'translateY(110%) rotateX(-25deg) scale(0.85)';
+          card.style.opacity = '0';
+          card.style.zIndex = '0';
+          return;
+        }
+
+        if (cardLocal > 1.5) {
+          // Card has fully exited — flipped up and away
+          card.style.transform = 'translateY(-60%) rotateX(20deg) scale(0.8)';
+          card.style.opacity = '0';
+          card.style.zIndex = '0';
+          return;
+        }
+
+        // --- ENTERING phase (cardLocal: -0.1 to 0.5) ---
+        if (cardLocal < 0.5) {
+          var enterT = ease(Math.max(0, (cardLocal + 0.1) / 0.6));
+          var ty = lerp(110, 0, enterT);
+          var rx = lerp(-25, 0, enterT);
+          var sc = lerp(0.85, 1, enterT);
+          var op = lerp(0, 1, enterT);
+
+          card.style.transform =
+            'translateY(' + ty.toFixed(1) + '%) rotateX(' + rx.toFixed(1) + 'deg) scale(' + sc.toFixed(3) + ')';
+          card.style.opacity = op.toFixed(3);
+          card.style.zIndex = (i + 1).toString();
+          return;
+        }
+
+        // --- HOLDING phase (cardLocal: 0.5 to 0.7) ---
+        if (cardLocal < 0.7) {
+          card.style.transform = 'translateY(0%) rotateX(0deg) scale(1)';
+          card.style.opacity = '1';
+          card.style.zIndex = (i + 1).toString();
+          return;
+        }
+
+        // --- EXITING phase (cardLocal: 0.7 to 1.3) ---
+        var exitT = ease((cardLocal - 0.7) / 0.6);
+        var tyOut = lerp(0, -60, exitT);
+        var rxOut = lerp(0, 20, exitT);
+        var scOut = lerp(1, 0.8, exitT);
+        var opOut = lerp(1, 0, exitT);
+
+        card.style.transform =
+          'translateY(' + tyOut.toFixed(1) + '%) rotateX(' + rxOut.toFixed(1) + 'deg) scale(' + scOut.toFixed(3) + ')';
+        card.style.opacity = opOut.toFixed(3);
+        card.style.zIndex = (i + 1).toString();
       });
     }
 
