@@ -1563,6 +1563,10 @@ h3 {
 }
 
 @media (max-width: 720px) {
+  .hero-spline {
+    display: none;
+  }
+
   .header-inner {
     align-items: center;
   }
