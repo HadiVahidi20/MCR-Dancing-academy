@@ -542,7 +542,7 @@ a {
 .hero-spline {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 3;
   pointer-events: none;
 }
 
@@ -766,6 +766,7 @@ a {
   letter-spacing: 0;
   color: #ffffff;
   display: block;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
 }
 
 .hero-title-sans {
@@ -776,14 +777,16 @@ a {
   letter-spacing: 1px;
   color: rgba(255, 255, 255, 0.7);
   display: block;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 .hero-meta {
   font-size: clamp(14px, 1.6vw, 17px);
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.65);
   max-width: 440px;
   line-height: 1.7;
   margin: 0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
 }
 
 .hero-actions {
