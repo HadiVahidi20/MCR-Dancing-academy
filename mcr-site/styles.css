@@ -750,14 +750,14 @@ a {
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 3.5px;
-  margin-bottom: 16px;
+  margin-bottom: clamp(12px, 2vh, 24px);
 }
 
 .hero-title {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin: 0 0 20px;
+  gap: clamp(4px, 0.6vh, 8px);
+  margin: 0 0 clamp(16px, 2.5vh, 28px);
 }
 
 .hero-title-script {
@@ -794,7 +794,7 @@ a {
 .hero-actions {
   display: flex;
   gap: 12px;
-  margin-top: 28px;
+  margin-top: clamp(20px, 3vh, 36px);
   flex-wrap: wrap;
 }
 
@@ -808,7 +808,7 @@ a {
   grid-template-rows: var(--hex-height) var(--hex-height);
   column-gap: var(--hex-gap);
   row-gap: calc(var(--hex-height) * -0.22);
-  margin-top: 36px;
+  margin-top: clamp(24px, 4vh, 44px);
 }
 
 .hero-stat.hex {
