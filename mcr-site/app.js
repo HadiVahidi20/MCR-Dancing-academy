@@ -1,9 +1,5 @@
 import { Application } from '@splinetool/runtime';
 
-const canvas = document.getElementById('canvas3d');
-const app = new Application(canvas);
-app.load('https://prod.spline.design/FVPd0-V56bCHl9b3/scene.splinecode');
-
 (function () {
   function normalizePath(pathname) {
     var path = pathname.split('?')[0].split('#')[0];
@@ -122,6 +118,25 @@ app.load('https://prod.spline.design/FVPd0-V56bCHl9b3/scene.splinecode');
       .then(function (html) { target.outerHTML = html; });
   }
 
+  function initSplineScene() {
+    if (normalizePath(window.location.pathname) !== 'index.html') return;
+    var canvas = document.getElementById('canvas3d');
+    if (!canvas) return;
+
+    var app = new Application(canvas);
+    app.load('https://prod.spline.design/FVPd0-V56bCHl9b3/scene.splinecode')
+      .then(function () {
+        var bee = app.findObjectByName('Bee');
+        if (!bee || !bee.scale) return;
+        bee.scale.x = 20;
+        bee.scale.y = 20;
+        bee.scale.z = 20;
+      })
+      .catch(function (err) {
+        console.warn('Spline scene failed to load', err);
+      });
+  }
+
   function initHeroWheel() {
     var section = document.querySelector('[data-hero-wheel]');
     if (!section) return;
@@ -216,6 +231,7 @@ app.load('https://prod.spline.design/FVPd0-V56bCHl9b3/scene.splinecode');
   }
 
   document.addEventListener('DOMContentLoaded', function () {
+    initSplineScene();
     include('#site-header', 'header.html')
       .then(function () {
         setActiveNav();
