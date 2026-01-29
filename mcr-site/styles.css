@@ -565,7 +565,7 @@ a {
   z-index: 2;
   padding-bottom: 0;
   align-self: flex-start;
-  padding-top: clamp(70px, 10vh, 110px);
+  padding-top: clamp(90px, 12vh, 130px);
 }
 
 /* ── Hero Book Flip (Scroll-driven cards) ────────────── */
