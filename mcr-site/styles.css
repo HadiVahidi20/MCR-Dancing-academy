@@ -1605,6 +1605,8 @@ h3 {
   display: block;
   transform: scale(1.2);
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.7;
+  mix-blend-mode: luminosity;
 }
 
 /* Stagger the initial scale animation */
@@ -2368,6 +2370,8 @@ h3 {
   display: block;
   transform: scale(1.15);
   transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0.7;
+  mix-blend-mode: luminosity;
 }
 
 /* Staggered scale animation for schedule images */

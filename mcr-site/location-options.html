@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Location & Contact Options - MCR Dance Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ═══════════════════════════════════════════════════════
+       DESIGN SYSTEM & SHARED FOUNDATION
+       ═══════════════════════════════════════════════════════ */
+    :root {
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 24px;
+      --spacing-lg: 48px;
+      --spacing-xl: 80px;
+      --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      --transition-elastic: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .location-option {
+      min-height: 100vh;
+      position: relative;
+      scroll-snap-align: start;
+    }
+
+    .option-label {
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: var(--ink);
+      padding: 10px 28px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      z-index: 100;
+      box-shadow: 0 8px 24px rgba(244, 212, 15, 0.4);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0px); }
+      50% { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       OPTION 1: IMMERSIVE STORY MAP
+       Progressive disclosure with scroll-triggered storytelling
+       UX Principle: Guide users through discovery journey
+       ═══════════════════════════════════════════════════════ */
+    .location-story {
+      background: linear-gradient(180deg, var(--ink) 0%, #1a1a1a 100%);
+      color: white;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .story-scroll-container {
+      position: relative;
+      height: 400vh; /* Extended scroll for storytelling */
+    }
+
+    .story-sticky-stage {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Animated map background with perspective */
+    .story-map-layer {
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+      transition: all 1.5s var(--transition-elastic);
+      filter: blur(0px) grayscale(100%);
+    }
+
+    .story-map-layer.active {
+      opacity: 0.3;
+      filter: blur(8px) grayscale(80%);
+      transform: scale(1.1);
+    }
+
+    .story-map-layer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      pointer-events: none;
+    }
+
+    /* Content stages that appear sequentially */
+    .story-stage {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(60px) scale(0.9);
+      transition: all 1s var(--transition-elastic);
+      pointer-events: none;
+      padding: var(--spacing-lg);
+    }
+
+    .story-stage.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: all;
+    }
+
+    /* Stage 1: Hero Introduction */
+    .story-stage-1 {
+      text-align: center;
+    }
+
+    .story-hero-content {
+      max-width: 800px;
+    }
+
+    .story-hero-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      line-height: 1;
+      margin: 0 0 var(--spacing-md) 0;
+      background: linear-gradient(135deg, white 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+
+    .story-hero-subtitle {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0 0 var(--spacing-lg) 0;
+      line-height: 1.5;
+    }
+
+    .story-scroll-indicator {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .story-scroll-indicator::after {
+      content: '↓';
+      font-size: 24px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Stage 2: Location Details with Interactive Cards */
+    .story-stage-2 {
+      padding: 0;
+    }
+
+    .story-details-grid {
+      width: min(1200px, 92vw);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-md);
+    }
+
+    .story-detail-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: var(--spacing-lg);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s var(--transition-smooth);
+    }
+
+    .story-detail-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s var(--transition-elastic);
+    }
+
+    .story-detail-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--accent);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(244, 212, 15, 0.2);
+    }
+
+    .story-detail-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .story-card-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, var(--accent) 0%, #d4b500 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin-bottom: var(--spacing-md);
+      box-shadow: 0 12px 32px rgba(244, 212, 15, 0.3);
+      transition: all 0.4s var(--transition-bounce);
+    }
+
+    .story-detail-card:hover .story-card-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .story-card-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent);
+      font-weight: 700;
+      margin: 0 0 var(--spacing-xs) 0;
+    }
+
+    .story-card-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 var(--spacing-sm) 0;
+      line-height: 1.3;
+    }
+
+    .story-card-content {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Stage 3: Interactive Map with CTAs */
+    .story-stage-3 {
+      flex-direction: column;
+    }
+
+    .story-map-showcase {
+      width: min(1000px, 90vw);
+      height: 60vh;
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+      position: relative;
+      border: 3px solid var(--accent);
+    }
+
+    .story-map-showcase iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .story-map-badge {
+      position: absolute;
+      top: var(--spacing-md);
+      right: var(--spacing-md);
+      background: white;
+      color: var(--ink);
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .story-map-badge-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .story-actions {
+      margin-top: var(--spacing-lg);
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Stage 4: Final CTA */
+    .story-stage-4 {
+      text-align: center;
+    }
+
+    .story-final-content {
+      max-width: 700px;
+    }
+
+    .story-final-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 0 0 var(--spacing-md) 0;
+      letter-spacing: -0.02em;
+    }
+
+    .story-final-text {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0 0 var(--spacing-lg) 0;
+      line-height: 1.6;
+    }
+
+    .story-final-actions {
+      display: flex;
+      gap: var(--spacing-md);
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Progress indicator */
+    .story-progress {
+      position: fixed;
+      top: 50%;
+      right: 40px;
+      transform: translateY(-50%);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .story-progress-dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s var(--transition-smooth);
+      position: relative;
+    }
+
+    .story-progress-dot::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .story-progress-dot.active {
+      background: var(--accent);
+      box-shadow: 0 0 20px var(--accent);
+    }
+
+    .story-progress-dot.active::before {
+      opacity: 1;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       OPTION 2: BENTO GRID LAYOUT
+       Modern dashboard-inspired design with micro-interactions
+       UX Principle: Information hierarchy through spatial design
+       ═══════════════════════════════════════════════════════ */
+    .location-bento {
+      background: var(--bg);
+      padding: 120px 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .bento-container {
+      width: min(1400px, 94vw);
+      margin: 0 auto;
+    }
+
+    .bento-header {
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s var(--transition-elastic);
+    }
+
+    .bento-header.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bento-eyebrow {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--accent);
+      padding: 8px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .bento-title {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 0 0 var(--spacing-sm) 0;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    .bento-subtitle {
+      font-size: 1.25rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Grid System */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 180px;
+      gap: var(--spacing-md);
+    }
+
+    .bento-item {
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+      opacity: 0;
+      transform: translateY(60px) scale(0.9);
+      transition: all 0.8s var(--transition-elastic);
+      cursor: pointer;
+    }
+
+    .bento-item.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Map - Large Feature */
+    .bento-map {
+      grid-column: span 8;
+      grid-row: span 3;
+      background: white;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s var(--transition-smooth);
+      border: 2px solid transparent;
+    }
+
+    .bento-map:hover {
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.15);
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .bento-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .bento-map-overlay {
+      position: absolute;
+      bottom: var(--spacing-md);
+      left: var(--spacing-md);
+      right: var(--spacing-md);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      padding: var(--spacing-md);
+      border-radius: 20px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transform: translateY(100%);
+      transition: transform 0.4s var(--transition-elastic);
+      pointer-events: none;
+    }
+
+    .bento-map:hover .bento-map-overlay {
+      transform: translateY(0);
+    }
+
+    .bento-map-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin: 0 0 var(--spacing-xs) 0;
+      color: var(--ink);
+    }
+
+    .bento-map-address {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Contact Cards */
+    .bento-contact {
+      grid-column: span 4;
+      grid-row: span 1;
+      background: var(--surface);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      padding: var(--spacing-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      transition: all 0.3s var(--transition-smooth);
+      border: 2px solid transparent;
+    }
+
+    .bento-contact:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      transform: translateX(8px);
+      box-shadow: 0 12px 32px rgba(244, 212, 15, 0.2);
+    }
+
+    .bento-contact-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--ink) 0%, #2a2a2a 100%);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+      transition: all 0.3s var(--transition-bounce);
+    }
+
+    .bento-contact:hover .bento-contact-icon {
+      transform: scale(1.1) rotate(-5deg);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .bento-contact-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .bento-contact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      font-weight: 700;
+      margin: 0 0 4px 0;
+    }
+
+    .bento-contact-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Info Card - Tall */
+    .bento-info {
+      grid-column: span 4;
+      grid-row: span 2;
+      background: var(--ink);
+      color: white;
+      padding: var(--spacing-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s var(--transition-smooth);
+      overflow: hidden;
+    }
+
+    .bento-info::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      opacity: 0.1;
+      transition: all 0.6s ease;
+    }
+
+    .bento-info:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .bento-info:hover::before {
+      opacity: 0.2;
+      transform: scale(1.2);
+    }
+
+    .bento-info-header h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 var(--spacing-sm) 0;
+      line-height: 1.3;
+    }
+
+    .bento-info-header p {
+      color: rgba(255, 255, 255, 0.7);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .bento-info-list {
+      list-style: none;
+      padding: 0;
+      margin: var(--spacing-md) 0;
+      display: grid;
+      gap: var(--spacing-sm);
+    }
+
+    .bento-info-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .bento-info-list li:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(4px);
+    }
+
+    .bento-info-check {
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      color: var(--ink);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .bento-info .button {
+      width: 100%;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    /* CTA Card */
+    .bento-cta {
+      grid-column: span 4;
+      grid-row: span 1;
+      background: linear-gradient(135deg, var(--accent) 0%, #e0c200 100%);
+      color: var(--ink);
+      padding: var(--spacing-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--spacing-md);
+      transition: all 0.3s var(--transition-smooth);
+      box-shadow: 0 8px 32px rgba(244, 212, 15, 0.3);
+    }
+
+    .bento-cta:hover {
+      transform: scale(1.02);
+      box-shadow: 0 16px 48px rgba(244, 212, 15, 0.4);
+    }
+
+    .bento-cta-content h4 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 0 4px 0;
+      line-height: 1.3;
+    }
+
+    .bento-cta-content p {
+      font-size: 14px;
+      margin: 0;
+      opacity: 0.8;
+    }
+
+    .bento-cta-arrow {
+      width: 40px;
+      height: 40px;
+      background: var(--ink);
+      color: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: all 0.3s var(--transition-bounce);
+    }
+
+    .bento-cta:hover .bento-cta-arrow {
+      transform: translateX(4px) scale(1.1);
+    }
+
+    /* Stat Cards */
+    .bento-stat {
+      grid-column: span 4;
+      grid-row: span 1;
+      background: var(--surface);
+      padding: var(--spacing-lg);
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s var(--transition-smooth);
+      border: 2px solid transparent;
+    }
+
+    .bento-stat:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .bento-stat-number {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent);
+      line-height: 1;
+      margin: 0 0 var(--spacing-xs) 0;
+    }
+
+    .bento-stat-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       OPTION 3: SPLIT-SCREEN CINEMATIC
+       Bold asymmetric layout with parallax depth
+       UX Principle: Visual storytelling through contrast
+       ═══════════════════════════════════════════════════════ */
+    .location-cinematic {
+      background: var(--surface);
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    .cinematic-wrapper {
+      display: grid;
+      grid-template-columns: 45fr 55fr;
+      width: 100%;
+      min-height: 100vh;
+    }
+
+    /* Left Panel - Content */
+    .cinematic-left {
+      background: var(--ink);
+      color: white;
+      padding: var(--spacing-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cinematic-left::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+      opacity: 0.08;
+      animation: float-slow 20s ease-in-out infinite;
+    }
+
+    @keyframes float-slow {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-30px, 30px); }
+    }
+
+    .cinematic-content {
+      max-width: 560px;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: all 1.2s var(--transition-elastic);
+    }
+
+    .cinematic-content.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .cinematic-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(244, 212, 15, 0.15);
+      border: 1px solid rgba(244, 212, 15, 0.3);
+      color: var(--accent);
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .cinematic-badge-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .cinematic-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin: 0 0 var(--spacing-md) 0;
+      letter-spacing: -0.03em;
+    }
+
+    .cinematic-title-accent {
+      color: var(--accent);
+      display: block;
+    }
+
+    .cinematic-description {
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.75);
+      margin: 0 0 var(--spacing-xl) 0;
+    }
+
+    .cinematic-details {
+      display: grid;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .cinematic-detail-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--spacing-md);
+      padding: var(--spacing-md);
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      transition: all 0.3s var(--transition-smooth);
+      cursor: pointer;
+    }
+
+    .cinematic-detail-row:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-left-width: 5px;
+      transform: translateX(4px);
+    }
+
+    .cinematic-detail-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--accent) 0%, #d4b500 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+      box-shadow: 0 8px 24px rgba(244, 212, 15, 0.3);
+      transition: all 0.3s var(--transition-bounce);
+    }
+
+    .cinematic-detail-row:hover .cinematic-detail-icon {
+      transform: scale(1.1) rotate(-5deg);
+    }
+
+    .cinematic-detail-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cinematic-detail-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 700;
+      margin: 0 0 4px 0;
+    }
+
+    .cinematic-detail-value {
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .cinematic-actions {
+      display: flex;
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+    }
+
+    .cinematic-actions .button {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* Right Panel - Interactive Map */
+    .cinematic-right {
+      position: relative;
+      background: var(--bg);
+    }
+
+    .cinematic-map-container {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-xl);
+    }
+
+    .cinematic-map-frame {
+      width: 100%;
+      height: 85%;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 
+        0 60px 120px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+      position: relative;
+      opacity: 0;
+      transform: translateX(60px) scale(0.9);
+      transition: all 1.2s var(--transition-elastic);
+    }
+
+    .cinematic-map-frame.visible {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+
+    .cinematic-map-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 40px;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--accent) 0%, transparent 50%, var(--accent) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .cinematic-map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Floating Info Cards on Map */
+    .cinematic-float-cards {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .cinematic-float-card {
+      position: absolute;
+      background: white;
+      padding: 20px 24px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s var(--transition-elastic);
+      pointer-events: all;
+      cursor: pointer;
+    }
+
+    .cinematic-float-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cinematic-float-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.25);
+    }
+
+    .cinematic-float-card-1 {
+      top: 80px;
+      right: 80px;
+      transition-delay: 0.3s;
+    }
+
+    .cinematic-float-card-2 {
+      bottom: 80px;
+      left: 80px;
+      transition-delay: 0.5s;
+    }
+
+    .cinematic-float-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .cinematic-float-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .cinematic-float-text small {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       NAVIGATION & UI CONTROLS
+       ═══════════════════════════════════════════════════════ */
+    .option-nav {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      background: white;
+      padding: 8px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+      z-index: 1000;
+      border: 2px solid var(--bg);
+    }
+
+    .option-nav button {
+      padding: 14px 28px;
+      border: none;
+      background: transparent;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 13px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 0.3s var(--transition-smooth);
+      font-family: var(--font-sans);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .option-nav button::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s var(--transition-smooth);
+      z-index: -1;
+    }
+
+    .option-nav button:hover::before {
+      transform: scaleX(1);
+    }
+
+    .option-nav button:hover {
+      color: var(--ink);
+    }
+
+    .option-nav button.active {
+      background: var(--ink);
+      color: var(--accent);
+    }
+
+    .option-nav button.active::before {
+      display: none;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE DESIGN
+       Mobile-first approach with progressive enhancement
+       ═══════════════════════════════════════════════════════ */
+    @media (max-width: 1200px) {
+      .bento-grid {
+        grid-auto-rows: 160px;
+        gap: var(--spacing-sm);
+      }
+
+      .cinematic-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .cinematic-right {
+        display: none;
+      }
+
+      .cinematic-left {
+        padding: var(--spacing-lg);
+      }
+    }
+
+    @media (max-width: 968px) {
+      :root {
+        --spacing-xl: 60px;
+        --spacing-lg: 32px;
+      }
+
+      .option-label {
+        font-size: 11px;
+        padding: 8px 20px;
+      }
+
+      /* Option 1: Story */
+      .story-scroll-container {
+        height: 300vh;
+      }
+
+      .story-hero-title {
+        font-size: clamp(2rem, 6vw, 3rem);
+      }
+
+      .story-details-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+      }
+
+      .story-progress {
+        display: none;
+      }
+
+      /* Option 2: Bento */
+      .bento-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+      }
+
+      .bento-item {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        min-height: 200px;
+      }
+
+      .bento-map {
+        height: 400px;
+      }
+
+      .bento-info {
+        min-height: 400px;
+      }
+
+      /* Option 3: Cinematic */
+      .cinematic-left {
+        padding: var(--spacing-lg) var(--spacing-md);
+      }
+
+      .cinematic-actions {
+        flex-direction: column;
+      }
+
+      .cinematic-actions .button {
+        width: 100%;
+      }
+
+      /* Navigation */
+      .option-nav {
+        bottom: 20px;
+        padding: 6px;
+        gap: 4px;
+        width: calc(100% - 32px);
+        max-width: 500px;
+      }
+
+      .option-nav button {
+        padding: 12px 16px;
+        font-size: 11px;
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .story-hero-title {
+        font-size: 2rem;
+      }
+
+      .story-detail-card {
+        padding: var(--spacing-md);
+      }
+
+      .bento-header {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      .bento-title {
+        font-size: 2rem;
+      }
+
+      .cinematic-title {
+        font-size: 2rem;
+      }
+
+      .cinematic-float-cards {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Include -->
+  <div id="site-header"></div>
+
+  <main>
+    <!-- Spacer -->
+    <div style="height: 60px;"></div>
+
+    <!-- Option Navigation -->
+    <div class="option-nav">
+      <button onclick="scrollToOption(1)" class="active">Immersive</button>
+      <button onclick="scrollToOption(2)">Bento</button>
+      <button onclick="scrollToOption(3)">Cinematic</button>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════
+         OPTION 1: IMMERSIVE STORY MAP
+         Progressive disclosure with scroll-triggered storytelling
+         UX Strategy: Guide users through discovery journey
+         ════════════════════════════════════════════════════════ -->
+    <section class="location-option location-story" id="option-1" data-location-story>
+      <div class="option-label">OPTION 1 - Immersive Story</div>
+      
+      <!-- Extended scroll container for storytelling -->
+      <div class="story-scroll-container">
+        <div class="story-sticky-stage">
+          <!-- Animated map background -->
+          <div class="story-map-layer" data-story-map>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2373.9876543210!2d-2.0987654321!3d53.4876543210!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDI5JzE1LjYiTiAywrAwNSczMS42Ilc!5e0!3m2!1sen!2suk!4v1234567890"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <!-- Stage 1: Hero Introduction -->
+          <div class="story-stage story-stage-1 active" data-story-stage="1">
+            <div class="story-hero-content">
+              <h2 class="story-hero-title">Discover MCR Dance Academy</h2>
+              <p class="story-hero-subtitle">Located in the heart of Ashton-under-Lyne, where creativity meets community</p>
+              <div class="story-scroll-indicator">Scroll to explore</div>
+            </div>
+          </div>
+
+          <!-- Stage 2: Location Details -->
+          <div class="story-stage story-stage-2" data-story-stage="2">
+            <div class="story-details-grid">
+              <div class="story-detail-card">
+                <div class="story-card-icon">📍</div>
+                <div class="story-card-label">Address</div>
+                <h3 class="story-card-title">Easy to Find</h3>
+                <p class="story-card-content">Grosvenor Street, Ashton-under-Lyne, OL7 0RG. Town center location with great accessibility.</p>
+              </div>
+
+              <div class="story-detail-card">
+                <div class="story-card-icon">📞</div>
+                <div class="story-card-label">Contact</div>
+                <h3 class="story-card-title">Get in Touch</h3>
+                <p class="story-card-content">Call us: 07850 936754<br>Email: mcrdanceacademy@gmail.com</p>
+              </div>
+
+              <div class="story-detail-card">
+                <div class="story-card-icon">🕐</div>
+                <div class="story-card-label">Schedule</div>
+                <h3 class="story-card-title">Class Times</h3>
+                <p class="story-card-content">Tue-Thu: 5PM-8PM<br>Saturday: 10AM-12PM<br>Weekend sessions available</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 3: Interactive Map -->
+          <div class="story-stage story-stage-3" data-story-stage="3">
+            <div class="story-map-showcase">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2373.9876543210!2d-2.0987654321!3d53.4876543210!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDI5JzE1LjYiTiAywrAwNSczMS42Ilc!5e0!3m2!1sen!2suk!4v1234567890"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+              <div class="story-map-badge">
+                <span class="story-map-badge-icon">🚗</span>
+                5 min from town center
+              </div>
+            </div>
+            <div class="story-actions">
+              <a href="https://maps.google.com" target="_blank" class="button primary">Get Directions</a>
+              <a href="contact.html" class="button outline-light">Contact Us</a>
+            </div>
+          </div>
+
+          <!-- Stage 4: Final CTA -->
+          <div class="story-stage story-stage-4" data-story-stage="4">
+            <div class="story-final-content">
+              <h2 class="story-final-title">Ready to Visit?</h2>
+              <p class="story-final-text">Book a free trial class and experience the MCR difference. Our welcoming team is excited to meet you!</p>
+              <div class="story-final-actions">
+                <a href="free-trial.html" class="button primary">Start Free Trial</a>
+                <a href="classes.html" class="button outline-light">View Classes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Indicator -->
+      <div class="story-progress">
+        <div class="story-progress-dot active" data-stage-dot="1"></div>
+        <div class="story-progress-dot" data-stage-dot="2"></div>
+        <div class="story-progress-dot" data-stage-dot="3"></div>
+        <div class="story-progress-dot" data-stage-dot="4"></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         OPTION 2: BENTO GRID LAYOUT
+         Modern dashboard-inspired design with micro-interactions
+         UX Strategy: Information hierarchy through spatial design
+         ════════════════════════════════════════════════════════ -->
+    <section class="location-option location-overlap" id="option-2" data-location-overlap>
+      <div class="option-label">OPTION 2 - OVERLAPPING CARDS</div>
+      
+      <div class="overlap-container">
+        <div class="overlap-header" data-scroll-reveal>
+          <h2>Find us in Ashton-under-Lyne</h2>
+          <p>Your journey to dance starts here</p>
+        </div>
+
+        <div class="overlap-cards-wrapper">
+          <!-- Map Card -->
+          <div class="overlap-card overlap-map-card" data-scroll-reveal data-delay="0">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2373.9876543210!2d-2.0987654321!3d53.4876543210!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDI5JzE1LjYiTiAywrAwNSczMS42Ilc!5e0!3m2!1sen!2suk!4v1234567890"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+          <!-- Contact Card -->
+          <div class="overlap-card overlap-contact-card" data-scroll-reveal data-delay="1">
+            <h3 class="overlap-contact-title">Get in Touch</h3>
+            
+            <div class="overlap-contact-list">
+              <div class="overlap-contact-row">
+                <div class="overlap-contact-icon">📍</div>
+                <div class="overlap-contact-text">
+                  <span>Address</span>
+                  <strong>Grosvenor Street, Ashton-under-Lyne, OL7 0RG</strong>
+                </div>
+              </div>
+
+              <div class="overlap-contact-row">
+                <div class="overlap-contact-icon">📞</div>
+                <div class="overlap-contact-text">
+                  <span>Phone</span>
+                  <strong>07850 936754</strong>
+                </div>
+              </div>
+
+              <div class="overlap-contact-row">
+                <div class="overlap-contact-icon">✉️</div>
+                <div class="overlap-contact-text">
+                  <span>Email</span>
+                  <strong>mcrdanceacademy@gmail.com</strong>
+                </div>
+              </div>
+            </div>
+
+            <a href="contact.html" class="button" style="width: 100%; text-align: center; display: block; background: var(--accent); border-color: var(--accent); color: var(--ink);">Send Message</a>
+          </div>
+
+          <!-- Info Card -->
+          <div class="overlap-card overlap-info-card" data-scroll-reveal data-delay="2">
+            <h3 class="overlap-info-title">Easy to Find</h3>
+            <ul class="overlap-info-list">
+              <li>
+                <span class="overlap-info-check">🚗</span>
+                <span>Free parking available</span>
+              </li>
+              <li>
+                <span class="overlap-info-check">🚌</span>
+                <span>Bus routes nearby</span>
+              </li>
+              <li>
+                <span class="overlap-info-check">♿</span>
+                <span>Wheelchair accessible</span>
+              </li>
+              <li>
+                <span class="overlap-info-check">📍</span>
+                <span>Town center location</span>
+              </li>
+            </ul>
+            <a href="classes.html" class="button" style="width: 100%; text-align: center; display: block; background: var(--ink); border-color: var(--ink); color: var(--accent);">View Classes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         OPTION 3: FULL-WIDTH MAP WITH FLOATING CONTACT BUBBLE
+         Immersive map background with elegant floating card
+         ════════════════════════════════════════════════════════ -->
+    <section class="location-option location-fullmap" id="option-3" data-location-fullmap>
+      <div class="option-label">OPTION 3 - FLOATING BUBBLE</div>
+      
+      <div class="fullmap-container">
+        <!-- Map Background -->
+        <div class="fullmap-background">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2373.9876543210!2d-2.0987654321!3d53.4876543210!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTPCsDI5JzE1LjYiTiAywrAwNSczMS42Ilc!5e0!3m2!1sen!2suk!4v1234567890"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="fullmap-overlay"></div>
+
+        <!-- Content -->
+        <div class="fullmap-content">
+          <div class="fullmap-card" data-scroll-reveal>
+            <span class="fullmap-eyebrow">Find Us</span>
+            <h2 class="fullmap-title">MCR Dance Academy</h2>
+            <p class="fullmap-address">
+              Grosvenor Street<br>
+              Ashton-under-Lyne, OL7 0RG
+            </p>
+
+            <div class="fullmap-divider"></div>
+
+            <div class="fullmap-contact-grid">
+              <div class="fullmap-contact-item" data-scroll-item data-delay="0">
+                <div class="fullmap-icon">📞</div>
+                <div class="fullmap-contact-details">
+                  <span>Call us</span>
+                  <strong>07850 936754</strong>
+                </div>
+              </div>
+
+              <div class="fullmap-contact-item" data-scroll-item data-delay="1">
+                <div class="fullmap-icon">✉️</div>
+                <div class="fullmap-contact-details">
+                  <span>Email us</span>
+                  <strong>mcrdanceacademy@gmail.com</strong>
+                </div>
+              </div>
+
+              <div class="fullmap-contact-item" data-scroll-item data-delay="2">
+                <div class="fullmap-icon">🕐</div>
+                <div class="fullmap-contact-details">
+                  <span>Class Times</span>
+                  <strong>Tue-Thu 5-8PM, Sat 10AM-12PM</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="fullmap-cta-group">
+              <a href="contact.html" class="button primary">Get Directions</a>
+              <a href="free-trial.html" class="button outline">Book Free Trial</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Badge -->
+        <div class="fullmap-map-badge" data-scroll-badge>
+          <div class="fullmap-badge-icon">📍</div>
+          <span>5 min from town center</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Include -->
+  <div id="site-footer"></div>
+
+  <script type="module" src="app.js"></script>
+  <script>
+    // Smooth scroll navigation
+    function scrollToOption(num) {
+      document.getElementById('option-' + num).scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+      
+      // Update active button
+      document.querySelectorAll('.option-nav button').forEach((btn, i) => {
+        btn.classList.toggle('active', i + 1 === num);
+      });
+    }
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all scroll-reveal elements
+    document.addEventListener('DOMContentLoaded', () => {
+      // Option 1: Parallax items
+      document.querySelectorAll('[data-scroll-item]').forEach((el, index) => {
+        setTimeout(() => observer.observe(el), index * 100);
+      });
+
+      // Option 2: Overlap cards
+      document.querySelectorAll('[data-scroll-reveal]').forEach(el => {
+        observer.observe(el);
+      });
+
+      // Option 3: Fullmap elements
+      document.querySelectorAll('.fullmap-contact-item').forEach((el, index) => {
+        setTimeout(() => observer.observe(el), 200 + (index * 100));
+      });
+
+      observer.observe(document.querySelector('.fullmap-card'));
+      observer.observe(document.querySelector('.fullmap-map-badge'));
+
+      // Parallax effect for Option 1 map
+      const parallaxMap = document.querySelector('.parallax-map-float');
+      if (parallaxMap) {
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          const section = document.querySelector('[data-location-parallax]');
+          if (section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const scrollInSection = scrolled - sectionTop;
+            
+            if (scrollInSection > 0 && scrollInSection < sectionHeight) {
+              const progress = scrollInSection / sectionHeight;
+              const translateY = progress * 100;
+              parallaxMap.style.transform = `translate(-50%, calc(-50% + ${translateY}px)) scale(0.9)`;
+            }
+          }
+        });
+      }
+
+      // Update nav on scroll
+      const updateNavOnScroll = () => {
+        const sections = document.querySelectorAll('.location-option');
+        const scrollPos = window.pageYOffset + window.innerHeight / 2;
+
+        sections.forEach((section, index) => {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+
+          if (scrollPos >= sectionTop && scrollPos < sectionBottom) {
+            document.querySelectorAll('.option-nav button').forEach((btn, i) => {
+              btn.classList.toggle('active', i === index);
+            });
+          }
+        });
+      };
+
+      window.addEventListener('scroll', updateNavOnScroll);
+    });
+  </script>
+</body>
+</html>

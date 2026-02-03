@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Testimonials Options - MCR Dance Academy</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="testimonials-styles.css" />
+</head>
+<body>
+  <!-- Header Include -->
+  <div id="site-header"></div>
+
+  <main>
+    <!-- Spacer to push content down past header -->
+    <div style="height: 120px;"></div>
+
+    <!-- OPTION SELECTOR -->
+    <section class="section" style="background: var(--ink); color: white; text-align: center; padding: 40px 0;">
+      <div class="section-inner">
+        <h1 style="margin-bottom: 20px;">Choose Your Testimonial Style</h1>
+        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+          <button class="button primary" onclick="scrollToOption(1)">Option 1: Marquee</button>
+          <button class="button primary" onclick="scrollToOption(2)">Option 2: Fade-Through ⭐</button>
+          <button class="button primary" onclick="scrollToOption(3)">Option 3: Staggered Grid</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         OPTION 1: HORIZONTAL SCROLL MARQUEE
+         ════════════════════════════════════════════════════════ -->
+    <section class="section testimonial-option" id="option-1" data-testimonial-marquee>
+      <div class="section-inner">
+        <div class="option-label">OPTION 1</div>
+        <div class="eyebrow">Testimonials</div>
+        <h2>Parents and students love MCR</h2>
+        <p class="meta" style="max-width: 600px; margin: 0 auto 48px;">Horizontal scroll through testimonials with momentum physics</p>
+      </div>
+
+      <div class="marquee-wrapper">
+        <button class="marquee-nav marquee-prev" aria-label="Previous">
+          <span>←</span>
+        </button>
+        <button class="marquee-nav marquee-next" aria-label="Next">
+          <span>→</span>
+        </button>
+
+        <div class="marquee-container" data-marquee-scroll>
+          <!-- Testimonial 1 -->
+          <div class="marquee-card">
+            <div class="marquee-stars">★★★★★</div>
+            <img src="https://i.pravatar.cc/150?img=5" alt="Sarah" class="marquee-avatar" />
+            <blockquote class="marquee-quote">
+              "My daughter has grown so much in confidence since joining MCR. The coaches are nurturing and professional!"
+            </blockquote>
+            <div class="marquee-author">
+              <strong>Sarah Mitchell</strong>
+              <span>Parent of Tiny Twister</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="marquee-card">
+            <div class="marquee-stars">★★★★★</div>
+            <img src="https://i.pravatar.cc/150?img=32" alt="Marcus" class="marquee-avatar" />
+            <blockquote class="marquee-quote">
+              "The SEND-friendly classes are amazing. I finally found a place where I feel comfortable expressing myself through dance."
+            </blockquote>
+            <div class="marquee-author">
+              <strong>Marcus Johnson</strong>
+              <span>Hip Hop Student, Age 14</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="marquee-card">
+            <div class="marquee-stars">★★★★★</div>
+            <img src="https://i.pravatar.cc/150?img=47" alt="Priya" class="marquee-avatar" />
+            <blockquote class="marquee-quote">
+              "Best dance academy in the area! My kids look forward to classes every week. The free trial was a great way to start."
+            </blockquote>
+            <div class="marquee-author">
+              <strong>Priya Patel</strong>
+              <span>Parent of 2 Students</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="marquee-card">
+            <div class="marquee-stars">★★★★★</div>
+            <img src="https://i.pravatar.cc/150?img=15" alt="Emma" class="marquee-avatar" />
+            <blockquote class="marquee-quote">
+              "The cheerleading program is incredible. My daughter has made so many friends and learned real tumbling skills!"
+            </blockquote>
+            <div class="marquee-author">
+              <strong>Emma Roberts</strong>
+              <span>Cheer Parent</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 5 -->
+          <div class="marquee-card">
+            <div class="marquee-stars">★★★★★</div>
+            <img src="https://i.pravatar.cc/150?img=8" alt="David" class="marquee-avatar" />
+            <blockquote class="marquee-quote">
+              "Professional coaches, inclusive environment, and great value. MCR Dance Academy checks all the boxes for us!"
+            </blockquote>
+            <div class="marquee-author">
+              <strong>David Chen</strong>
+              <span>Parent, Ashton-under-Lyne</span>
+            </div>
+          </div>
+
+          <!-- Testimonial 6 -->
+          <div class="marquee-card">
+            <div class="marquee-stars">★★★★★</div>
+            <img src="https://i.pravatar.cc/150?img=20" alt="Lisa" class="marquee-avatar" />
+            <blockquote class="marquee-quote">
+              "I love the jazz and lyrical classes! The instructors really help you develop your technique and performance skills."
+            </blockquote>
+            <div class="marquee-author">
+              <strong>Lisa Anderson</strong>
+              <span>Jazz Student, Age 16</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Dots -->
+        <div class="marquee-dots" data-marquee-dots></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         OPTION 2: FULL SCREEN STICKY TESTIMONIALS (RECOMMENDED)
+         ════════════════════════════════════════════════════════ -->
+    <section class="testimonial-option fade-through-section" id="option-2" data-testimonial-fade>
+      <!-- Section Header -->
+      <div class="fade-section-header">
+        <div class="eyebrow">Testimonials</div>
+        <h2>Parents and students love MCR</h2>
+      </div>
+
+      <div class="fade-through-container">
+        <!-- Testimonials Content -->
+        <div class="fade-through-content">
+          <!-- Testimonial 1 -->
+          <div class="fade-testimonial" data-fade-index="0">
+            <div class="fade-avatar-wrapper">
+              <img src="https://i.pravatar.cc/200?img=5" alt="Sarah Mitchell" class="fade-avatar" />
+            </div>
+            <div class="fade-quote-card">
+              <blockquote class="fade-quote">
+                "My daughter has grown so much in confidence since joining MCR. The coaches are nurturing, professional, and truly care about each child's development."
+              </blockquote>
+            </div>
+            <div class="fade-author-section">
+              <div class="fade-author">
+                <strong>Sarah Mitchell</strong>
+                <span>Parent of Tiny Twister</span>
+              </div>
+              <div class="fade-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="fade-testimonial" data-fade-index="1">
+            <div class="fade-avatar-wrapper">
+              <img src="https://i.pravatar.cc/200?img=32" alt="Marcus Johnson" class="fade-avatar" />
+            </div>
+            <div class="fade-quote-card">
+              <blockquote class="fade-quote">
+                "The SEND-friendly classes are amazing. I finally found a place where I feel comfortable expressing myself through dance. The instructors are so understanding!"
+              </blockquote>
+            </div>
+            <div class="fade-author-section">
+              <div class="fade-author">
+                <strong>Marcus Johnson</strong>
+                <span>Hip Hop Student, Age 14</span>
+              </div>
+              <div class="fade-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="fade-testimonial" data-fade-index="2">
+            <div class="fade-avatar-wrapper">
+              <img src="https://i.pravatar.cc/200?img=47" alt="Priya Patel" class="fade-avatar" />
+            </div>
+            <div class="fade-quote-card">
+              <blockquote class="fade-quote">
+                "Best dance academy in the area! My kids look forward to classes every week. The free trial was a great way to start, and we've been hooked ever since."
+              </blockquote>
+            </div>
+            <div class="fade-author-section">
+              <div class="fade-author">
+                <strong>Priya Patel</strong>
+                <span>Parent of 2 Students</span>
+              </div>
+              <div class="fade-stars">★★★★★</div>
+            </div>
+          </div>
+
+          <!-- Testimonial 4 -->
+          <div class="fade-testimonial" data-fade-index="3">
+            <div class="fade-avatar-wrapper">
+              <img src="https://i.pravatar.cc/200?img=15" alt="Emma Roberts" class="fade-avatar" />
+            </div>
+            <div class="fade-quote-card">
+              <blockquote class="fade-quote">
+                "The cheerleading program is incredible. My daughter has made so many friends and learned real tumbling skills. The team competitions are the highlight of her year!"
+              </blockquote>
+            </div>
+            <div class="fade-author-section">
+              <div class="fade-author">
+                <strong>Emma Roberts</strong>
+                <span>Cheer Parent</span>
+              </div>
+              <div class="fade-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Dots -->
+        <div class="fade-progress">
+          <div class="fade-progress-dot" data-dot="0"></div>
+          <div class="fade-progress-dot" data-dot="1"></div>
+          <div class="fade-progress-dot" data-dot="2"></div>
+          <div class="fade-progress-dot" data-dot="3"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         OPTION 3: STAGGERED REVEAL GRID
+         ════════════════════════════════════════════════════════ -->
+    <section class="section testimonial-option" id="option-3" data-testimonial-grid>
+      <div class="section-inner">
+        <div class="option-label">OPTION 3</div>
+        <div class="eyebrow">Testimonials</div>
+        <h2>Parents and students love MCR</h2>
+        <p class="meta" style="max-width: 600px; margin: 0 auto 48px;">All testimonials revealed with 3D tilt hover effects</p>
+
+        <div class="grid-testimonials">
+          <!-- Testimonial 1 -->
+          <div class="grid-card" data-grid-card data-stagger-delay="0">
+            <div class="grid-stars">★★★★★</div>
+            <blockquote class="grid-quote">
+              "My daughter has grown so much in confidence since joining MCR. The coaches are nurturing and professional!"
+            </blockquote>
+            <div class="grid-author-wrapper">
+              <img src="https://i.pravatar.cc/100?img=5" alt="Sarah Mitchell" class="grid-avatar" />
+              <div class="grid-author">
+                <strong>Sarah Mitchell</strong>
+                <span>Parent</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 2 -->
+          <div class="grid-card" data-grid-card data-stagger-delay="1">
+            <div class="grid-stars">★★★★★</div>
+            <blockquote class="grid-quote">
+              "The SEND-friendly classes are amazing. I finally found a place where I feel comfortable expressing myself!"
+            </blockquote>
+            <div class="grid-author-wrapper">
+              <img src="https://i.pravatar.cc/100?img=32" alt="Marcus Johnson" class="grid-avatar" />
+              <div class="grid-author">
+                <strong>Marcus Johnson</strong>
+                <span>Student, Age 14</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial 3 -->
+          <div class="grid-card" data-grid-card data-stagger-delay="2">
+            <div class="grid-stars">★★★★★</div>
+            <blockquote class="grid-quote">
+              "Best dance academy in the area! My kids look forward to classes every week. The free trial was perfect!"
+            </blockquote>
+            <div class="grid-author-wrapper">
+              <img src="https://i.pravatar.cc/100?img=47" alt="Priya Patel" class="grid-avatar" />
+              <div class="grid-author">
+                <strong>Priya Patel</strong>
+                <span>Parent of 2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section" style="background: var(--accent); text-align: center; padding: 80px 0;">
+      <div class="section-inner">
+        <h2 style="margin-bottom: 16px;">Ready to join our community?</h2>
+        <p style="margin-bottom: 32px; font-size: 18px;">Try a free class and see why families love MCR Dance Academy</p>
+        <a href="free-trial.html" class="button" style="background: var(--ink); color: white; border-color: var(--ink);">Start Your Free Trial</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Include -->
+  <div id="site-footer"></div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@1.5.5/build/runtime.js"
+      }
+    }
+  </script>
+  <script type="module" src="app.js"></script>
+  <script src="testimonials-script.js"></script>
+
+  <script>
+    function scrollToOption(num) {
+      document.getElementById('option-' + num).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>
