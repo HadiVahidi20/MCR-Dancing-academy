@@ -1,0 +1,133 @@
+/* ══════════════════════════════════════════════════════════
+   WHY MCR SECTION - SPLIT DIAGONAL LAYOUT
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Split Diagonal Layout ──────────────────────────────── */
+
+.why-mcr {
+  padding: 0;
+  background: var(--bg);
+}
+
+.why-mcr .section-inner {
+  padding: clamp(80px, 10vw, 140px) clamp(24px, 5vw, 80px) clamp(48px, 6vw, 80px);
+  text-align: center;
+}
+
+.why-diagonal-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.diagonal-item {
+  position: relative;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  overflow: hidden;
+}
+
+.diagonal-left .diagonal-content {
+  order: 1;
+  padding: clamp(40px, 8vw, 100px);
+}
+
+.diagonal-left .diagonal-image {
+  order: 2;
+}
+
+.diagonal-right .diagonal-image {
+  order: 1;
+}
+
+.diagonal-right .diagonal-content {
+  order: 2;
+  padding: clamp(40px, 8vw, 100px);
+}
+
+.diagonal-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--surface);
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  z-index: 0;
+}
+
+.diagonal-right .diagonal-bg {
+  clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+.diagonal-content {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+}
+
+.diagonal-number {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.diagonal-item h3 {
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.diagonal-item p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.diagonal-image {
+  position: relative;
+  height: 100%;
+  min-height: 500px;
+  overflow: hidden;
+}
+
+.diagonal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.diagonal-item:hover .diagonal-image img {
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .diagonal-item {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .diagonal-left .diagonal-content,
+  .diagonal-right .diagonal-content {
+    order: 2;
+  }
+
+  .diagonal-left .diagonal-image,
+  .diagonal-right .diagonal-image {
+    order: 1;
+    min-height: 350px;
+  }
+
+  .diagonal-bg {
+    clip-path: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .diagonal-image {
+    min-height: 300px;
+  }
+}

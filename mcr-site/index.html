@@ -9,6 +9,7 @@
     <meta property="og:description" content="Hip Hop, Lyrical, Jazz & Cheerleading in Ashton-under-Lyne. Free trial available for all classes." />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="why-mcr-styles.css" />
   </head>
   <body>
     <!-- Header Include (Start) -->
@@ -86,102 +87,326 @@
       </div>
 <!-- Section: Dance & Cheer in Ashton‑under‑Lyne (End) -->
 
-      <!-- Weekly Schedule -->
-      <!-- Section: Find your perfect class (Start) -->
-<section class="section alt">
+      <!-- Weekly Schedule - Sticky Scroll Version -->
+      <!-- Section: Your week at MCR (Start) -->
+<section class="section sticky-schedule-section" data-sticky-schedule>
         <div class="section-inner">
-          <div class="split">
-            <div>
-              <div class="eyebrow">Weekly Schedule</div>
-              <h2>Find your perfect class</h2>
-              <p class="meta">Browse by day, age and style. Free trial available on most classes.</p>
-              <a class="button" href="classes.html" style="margin-top: 12px;">View all classes</a>
+          <div class="sticky-schedule-container">
+            <!-- Left Side: Sticky Content -->
+            <div class="sticky-schedule-sidebar">
+              <div class="sticky-schedule-content">
+                <div class="eyebrow">Your Week at MCR</div>
+                <h2>Dance through the week with us</h2>
+                <p class="meta">From tiny twisters to advanced performers, we have classes every day designed for your child's growth and confidence.</p>
+                
+                <!-- Progress Indicator -->
+                <div class="sticky-progress-wrapper">
+                  <div class="sticky-progress-track">
+                    <div class="sticky-progress-indicator" data-progress-indicator></div>
+                  </div>
+                  <div class="sticky-progress-labels">
+                    <button class="sticky-progress-label" data-day-nav="0">
+                      <span class="sticky-progress-dot"></span>
+                      <span class="sticky-progress-text">Tuesday</span>
+                    </button>
+                    <button class="sticky-progress-label" data-day-nav="1">
+                      <span class="sticky-progress-dot"></span>
+                      <span class="sticky-progress-text">Wednesday</span>
+                    </button>
+                    <button class="sticky-progress-label" data-day-nav="2">
+                      <span class="sticky-progress-dot"></span>
+                      <span class="sticky-progress-text">Thursday</span>
+                    </button>
+                    <button class="sticky-progress-label" data-day-nav="3">
+                      <span class="sticky-progress-dot"></span>
+                      <span class="sticky-progress-text">Saturday</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="sticky-schedule-cta">
+                  <a class="button primary" href="classes.html">View All Classes</a>
+                </div>
+              </div>
             </div>
-            <div class="grid-2">
-              <div class="card">
-                <h3>Tuesdays</h3>
-                <ul class="list">
-                  <li>Cheer for Fun / 5-6 PM / Ages 7+</li>
-                  <li>Level 3 Plus Tumble / 6-7 PM / Ages 7+</li>
-                  <li>Open Cheerleading / 7-8 PM / Ages 16+</li>
-                </ul>
+
+            <!-- Right Side: Scrolling Days -->
+            <div class="sticky-schedule-days">
+              <!-- Tuesday -->
+              <div class="sticky-day-panel" data-day-index="0">
+                <div class="sticky-day-image" data-schedule-parallax>
+                  <div class="schedule-image-grid">
+                    <div class="schedule-image-column" data-column="1" data-parallax-speed="0.7">
+                      <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=300&h=600&fit=crop" alt="Cheerleading" />
+                    </div>
+                    <div class="schedule-image-column" data-column="2" data-parallax-speed="-0.5">
+                      <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=300&h=600&fit=crop" alt="Cheerleading" />
+                    </div>
+                    <div class="schedule-image-column" data-column="3" data-parallax-speed="0.6">
+                      <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=300&h=600&fit=crop" alt="Cheerleading" />
+                    </div>
+                    <div class="schedule-image-column" data-column="4" data-parallax-speed="-0.4">
+                      <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=300&h=600&fit=crop" alt="Cheerleading" />
+                    </div>
+                  </div>
+                  <div class="sticky-day-badge">Tuesday</div>
+                </div>
+                <div class="sticky-day-content">
+                  <h3 class="sticky-day-title">High-Energy Cheer & Tumble</h3>
+                  <p class="sticky-day-description">Master stunts, jumps, and tumbling skills with our professional cheer coaching team. Perfect for building strength and confidence.</p>
+                  <div class="sticky-day-classes">
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">5:00 - 6:00 PM</div>
+                      <div class="sticky-class-name">Cheer for Fun</div>
+                      <div class="sticky-class-age">Ages 7+</div>
+                    </div>
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">6:00 - 7:00 PM</div>
+                      <div class="sticky-class-name">Level 3 Plus Tumble</div>
+                      <div class="sticky-class-age">Ages 7+</div>
+                    </div>
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">7:00 - 8:00 PM</div>
+                      <div class="sticky-class-name">Open Cheerleading</div>
+                      <div class="sticky-class-age">Ages 16+</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="card">
-                <h3>Wednesdays</h3>
-                <ul class="list">
-                  <li>SEND Dance / 5:30-6:30 PM / Ages 6+</li>
-                  <li>Hip Hop Upskill / 6:30-7:30 PM / Ages 7+</li>
-                  <li>Hip Hop Upskill / 7:30-8:30 PM / Ages 13+</li>
-                </ul>
+
+              <!-- Wednesday -->
+              <div class="sticky-day-panel" data-day-index="1">
+                <div class="sticky-day-image" data-schedule-parallax>
+                  <div class="schedule-image-grid">
+                    <div class="schedule-image-column" data-column="1" data-parallax-speed="0.6">
+                      <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=300&h=600&fit=crop" alt="Hip hop" />
+                    </div>
+                    <div class="schedule-image-column" data-column="2" data-parallax-speed="-0.7">
+                      <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=300&h=600&fit=crop" alt="Hip hop" />
+                    </div>
+                    <div class="schedule-image-column" data-column="3" data-parallax-speed="0.5">
+                      <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=300&h=600&fit=crop" alt="Hip hop" />
+                    </div>
+                    <div class="schedule-image-column" data-column="4" data-parallax-speed="-0.4">
+                      <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=300&h=600&fit=crop" alt="Hip hop" />
+                    </div>
+                  </div>
+                  <div class="sticky-day-badge">Wednesday</div>
+                </div>
+                <div class="sticky-day-content">
+                  <h3 class="sticky-day-title">Inclusive Hip Hop Sessions</h3>
+                  <p class="sticky-day-description">Hip hop classes for all abilities, including our adaptive SEND-friendly program. Everyone is welcome to express themselves through movement.</p>
+                  <div class="sticky-day-classes">
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">5:30 - 6:30 PM</div>
+                      <div class="sticky-class-name">SEND Dance Class</div>
+                      <div class="sticky-class-age">Ages 6+</div>
+                    </div>
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">6:30 - 7:30 PM</div>
+                      <div class="sticky-class-name">Hip Hop Upskill</div>
+                      <div class="sticky-class-age">Ages 7+</div>
+                    </div>
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">7:30 - 8:30 PM</div>
+                      <div class="sticky-class-name">Hip Hop Upskill</div>
+                      <div class="sticky-class-age">Ages 13+</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="card">
-                <h3>Thursdays</h3>
-                <ul class="list">
-                  <li>Lyrical &amp; Jazz Technique / 6-7 PM / Ages 13+</li>
-                  <li>Hip Hop Street &amp; Break Dance / 7-8 PM / Ages 7+</li>
-                </ul>
+
+              <!-- Thursday -->
+              <div class="sticky-day-panel" data-day-index="2">
+                <div class="sticky-day-image" data-schedule-parallax>
+                  <div class="schedule-image-grid">
+                    <div class="schedule-image-column" data-column="1" data-parallax-speed="0.7">
+                      <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=300&h=600&fit=crop" alt="Jazz dance" />
+                    </div>
+                    <div class="schedule-image-column" data-column="2" data-parallax-speed="-0.6">
+                      <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=300&h=600&fit=crop" alt="Jazz dance" />
+                    </div>
+                    <div class="schedule-image-column" data-column="3" data-parallax-speed="0.8">
+                      <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=300&h=600&fit=crop" alt="Jazz dance" />
+                    </div>
+                    <div class="schedule-image-column" data-column="4" data-parallax-speed="-0.5">
+                      <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=300&h=600&fit=crop" alt="Jazz dance" />
+                    </div>
+                  </div>
+                  <div class="sticky-day-badge">Thursday</div>
+                </div>
+                <div class="sticky-day-content">
+                  <h3 class="sticky-day-title">Expressive Dance Styles</h3>
+                  <p class="sticky-day-description">From lyrical grace to street style swagger. Develop technique, musicality, and performance confidence in our Thursday sessions.</p>
+                  <div class="sticky-day-classes">
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">6:00 - 7:00 PM</div>
+                      <div class="sticky-class-name">Lyrical &amp; Jazz Technique</div>
+                      <div class="sticky-class-age">Ages 13+</div>
+                    </div>
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">7:00 - 8:00 PM</div>
+                      <div class="sticky-class-name">Hip Hop Street &amp; Break Dance</div>
+                      <div class="sticky-class-age">Ages 7+</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="card">
-                <h3>Saturdays</h3>
-                <ul class="list">
-                  <li>Tiny Twisters Hip Hop / 10-11 / Ages 2-6</li>
-                  <li>Tiny Twisters Cheerleading / 11-12 / Ages 2-6</li>
-                  <li>Tricks &amp; Tumble / 10-11 and 11-12 / Ages 7+</li>
-                </ul>
+
+              <!-- Saturday -->
+              <div class="sticky-day-panel" data-day-index="3">
+                <div class="sticky-day-image" data-schedule-parallax>
+                  <div class="schedule-image-grid">
+                    <div class="schedule-image-column" data-column="1" data-parallax-speed="0.8">
+                      <img src="https://images.unsplash.com/photo-1609619385002-f40f38dc5dd7?w=300&h=600&fit=crop" alt="Kids dance" />
+                    </div>
+                    <div class="schedule-image-column" data-column="2" data-parallax-speed="-0.5">
+                      <img src="https://images.unsplash.com/photo-1609619385002-f40f38dc5dd7?w=300&h=600&fit=crop" alt="Kids dance" />
+                    </div>
+                    <div class="schedule-image-column" data-column="3" data-parallax-speed="0.6">
+                      <img src="https://images.unsplash.com/photo-1609619385002-f40f38dc5dd7?w=300&h=600&fit=crop" alt="Kids dance" />
+                    </div>
+                    <div class="schedule-image-column" data-column="4" data-parallax-speed="-0.7">
+                      <img src="https://images.unsplash.com/photo-1609619385002-f40f38dc5dd7?w=300&h=600&fit=crop" alt="Kids dance" />
+                    </div>
+                  </div>
+                  <div class="sticky-day-badge">Saturday</div>
+                </div>
+                <div class="sticky-day-content">
+                  <h3 class="sticky-day-title">Weekend Family Favorites</h3>
+                  <p class="sticky-day-description">Our most popular classes! From tiny twisters building rhythm and coordination to advanced tumblers perfecting their skills.</p>
+                  <div class="sticky-day-classes">
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">10:00 - 11:00 AM</div>
+                      <div class="sticky-class-name">Tiny Twisters Hip Hop</div>
+                      <div class="sticky-class-age">Ages 2-6</div>
+                    </div>
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">11:00 - 12:00 PM</div>
+                      <div class="sticky-class-name">Tiny Twisters Cheerleading</div>
+                      <div class="sticky-class-age">Ages 2-6</div>
+                    </div>
+                    <div class="sticky-class-item">
+                      <div class="sticky-class-time">10:00 - 12:00 PM</div>
+                      <div class="sticky-class-name">Tricks &amp; Tumble</div>
+                      <div class="sticky-class-age">Ages 7+</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-<!-- Section: Find your perfect class (End) -->
+<!-- Section: Your week at MCR (End) -->
 
-      <!-- Free Trial -->
-      <!-- Section: Try a class before you join (Start) -->
-<section class="section hero-dark">
-        <div class="section-inner split">
-          <div>
-            <div class="eyebrow">Free Trial</div>
-            <h2>Try a class before you join</h2>
-            <p class="meta">Book a free trial and experience the class in person. No payment needed.</p>
-            <a class="button primary" href="free-trial.html" style="margin-top: 12px;">Book a Free Trial</a>
+      <!-- Free Trial - Split Screen with Image -->
+      <!-- Section: Try a class (Start) -->
+<section class="section free-trial-split" data-scroll-section>
+        <div class="trial-split-container">
+          <!-- Left Side: 4-Column Image Parallax -->
+          <div class="trial-split-image" data-scroll-parallax>
+            <div class="trial-image-grid">
+              <div class="trial-image-column" data-column="1" data-parallax-speed="0.8">
+                <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&h=800&fit=crop" alt="Dance class" loading="lazy" />
+              </div>
+              <div class="trial-image-column" data-column="2" data-parallax-speed="-0.6">
+                <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&h=800&fit=crop" alt="Dance class" loading="lazy" />
+              </div>
+              <div class="trial-image-column" data-column="3" data-parallax-speed="0.7">
+                <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&h=800&fit=crop" alt="Dance class" loading="lazy" />
+              </div>
+              <div class="trial-image-column" data-column="4" data-parallax-speed="-0.5">
+                <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&h=800&fit=crop" alt="Dance class" loading="lazy" />
+              </div>
+            </div>
+            <div class="trial-image-overlay" data-scroll-fade></div>
           </div>
-          <div class="hero-card" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15);">
-            <div class="placeholder" style="border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04);"></div>
-            <div class="line" style="background: rgba(255,255,255,0.1);"></div>
-            <div class="line short" style="background: rgba(255,255,255,0.07);"></div>
+          
+          <!-- Curved Divider with Reveal -->
+          <div class="trial-curved-divider" data-scroll-reveal>
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0,0 Q50,100 100,0 L100,100 L0,100 Z" fill="var(--bg)"/>
+            </svg>
+          </div>
+
+          <!-- Right Side: Content with Stagger -->
+          <div class="trial-split-content">
+            <div class="trial-split-inner">
+              <div class="eyebrow" data-scroll-stagger data-stagger-delay="0">Free Trial Available</div>
+              <h2 data-scroll-stagger data-stagger-delay="1">Try Before You Commit</h2>
+              <p class="meta" data-scroll-stagger data-stagger-delay="2">Experience the energy, professionalism, and community of MCR Dance Academy with a complimentary trial class. Perfect for new students of all ages.</p>
+              
+              <ul class="trial-checklist" data-scroll-checklist>
+                <li class="trial-check-item" data-scroll-stagger data-stagger-delay="3">
+                  <span class="trial-check-icon">✓</span>
+                  <span>Choose any class that suits your schedule</span>
+                </li>
+                <li class="trial-check-item" data-scroll-stagger data-stagger-delay="4">
+                  <span class="trial-check-icon">✓</span>
+                  <span>Meet our qualified coaching team</span>
+                </li>
+                <li class="trial-check-item" data-scroll-stagger data-stagger-delay="5">
+                  <span class="trial-check-icon">✓</span>
+                  <span>No payment or registration fees</span>
+                </li>
+                <li class="trial-check-item" data-scroll-stagger data-stagger-delay="6">
+                  <span class="trial-check-icon">✓</span>
+                  <span>Get a feel for our inclusive environment</span>
+                </li>
+              </ul>
+
+              <a href="free-trial.html" class="button primary trial-cta-btn" data-scroll-stagger data-stagger-delay="7">Start Your Journey</a>
+            </div>
           </div>
         </div>
       </section>
-<!-- Section: Try a class before you join (End) -->
+<!-- Section: Try a class (End) -->
 
-      <!-- Why MCR -->
-      <!-- Section: Inclusive, professional, and confidence‑building (Start) -->
-<section class="section alt">
+      <!-- Why MCR - Split Diagonal Layout -->
+      <!-- Section: Why Choose MCR (Start) -->
+<section class="section why-mcr" data-why-mcr>
         <div class="section-inner">
           <div class="eyebrow">Why MCR</div>
-          <h2>Inclusive, professional, and confidence&#8209;building</h2>
-          <div class="grid-3" style="margin-top: 24px;">
-            <div class="card">
-              <div class="placeholder small"></div>
-              <h4 style="margin-top: 12px;">Adaptive &amp; Inclusive</h4>
-              <p class="meta">SEN/SEND friendly classes and supportive coaching for every learner.</p>
+          <h2>Inclusive, professional, and confidence‑building</h2>
+        </div>
+        <div class="why-diagonal-wrapper">
+          <div class="diagonal-item diagonal-left" data-diagonal-item>
+            <div class="diagonal-content">
+              <span class="diagonal-number">01</span>
+              <h3>Adaptive &amp; Inclusive</h3>
+              <p>SEN/SEND friendly classes and supportive coaching for every learner. Everyone is welcome to join our community.</p>
             </div>
-            <div class="card">
-              <div class="placeholder small"></div>
-              <h4 style="margin-top: 12px;">Professional Coaches</h4>
-              <p class="meta">Experienced, qualified and nurturing teaching team.</p>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=800&h=600&fit=crop" alt="Inclusive dance" />
             </div>
-            <div class="card">
-              <div class="placeholder small"></div>
-              <h4 style="margin-top: 12px;">Confidence &amp; Community</h4>
-              <p class="meta">Build skills, friendships and performance confidence.</p>
+            <div class="diagonal-bg"></div>
+          </div>
+          <div class="diagonal-item diagonal-right" data-diagonal-item>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&h=600&fit=crop" alt="Professional coaches" />
             </div>
+            <div class="diagonal-content">
+              <span class="diagonal-number">02</span>
+              <h3>Professional Coaches</h3>
+              <p>Experienced, qualified and nurturing teaching team dedicated to your success.</p>
+            </div>
+            <div class="diagonal-bg"></div>
+          </div>
+          <div class="diagonal-item diagonal-left" data-diagonal-item>
+            <div class="diagonal-content">
+              <span class="diagonal-number">03</span>
+              <h3>Confidence &amp; Community</h3>
+              <p>Build skills, friendships and performance confidence in our supportive environment.</p>
+            </div>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1609619385002-f40f38dc5dd7?w=800&h=600&fit=crop" alt="Community" />
+            </div>
+            <div class="diagonal-bg"></div>
           </div>
         </div>
       </section>
-<!-- Section: Inclusive, professional, and confidence‑building (End) -->
-
-      <!-- Testimonials -->
+<!-- Section: Why Choose MCR (End) -->
       <!-- Section: Parents and students love MCR (Start) -->
 <section class="section">
         <div class="section-inner">

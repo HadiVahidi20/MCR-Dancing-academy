@@ -230,6 +230,342 @@ import { Application } from '@splinetool/runtime';
     window.addEventListener('resize', onScroll);
   }
 
+  function initScheduleTimeline() {
+    var timeline = document.querySelector('[data-schedule-timeline]');
+    if (!timeline) return;
+
+    var cards = Array.prototype.slice.call(timeline.querySelectorAll('.schedule-day-card'));
+    var progressBar = document.querySelector('[data-schedule-progress]');
+    var hint = document.querySelector('.schedule-scroll-hint');
+    
+    if (!cards.length) return;
+
+    // Update card scale/opacity based on scroll position
+    function updateCards() {
+      var scrollLeft = timeline.scrollLeft;
+      var timelineWidth = timeline.scrollWidth - timeline.clientWidth;
+      
+      // Hide hint after initial scroll
+      if (hint && scrollLeft > 10) {
+        hint.classList.add('hidden');
+      } else if (hint && scrollLeft <= 10) {
+        hint.classList.remove('hidden');
+      }
+
+      // Update progress bar
+      if (progressBar && timelineWidth > 0) {
+        var progress = (scrollLeft / timelineWidth) * 100;
+        progressBar.style.width = Math.min(100, Math.max(0, progress)) + '%';
+      }
+
+      // Update card states based on visibility
+      cards.forEach(function(card) {
+        var rect = card.getBoundingClientRect();
+        var timelineRect = timeline.getBoundingClientRect();
+        
+        // Card is considered "in view" when its center is visible in the timeline
+        var cardCenter = rect.left + rect.width / 2;
+        var timelineCenter = timelineRect.left + timelineRect.width / 2;
+        var distanceFromCenter = Math.abs(cardCenter - timelineCenter);
+        var threshold = timelineRect.width * 0.4;
+        
+        if (distanceFromCenter < threshold) {
+          card.classList.add('in-view');
+        } else {
+          card.classList.remove('in-view');
+        }
+      });
+    }
+
+    // Smooth scroll on wheel for better UX
+    var isScrolling = false;
+    
+    timeline.addEventListener('wheel', function(e) {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        // Horizontal scroll - let it work naturally
+        return;
+      }
+      
+      // Convert vertical scroll to horizontal
+      e.preventDefault();
+      timeline.scrollLeft += e.deltaY;
+    }, { passive: false });
+
+    // Touch/scroll listeners
+    timeline.addEventListener('scroll', updateCards, { passive: true });
+    
+    // Initial update
+    updateCards();
+    
+    // Auto-highlight first card on load
+    setTimeout(function() {
+      if (cards[0]) {
+        cards[0].classList.add('in-view');
+      }
+    }, 100);
+  }
+
+  function initStickySchedule() {
+    var section = document.querySelector('[data-sticky-schedule]');
+    if (!section) return;
+
+    var panels = Array.prototype.slice.call(section.querySelectorAll('.sticky-day-panel'));
+    var progressIndicator = section.querySelector('[data-progress-indicator]');
+    var progressLabels = Array.prototype.slice.call(section.querySelectorAll('[data-day-nav]'));
+    
+    if (!panels.length) return;
+
+    var ticking = false;
+
+    // Initialize parallax for schedule images
+    var scheduleParallaxContainers = Array.prototype.slice.call(section.querySelectorAll('[data-schedule-parallax]'));
+    
+    function updateProgress() {
+      ticking = false;
+      
+      var sectionRect = section.getBoundingClientRect();
+      var sectionTop = sectionRect.top;
+      var sectionHeight = sectionRect.height;
+      var viewportHeight = window.innerHeight;
+      
+      // Calculate overall progress through the section
+      var scrollProgress = Math.max(0, Math.min(1, -sectionTop / (sectionHeight - viewportHeight)));
+      
+      // Update each panel's visibility and parallax
+      var activeIndex = -1;
+      panels.forEach(function(panel, index) {
+        var rect = panel.getBoundingClientRect();
+        var panelCenter = rect.top + rect.height / 2;
+        var viewportCenter = viewportHeight / 2;
+        
+        // Panel is in view if its center is near viewport center
+        if (Math.abs(panelCenter - viewportCenter) < viewportHeight * 0.4) {
+          panel.classList.add('in-view');
+          panel.classList.add('active');
+          activeIndex = index;
+        } else if (rect.top > viewportHeight) {
+          panel.classList.remove('in-view');
+        }
+
+        // Apply parallax to image columns within each panel
+        if (rect.top < viewportHeight && rect.bottom > 0) {
+          var imageContainer = panel.querySelector('[data-schedule-parallax]');
+          if (imageContainer) {
+            var columns = Array.prototype.slice.call(imageContainer.querySelectorAll('.schedule-image-column'));
+            
+            // Calculate parallax based on panel position relative to viewport
+            var panelProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+            panelProgress = Math.max(0, Math.min(1, panelProgress));
+            
+            columns.forEach(function(column) {
+              var speed = parseFloat(column.getAttribute('data-parallax-speed')) || 0;
+              // Multiply by larger value for more noticeable effect
+              var yPos = (panelProgress - 0.5) * 200 * speed;
+              column.style.transform = 'translateY(' + yPos + 'px)';
+            });
+          }
+        }
+      });
+
+      // Update progress indicator position
+      if (progressIndicator && panels.length > 0) {
+        var progressHeight = 100 / panels.length;
+        var progressPosition = scrollProgress * 100;
+        
+        progressIndicator.style.height = progressHeight + '%';
+        progressIndicator.style.transform = 'translateY(' + (progressPosition * (panels.length - 1)) + '%)';
+      }
+
+      // Update active label
+      progressLabels.forEach(function(label, index) {
+        if (index === activeIndex) {
+          label.classList.add('active');
+        } else {
+          label.classList.remove('active');
+        }
+      });
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateProgress);
+        ticking = true;
+      }
+    }
+
+    // Click navigation
+    progressLabels.forEach(function(label, index) {
+      label.addEventListener('click', function() {
+        if (panels[index]) {
+          var panel = panels[index];
+          var rect = panel.getBoundingClientRect();
+          var offsetTop = rect.top + window.pageYOffset - window.innerHeight / 2 + panel.offsetHeight / 2;
+          
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    updateProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    window.addEventListener('resize', onScroll);
+  }
+
+  function initStaggerSchedule() {
+    var section = document.querySelector('[data-stagger-schedule]');
+    if (!section) return;
+
+    var cards = Array.prototype.slice.call(section.querySelectorAll('[data-stagger-card]'));
+    if (!cards.length) return;
+
+    var ticking = false;
+    var animated = false;
+
+    function checkVisibility() {
+      ticking = false;
+      
+      var rect = section.getBoundingClientRect();
+      var viewportHeight = window.innerHeight;
+      
+      // Trigger when section is 30% visible in viewport
+      var triggerPoint = viewportHeight * 0.7;
+      
+      if (rect.top < triggerPoint && rect.bottom > 0 && !animated) {
+        // Trigger stagger animation
+        cards.forEach(function(card) {
+          card.classList.add('animated');
+        });
+        animated = true;
+      }
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(checkVisibility);
+        ticking = true;
+      }
+    }
+
+    checkVisibility();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  }
+
+  // ── Free Trial Split Screen Scroll Effects ─────────────
+  function initTrialScrollEffects() {
+    var section = document.querySelector('[data-scroll-section]');
+    if (!section) return;
+
+    var imageColumns = section.querySelectorAll('.trial-image-column');
+    var overlay = section.querySelector('[data-scroll-fade]');
+    var divider = section.querySelector('[data-scroll-reveal]');
+    var staggerElements = section.querySelectorAll('[data-scroll-stagger]');
+    var checkItems = section.querySelectorAll('.trial-check-item');
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          // Trigger scale animation for all image columns
+          imageColumns.forEach(function (column) {
+            column.classList.add('scroll-active');
+          });
+
+          if (overlay) {
+            overlay.classList.add('scroll-active');
+          }
+          if (divider) {
+            divider.classList.add('scroll-active');
+          }
+          
+          // Stagger animation for content elements
+          staggerElements.forEach(function (el, index) {
+            setTimeout(function () {
+              el.classList.add('scroll-active');
+            }, index * 80);
+          });
+
+          // Animate check icons
+          checkItems.forEach(function (item, index) {
+            setTimeout(function () {
+              item.classList.add('scroll-active');
+            }, 500 + (index * 100));
+          });
+        }
+      });
+    }, {
+      threshold: 0.2,
+      rootMargin: '0px'
+    });
+
+    observer.observe(section);
+
+    // Multi-column parallax effect on scroll
+    var handleParallax = function () {
+      var rect = section.getBoundingClientRect();
+      var viewportHeight = window.innerHeight;
+      
+      if (rect.top < viewportHeight && rect.bottom > 0) {
+        // Calculate scroll progress through the section (0 to 1)
+        var sectionProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+        sectionProgress = Math.max(0, Math.min(1, sectionProgress));
+        
+        imageColumns.forEach(function (column) {
+          var speed = parseFloat(column.getAttribute('data-parallax-speed')) || 0;
+          // Center the effect and multiply by 250 for more dramatic movement
+          var yPos = (sectionProgress - 0.5) * 250 * speed;
+          column.style.transform = 'translateY(' + yPos + 'px)';
+        });
+      }
+    };
+
+    window.addEventListener('scroll', handleParallax, { passive: true });
+    handleParallax(); // Initial call
+  }
+
+  // ── Free Trial Magnetic Button Effect (Legacy cleanup) ────
+  function initMagneticButton() {
+    // This function is no longer needed but kept for compatibility
+    // The magnetic effect was for Option 1 which has been removed
+  }
+
+  // ── Free Trial Glass Card Tilt Effect (Legacy cleanup) ────
+  function initGlassTilt() {
+    // This function is no longer needed but kept for compatibility
+    // The glass tilt was for Option 3 which has been removed
+  }
+
+  // ──────────────────────────────────────────────────────────────
+  // Why MCR Section - Split Diagonal Layout with Parallax
+  // ──────────────────────────────────────────────────────────────
+
+  function initWhyMCR() {
+    var section = document.querySelector('[data-why-mcr]');
+    if (!section) return;
+
+    var images = section.querySelectorAll('[data-parallax-diagonal]');
+    if (images.length === 0) return;
+
+    function updateDiagonalParallax() {
+      images.forEach(function (img) {
+        var rect = img.getBoundingClientRect();
+        var viewportHeight = window.innerHeight;
+
+        if (rect.top < viewportHeight && rect.bottom > 0) {
+          var progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+          var movement = (progress - 0.5) * 60;
+          img.style.transform = 'scale(1.1) translateY(' + movement + 'px)';
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateDiagonalParallax, { passive: true });
+    updateDiagonalParallax();
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initSplineScene();
     include('#site-header', 'header.html')
@@ -237,6 +573,13 @@ import { Application } from '@splinetool/runtime';
         setActiveNav();
         initHeader();
         initHeroWheel();
+        initScheduleTimeline();
+        initStickySchedule();
+        initStaggerSchedule();
+        initTrialScrollEffects();
+        initWhyMCR();
+        initMagneticButton();
+        initGlassTilt();
         return include('#site-footer', 'footer.html');
       })
       .catch(function (err) {
