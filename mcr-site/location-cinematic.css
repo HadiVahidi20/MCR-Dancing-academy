@@ -278,18 +278,6 @@
   filter: grayscale(0%) contrast(1);
 }
 
-/* Map Overlay for Depth */
-.location-map-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg,
-    rgba(244, 212, 15, 0.05) 0%,
-    transparent 50%,
-    rgba(244, 212, 15, 0.05) 100%);
-  pointer-events: none;
-  mix-blend-mode: multiply;
-}
-
 /* Info Pills Floating on Map */
 .location-info-pills {
   position: absolute;

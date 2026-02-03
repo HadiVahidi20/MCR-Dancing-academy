@@ -1594,6 +1594,7 @@ h3 {
   height: 100%;
   min-height: 100vh;
   min-height: 100svh;
+  background: transparent;
 }
 
 .trial-image-column img {
@@ -1605,8 +1606,7 @@ h3 {
   display: block;
   transform: scale(1.2);
   transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0.7;
-  mix-blend-mode: luminosity;
+  
 }
 
 /* Stagger the initial scale animation */
@@ -1650,17 +1650,6 @@ h3 {
   display: block;
 }
 
-.trial-image-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(244, 212, 15, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%);
-  opacity: 0;
-  transition: opacity 1s ease 0.3s;
-}
-
-.trial-image-overlay.scroll-active {
-  opacity: 1;
-}
 
 /* Curved Divider with Reveal Animation */
 .trial-curved-divider {
@@ -2370,8 +2359,6 @@ h3 {
   display: block;
   transform: scale(1.15);
   transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
-  opacity: 0.7;
-  mix-blend-mode: luminosity;
 }
 
 /* Staggered scale animation for schedule images */
@@ -2696,19 +2683,6 @@ h3 {
 
 .stagger-day-card:hover .stagger-card-image img {
   transform: scale(1.08);
-}
-
-.stagger-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
-  display: flex;
-  align-items: flex-end;
-  padding: 20px;
 }
 
 .stagger-day-label {
