@@ -94,7 +94,15 @@
             transition: transform 0.4s ease;
         }
 
-        .hexagon:hover img {
+        .hexagon video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .hexagon:hover img,
+        .hexagon:hover video {
             transform: scale(1.15);
         }
 
@@ -420,21 +428,27 @@
             <!-- Neon Connecting Lines -->
             <div class="hexagon-lines" id="hexagonLines"></div>
             
-            <!-- Hexagons with images -->
+            <!-- Hexagons with images and videos -->
             <div class="hexagon">
-              <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=400&h=400&fit=crop&q=80" alt="MCR Dance Team 1" loading="lazy">
+              <video autoplay muted loop playsinline>
+                <source src="https://cdn.coverr.co/videos/coverr-hip-hop-dancer-performing-6005/1080p.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="hexagon">
               <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=400&h=400&fit=crop&q=80" alt="MCR Dance Team 2" loading="lazy">
             </div>
             <div class="hexagon">
-              <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=400&h=400&fit=crop&q=80" alt="MCR Dance Team 3" loading="lazy">
+              <video autoplay muted loop playsinline>
+                <source src="https://cdn.coverr.co/videos/coverr-ballet-dancer-in-studio-5984/1080p.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="hexagon">
               <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=400&h=400&fit=crop&q=80" alt="Dance class 4" loading="lazy">
             </div>
             <div class="hexagon">
-              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&h=400&fit=crop&q=80" alt="Dance class 5" loading="lazy">
+              <video autoplay muted loop playsinline>
+                <source src="https://cdn.coverr.co/videos/coverr-cheerleader-performing-6011/1080p.mp4" type="video/mp4">
+              </video>
             </div>
             <div class="hexagon">
               <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=400&h=400&fit=crop&q=80" alt="Dance class 6" loading="lazy">
