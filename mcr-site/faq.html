@@ -7,6 +7,7 @@
     <meta name="description" content="Frequently asked questions and policies for MCR Dance & Cheer Academy. Free trials, cancellations, payments, make-up classes and more." />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="why-mcr-styles.css" />
   </head>
   <body>
     <!-- Header Include (Start) -->
@@ -16,7 +17,50 @@
     <main>
       <!-- Section: Common questions (Start) -->
 <section class="section hero">
-        <div class="section-inner">
+  <div class="hero-bg">
+    <svg class="honeycomb-svg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="blur1"/>
+          <feGaussianBlur stdDeviation="8" result="blur2"/>
+          <feMerge>
+            <feMergeNode in="blur2"/>
+            <feMergeNode in="blur1"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <!-- Tiny hexagons -->
+      <polygon class="hex hex-tiny hex-1" points="95,65 105,71 105,83 95,89 85,83 85,71" />
+      <polygon class="hex hex-tiny hex-2" points="1305,145 1315,151 1315,163 1305,169 1295,163 1295,151" />
+      <polygon class="hex hex-tiny hex-3" points="420,720 430,726 430,738 420,744 410,738 410,726" />
+
+      <!-- Small hexagons -->
+      <polygon class="hex hex-small hex-4" points="180,180 200,192 200,216 180,228 160,216 160,192" />
+      <polygon class="hex hex-small hex-5" points="1150,380 1170,392 1170,416 1150,428 1130,416 1130,392" />
+      <polygon class="hex hex-small hex-6" points="280,550 300,562 300,586 280,598 260,586 260,562" />
+
+      <!-- Medium hexagons -->
+      <polygon class="hex hex-medium hex-7" points="70,280 110,303 110,349 70,372 30,349 30,303" />
+      <polygon class="hex hex-medium hex-8" points="1280,520 1320,543 1320,589 1280,612 1240,589 1240,543" />
+      <polygon class="hex hex-medium hex-9" points="600,100 640,123 640,169 600,192 560,169 560,123" />
+
+      <!-- Large hexagons -->
+      <polygon class="hex hex-large hex-10" points="1100,120 1160,155 1160,225 1100,260 1040,225 1040,155" />
+      <polygon class="hex hex-large hex-11" points="150,620 210,655 210,725 150,760 90,725 90,655" />
+
+      <!-- Extra large hexagons -->
+      <polygon class="hex hex-xl hex-12" points="850,700 940,752 940,856 850,908 760,856 760,752" />
+      <polygon class="hex hex-xl hex-13" points="50,50 140,102 140,206 50,258 -40,206 -40,102" />
+
+      <!-- Additional scattered -->
+      <polygon class="hex hex-small hex-14" points="750,300 770,312 770,336 750,348 730,336 730,312" />
+      <polygon class="hex hex-tiny hex-15" points="980,480 990,486 990,498 980,504 970,498 970,486" />
+    </svg>
+    <div class="honeycomb-glow"></div>
+  </div>
+
+  <div class="section-inner" style="position: relative; z-index: 1;">
           <div class="eyebrow">FAQ &amp; Policies</div>
           <h1>Common questions</h1>
           <p class="meta">Everything you need to know about classes, bookings, payments and policies.</p>
@@ -38,6 +82,84 @@
           </div>
         </div>
       </section>
+
+  <style>
+    .hero {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .honeycomb-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hex {
+      fill: none;
+      stroke: #f4d40f;
+      filter: url(#neonGlow);
+      animation: hexFade 4s ease-in-out infinite;
+    }
+
+    .hex-tiny { stroke-width: 0.8; }
+    .hex-small { stroke-width: 1.2; }
+    .hex-medium { stroke-width: 1.5; }
+    .hex-large { stroke-width: 2; }
+    .hex-xl { stroke-width: 2.5; }
+
+    .hex-1 { animation-delay: 0s; }
+    .hex-2 { animation-delay: 0.5s; }
+    .hex-3 { animation-delay: 1s; }
+    .hex-4 { animation-delay: 1.5s; }
+    .hex-5 { animation-delay: 2s; }
+    .hex-6 { animation-delay: 2.5s; }
+    .hex-7 { animation-delay: 3s; }
+    .hex-8 { animation-delay: 0.8s; }
+    .hex-9 { animation-delay: 1.3s; }
+    .hex-10 { animation-delay: 1.8s; }
+    .hex-11 { animation-delay: 2.3s; }
+    .hex-12 { animation-delay: 2.8s; }
+    .hex-13 { animation-delay: 0.3s; }
+    .hex-14 { animation-delay: 3.5s; }
+    .hex-15 { animation-delay: 1.7s; }
+
+    @keyframes hexFade {
+      0%, 100% {
+        opacity: 0.1;
+        stroke: rgba(244, 212, 15, 0.3);
+      }
+      50% {
+        opacity: 0.7;
+        stroke: rgba(244, 212, 15, 0.9);
+      }
+    }
+
+    .honeycomb-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(244, 212, 15, 0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 80%, rgba(244, 212, 15, 0.08) 0%, transparent 35%);
+      pointer-events: none;
+    }
+  </style>
 <!-- Section: Common questions (End) -->
 
       <!-- General Questions -->

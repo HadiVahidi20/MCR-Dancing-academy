@@ -141,9 +141,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
@@ -158,19 +158,19 @@ a {
 }
 
 .logo-img {
-  height: 24px;
+  height: 32px;
   width: auto;
   transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .header.compact .logo-img {
-  height: 20px;
+  height: 26px;
 }
 
 .header.compact .logo-icon-wrap {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
 }
 
 .logo-text {
@@ -418,15 +418,15 @@ a {
 }
 
 .header.compact .logo-icon-wrap {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.08);
 }
 
 .header.compact .logo-img {
-  height: 20px;
+  height: 26px;
 }
 
 .header.compact .logo-text {
@@ -509,11 +509,12 @@ a {
 .button.outline-light {
   border-color: rgba(255, 255, 255, 0.5);
   background: transparent;
-  color: var(--surface);
+  color: #f5f5f5;
 }
 
 .button.outline-light:hover {
   background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
 /* ── Sections ─────────────────────────────────────────── */
@@ -1318,9 +1319,9 @@ h3 {
 }
 
 .footer-logo-badge {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
@@ -1329,8 +1330,8 @@ h3 {
 }
 
 .footer-logo-badge img {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
 }
 
 .footer-location {

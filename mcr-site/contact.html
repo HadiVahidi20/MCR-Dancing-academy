@@ -10,6 +10,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="location-cinematic.css" />
+    <link rel="stylesheet" href="why-mcr-styles.css" />
   </head>
   <body>
     <!-- Header Include (Start) -->
@@ -19,6 +20,49 @@
     <main>
       <!-- Section: Get in touch with MCR (Start) -->
 <section class="section contact-hero">
+  <div class="contact-hero-bg">
+    <svg class="honeycomb-svg" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="blur1"/>
+          <feGaussianBlur stdDeviation="8" result="blur2"/>
+          <feMerge>
+            <feMergeNode in="blur2"/>
+            <feMergeNode in="blur1"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <!-- Tiny hexagons -->
+      <polygon class="hex hex-tiny hex-1" points="95,65 105,71 105,83 95,89 85,83 85,71" />
+      <polygon class="hex hex-tiny hex-2" points="1305,145 1315,151 1315,163 1305,169 1295,163 1295,151" />
+      <polygon class="hex hex-tiny hex-3" points="420,720 430,726 430,738 420,744 410,738 410,726" />
+
+      <!-- Small hexagons -->
+      <polygon class="hex hex-small hex-4" points="180,180 200,192 200,216 180,228 160,216 160,192" />
+      <polygon class="hex hex-small hex-5" points="1150,380 1170,392 1170,416 1150,428 1130,416 1130,392" />
+      <polygon class="hex hex-small hex-6" points="280,550 300,562 300,586 280,598 260,586 260,562" />
+
+      <!-- Medium hexagons -->
+      <polygon class="hex hex-medium hex-7" points="70,280 110,303 110,349 70,372 30,349 30,303" />
+      <polygon class="hex hex-medium hex-8" points="1280,520 1320,543 1320,589 1280,612 1240,589 1240,543" />
+      <polygon class="hex hex-medium hex-9" points="600,100 640,123 640,169 600,192 560,169 560,123" />
+
+      <!-- Large hexagons -->
+      <polygon class="hex hex-large hex-10" points="1100,120 1160,155 1160,225 1100,260 1040,225 1040,155" />
+      <polygon class="hex hex-large hex-11" points="150,620 210,655 210,725 150,760 90,725 90,655" />
+
+      <!-- Extra large hexagons -->
+      <polygon class="hex hex-xl hex-12" points="850,700 940,752 940,856 850,908 760,856 760,752" />
+      <polygon class="hex hex-xl hex-13" points="50,50 140,102 140,206 50,258 -40,206 -40,102" />
+
+      <!-- Additional scattered -->
+      <polygon class="hex hex-small hex-14" points="750,300 770,312 770,336 750,348 730,336 730,312" />
+      <polygon class="hex hex-tiny hex-15" points="980,480 990,486 990,498 980,504 970,498 970,486" />
+    </svg>
+    <div class="honeycomb-glow"></div>
+  </div>
+
   <div class="section-inner">
     <div class="contact-hero-grid">
       <!-- Left Side: Main Content -->
@@ -71,12 +115,7 @@
           </a>
         </div>
 
-        <!-- Response Badge -->
         <div class="contact-response-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px;">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polyline points="12 6 12 12 16 14"></polyline>
-          </svg>
           <span><strong>24-hour</strong> response time guaranteed</span>
         </div>
       </div>
@@ -95,19 +134,87 @@
           <div class="contact-visual-icon">📍</div>
           <div class="contact-visual-text">Easy to find</div>
         </div>
-        <div class="contact-visual-circle contact-circle-1"></div>
-        <div class="contact-visual-circle contact-circle-2"></div>
       </div>
     </div>
   </div>
 
   <style>
     .contact-hero {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      background: #0a0a0a;
       padding: 100px 0 120px;
       position: relative;
       overflow: hidden;
       color: #f5f5f5;
+    }
+
+    .contact-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .honeycomb-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hex {
+      fill: none;
+      stroke: #f4d40f;
+      filter: url(#neonGlow);
+      animation: hexFade 4s ease-in-out infinite;
+    }
+
+    .hex-tiny { stroke-width: 0.8; }
+    .hex-small { stroke-width: 1.2; }
+    .hex-medium { stroke-width: 1.5; }
+    .hex-large { stroke-width: 2; }
+    .hex-xl { stroke-width: 2.5; }
+
+    .hex-1 { animation-delay: 0s; }
+    .hex-2 { animation-delay: 0.5s; }
+    .hex-3 { animation-delay: 1s; }
+    .hex-4 { animation-delay: 1.5s; }
+    .hex-5 { animation-delay: 2s; }
+    .hex-6 { animation-delay: 2.5s; }
+    .hex-7 { animation-delay: 3s; }
+    .hex-8 { animation-delay: 0.8s; }
+    .hex-9 { animation-delay: 1.3s; }
+    .hex-10 { animation-delay: 1.8s; }
+    .hex-11 { animation-delay: 2.3s; }
+    .hex-12 { animation-delay: 2.8s; }
+    .hex-13 { animation-delay: 0.3s; }
+    .hex-14 { animation-delay: 3.5s; }
+    .hex-15 { animation-delay: 1.7s; }
+
+    @keyframes hexFade {
+      0%, 100% {
+        opacity: 0.1;
+        stroke: rgba(244, 212, 15, 0.3);
+      }
+      50% {
+        opacity: 0.7;
+        stroke: rgba(244, 212, 15, 0.9);
+      }
+    }
+
+    .honeycomb-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(ellipse at 10% 20%, rgba(244, 212, 15, 0.1) 0%, transparent 40%),
+        radial-gradient(ellipse at 90% 80%, rgba(244, 212, 15, 0.08) 0%, transparent 35%);
+      pointer-events: none;
     }
 
     .contact-hero::before {
@@ -206,62 +313,63 @@
       background: var(--surface);
       backdrop-filter: blur(10px);
       padding: 24px 28px;
-      border-radius: 20px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      border: 1px solid var(--line);
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
       color: var(--ink);
       animation: floatCard 6s ease-in-out infinite;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 2px rgba(244, 212, 15, 0.6)) drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+    }
+
+    .contact-visual-card:hover {
+      filter: drop-shadow(0 0 4px rgba(244, 212, 15, 0.9)) drop-shadow(0 0 15px rgba(244, 212, 15, 0.4)) drop-shadow(0 20px 60px rgba(0, 0, 0, 0.5));
+      transform: scale(1.05) translateY(-5px);
     }
 
     .contact-card-1 {
       top: 50px;
       left: 0;
+      width: 180px;
+      height: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       animation-delay: 0s;
     }
 
     .contact-card-2 {
       top: 180px;
       right: 50px;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       animation-delay: 2s;
     }
 
     .contact-card-3 {
       bottom: 80px;
       left: 60px;
+      width: 190px;
+      height: 190px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       animation-delay: 4s;
     }
 
     .contact-visual-icon {
-      font-size: 32px;
-      margin-bottom: 8px;
+      font-size: 48px;
+      margin-bottom: 12px;
     }
 
     .contact-visual-text {
       font-weight: 600;
       font-size: 16px;
-    }
-
-    .contact-visual-circle {
-      position: absolute;
-      border-radius: 50%;
-      border: 2px solid rgba(244, 212, 15, 0.3);
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    .contact-circle-1 {
-      width: 200px;
-      height: 200px;
-      top: 0;
-      right: 0;
-      animation-delay: 0s;
-    }
-
-    .contact-circle-2 {
-      width: 150px;
-      height: 150px;
-      bottom: 0;
-      left: 100px;
-      animation-delay: 1.5s;
+      text-align: center;
     }
 
     @keyframes floatCard {
@@ -270,17 +378,6 @@
       }
       50% {
         transform: translateY(-15px);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 0.5;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 0.8;
       }
     }
 
