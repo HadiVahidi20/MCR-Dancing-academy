@@ -17,16 +17,6 @@
       <!-- Section: Book a Class (Start) -->
 <section class="section hero">
         <div class="section-inner">
-          <nav class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <a href="classes.html">Classes</a>
-            <span class="breadcrumb-sep">/</span>
-            <a href="class-detail.html">Hip Hop Upskill</a>
-            <span class="breadcrumb-sep">/</span>
-            <span>Book</span>
-          </nav>
-
           <div class="eyebrow">Booking</div>
           <h1>Book a Class</h1>
           <div class="stepper" style="margin: 16px 0 28px;">
@@ -96,6 +86,13 @@
     <!-- Footer Include (Start) -->
 <div id="site-footer"></div>
 <!-- Footer Include (End) -->
-      <script src="app.js"></script>
+      <script type="importmap">
+        {
+          "imports": {
+            "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@1.5.5/build/runtime.js"
+          }
+        }
+      </script>
+      <script type="module" src="app.js"></script>
   </body>
 </html>

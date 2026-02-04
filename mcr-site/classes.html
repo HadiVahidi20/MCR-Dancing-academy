@@ -9,6 +9,7 @@
     <meta property="og:description" content="Browse our weekly class schedule. Filter by day, age, or style." />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="why-mcr-styles.css" />
   </head>
   <body>
     <!-- Header Include (Start) -->
@@ -17,171 +18,435 @@
 
     <main>
       <!-- Section: Pick a class that fits your schedule (Start) -->
-<section class="section hero">
-        <div class="section-inner">
-          <nav class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span>Classes</span>
-          </nav>
+<section class="section classes-hero">
+  <div class="section-inner">
+    <div class="classes-hero-grid">
+      <!-- Main Content Area -->
+      <div class="classes-hero-main">
+        <div class="eyebrow">Classes</div>
+        <h1 class="classes-hero-title">
+          <span class="hero-title-script">Find Your Perfect</span>
+          <span class="hero-title-sans">Dance Class</span>
+        </h1>
+        <p class="meta" style="font-size: 18px; margin-top: 16px; max-width: 500px;">Browse 11+ classes across Hip Hop, Cheerleading, Jazz & Lyrical. Filter by day, age or style.</p>
 
-          <div class="eyebrow">Classes</div>
-          <h1>Pick a class that fits your schedule</h1>
-          <p class="meta">Filter by day, age or style. All prices shown in &pound;.</p>
-
-          <div class="card" style="margin-top: 18px;">
-            <strong>Filters</strong>
-            <div class="grid-2" style="margin-top: 12px;">
-              <div class="form">
-                <label for="day">Day</label>
-                <select id="day">
-                  <option>Any</option>
-                  <option>Tuesday</option>
-                  <option>Wednesday</option>
-                  <option>Thursday</option>
-                  <option>Saturday</option>
-                </select>
-              </div>
-              <div class="form">
-                <label for="age">Age</label>
-                <select id="age">
-                  <option>Any</option>
-                  <option>Ages 2-6</option>
-                  <option>Ages 6+</option>
-                  <option>Ages 7+</option>
-                  <option>Ages 13+</option>
-                  <option>Ages 16+</option>
-                </select>
-              </div>
-              <div class="form">
-                <label for="style">Style</label>
-                <select id="style">
-                  <option>Any</option>
-                  <option>Hip Hop</option>
-                  <option>Cheerleading</option>
-                  <option>Lyrical &amp; Jazz</option>
-                  <option>Tumble</option>
-                  <option>Street / Break</option>
-                  <option>SEND</option>
-                </select>
-              </div>
-              <div class="form">
-                <label for="time">Time</label>
-                <select id="time">
-                  <option>Any</option>
-                  <option>After 5 PM</option>
-                  <option>Morning</option>
-                </select>
-              </div>
+        <!-- Filters Card -->
+        <div class="classes-filters-card">
+          <strong style="display: block; margin-bottom: 16px; font-size: 18px;">Quick Filters</strong>
+          <div class="classes-filters-grid">
+            <div class="form">
+              <label for="day">Day</label>
+              <select id="day">
+                <option>Any</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Saturday</option>
+              </select>
+            </div>
+            <div class="form">
+              <label for="age">Age</label>
+              <select id="age">
+                <option>Any</option>
+                <option>Ages 2-6</option>
+                <option>Ages 6+</option>
+                <option>Ages 7+</option>
+                <option>Ages 13+</option>
+                <option>Ages 16+</option>
+              </select>
+            </div>
+            <div class="form">
+              <label for="style">Style</label>
+              <select id="style">
+                <option>Any</option>
+                <option>Hip Hop</option>
+                <option>Cheerleading</option>
+                <option>Lyrical &amp; Jazz</option>
+                <option>Tumble</option>
+                <option>Street / Break</option>
+                <option>SEND</option>
+              </select>
+            </div>
+            <div class="form">
+              <label for="time">Time</label>
+              <select id="time">
+                <option>Any</option>
+                <option>After 5 PM</option>
+                <option>Morning</option>
+              </select>
             </div>
           </div>
+          <a href="#all-classes" class="button primary" style="margin-top: 20px; width: 100%;">View All Classes</a>
         </div>
-      </section>
+      </div>
+
+      <!-- Bento Grid Images -->
+      <div class="classes-bento-grid">
+        <div class="classes-bento-item classes-bento-large">
+          <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=600&h=600&fit=crop" alt="Hip Hop" />
+          <div class="classes-bento-label">Hip Hop</div>
+        </div>
+        <div class="classes-bento-item classes-bento-small">
+          <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=300&h=300&fit=crop" alt="Cheerleading" />
+          <div class="classes-bento-label">Cheer</div>
+        </div>
+        <div class="classes-bento-item classes-bento-small">
+          <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=300&h=300&fit=crop" alt="Jazz" />
+          <div class="classes-bento-label">Jazz</div>
+        </div>
+        <div class="classes-bento-item classes-bento-wide">
+          <img src="https://images.unsplash.com/photo-1609619385002-f40f38dc5dd7?w=600&h=300&fit=crop" alt="Tiny Twisters" />
+          <div class="classes-bento-label">Tiny Twisters</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .classes-hero {
+      background: linear-gradient(to bottom, #fdfbfb 0%, #ebedee 100%);
+      padding: 100px 0 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .classes-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(var(--accent-rgb, 255, 107, 107), 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(102, 126, 234, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .classes-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .classes-hero-main {
+      animation: fadeInLeft 1s ease-out;
+    }
+
+    .classes-hero-title {
+      margin: 16px 0 0;
+    }
+
+    .classes-filters-card {
+      background: white;
+      padding: 32px;
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      margin-top: 40px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .classes-filters-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .classes-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 200px);
+      gap: 16px;
+      animation: fadeInRight 1s ease-out;
+    }
+
+    .classes-bento-item {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .classes-bento-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .classes-bento-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .classes-bento-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .classes-bento-label {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .classes-bento-large {
+      grid-row: span 2;
+    }
+
+    .classes-bento-wide {
+      grid-column: span 2;
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 968px) {
+      .classes-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .classes-bento-grid {
+        grid-template-rows: repeat(4, 180px);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .classes-hero {
+        padding: 60px 0 80px;
+      }
+
+      .classes-filters-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .classes-bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 200px);
+      }
+
+      .classes-bento-large,
+      .classes-bento-wide {
+        grid-row: span 1;
+        grid-column: span 1;
+      }
+    }
+  </style>
+</section>
 <!-- Section: Pick a class that fits your schedule (End) -->
 
       <!-- Section: All Classes (Start) -->
-<section class="section alt">
+<section class="section why-mcr" data-why-mcr>
         <div class="section-inner">
-          <h2>All Classes</h2>
-          <div class="cards" style="margin-top: 24px;">
+          <div class="eyebrow">All Classes</div>
+          <h2>Choose the perfect class for your child</h2>
+          <p class="meta" style="margin-top: 12px; max-width: 600px;">From tiny twisters to advanced performers, find the class that matches your schedule and style.</p>
+        </div>
 
-            <div class="card">
-              <h3>Cheer for Fun</h3>
-              <p class="meta">Tuesday, 5-6 PM &middot; Ages 7+</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;6.50 &middot; &pound;30/mo &middot; &pound;270 upfront</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+        <div class="why-diagonal-wrapper">
+          <div class="diagonal-item diagonal-left" data-diagonal-item>
+            <div class="diagonal-content">
+              <span class="diagonal-number">TUE</span>
+              <h3>Tuesday Cheer & Tumble</h3>
+              <div class="class-cards-inline">
+                <div class="mini-class-card">
+                  <strong>Cheer for Fun</strong>
+                  <p class="meta">5-6 PM • Ages 7+</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £6.50 • £30/mo</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+                <div class="mini-class-card">
+                  <strong>Level 3 Plus Tumble</strong>
+                  <p class="meta">6-7 PM • Ages 7+</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £6.50 • £30/mo</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+                <div class="mini-class-card">
+                  <strong>Open Cheerleading</strong>
+                  <p class="meta">7-8 PM • Ages 16+</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £6.50 • £30/mo</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+              </div>
             </div>
-
-            <div class="card">
-              <h3>Level 3 Plus Tumble</h3>
-              <p class="meta">Tuesday, 6-7 PM &middot; Ages 7+</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;6.50 &middot; &pound;30/mo &middot; &pound;270 upfront</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&h=600&fit=crop" alt="Cheerleading" loading="lazy" />
             </div>
+            <div class="diagonal-bg"></div>
+          </div>
 
-            <div class="card">
-              <h3>Open Cheerleading</h3>
-              <p class="meta">Tuesday, 7-8 PM &middot; Ages 16+</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;6.50 &middot; &pound;30/mo &middot; &pound;270 upfront</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+          <div class="diagonal-item diagonal-right" data-diagonal-item>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=800&h=600&fit=crop" alt="Hip hop" loading="lazy" />
             </div>
-
-            <div class="card">
-              <h3>SEND Dance</h3>
-              <p class="meta">Wednesday, 5:30-6:30 PM &middot; Ages 6+</p>
-              <span class="badge inclusive">Inclusive</span>
-              <p class="meta">Drop-in: &pound;6.50 &middot; &pound;30/mo &middot; &pound;270 upfront</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+            <div class="diagonal-content">
+              <span class="diagonal-number">WED</span>
+              <h3>Wednesday Hip Hop Sessions</h3>
+              <div class="class-cards-inline">
+                <div class="mini-class-card">
+                  <strong>SEND Dance</strong>
+                  <p class="meta">5:30-6:30 PM • Ages 6+</p>
+                  <span class="badge inclusive" style="margin-top: 6px;">Inclusive</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £6.50 • £30/mo</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+                <div class="mini-class-card">
+                  <strong>Hip Hop Upskill</strong>
+                  <p class="meta">6:30-7:30 PM • Ages 7+</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £6.50 • £30/mo</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+                <div class="mini-class-card">
+                  <strong>Hip Hop Upskill</strong>
+                  <p class="meta">7:30-8:30 PM • Ages 13+</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £6.50 • £30/mo</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+              </div>
             </div>
+            <div class="diagonal-bg"></div>
+          </div>
 
-            <div class="card">
-              <h3>Hip Hop Upskill</h3>
-              <p class="meta">Wednesday, 6:30-7:30 PM &middot; Ages 7+</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;6.50 &middot; &pound;30/mo &middot; &pound;270 upfront</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+          <div class="diagonal-item diagonal-left" data-diagonal-item>
+            <div class="diagonal-content">
+              <span class="diagonal-number">THU</span>
+              <h3>Thursday Dance Styles</h3>
+              <div class="class-cards-inline">
+                <div class="mini-class-card">
+                  <strong>Lyrical & Jazz Technique</strong>
+                  <p class="meta">6-7 PM • Ages 13+</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £6.50 • £30/mo</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+                <div class="mini-class-card">
+                  <strong>Hip Hop Street & Break Dance</strong>
+                  <p class="meta">7-8 PM • Ages 7+</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £6.50 • £30/mo</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+              </div>
             </div>
-
-            <div class="card">
-              <h3>Hip Hop Upskill</h3>
-              <p class="meta">Wednesday, 7:30-8:30 PM &middot; Ages 13+</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;6.50 &middot; &pound;30/mo &middot; &pound;270 upfront</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=800&h=600&fit=crop" alt="Jazz dance" loading="lazy" />
             </div>
+            <div class="diagonal-bg"></div>
+          </div>
 
-            <div class="card">
-              <h3>Lyrical &amp; Jazz Technique</h3>
-              <p class="meta">Thursday, 6-7 PM &middot; Ages 13+</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;6.50 &middot; &pound;30/mo &middot; &pound;270 upfront</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+          <div class="diagonal-item diagonal-right" data-diagonal-item>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1609619385002-f40f38dc5dd7?w=800&h=600&fit=crop" alt="Kids dance" loading="lazy" />
             </div>
-
-            <div class="card">
-              <h3>Hip Hop Street &amp; Break Dance</h3>
-              <p class="meta">Thursday, 7-8 PM &middot; Ages 7+</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;6.50 &middot; &pound;30/mo &middot; &pound;270 upfront</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+            <div class="diagonal-content">
+              <span class="diagonal-number">SAT</span>
+              <h3>Saturday Family Classes</h3>
+              <div class="class-cards-inline">
+                <div class="mini-class-card">
+                  <strong>Tiny Twisters Hip Hop</strong>
+                  <p class="meta">10-11 AM • Ages 2-6</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £5 • Both: £8</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+                <div class="mini-class-card">
+                  <strong>Tiny Twisters Cheerleading</strong>
+                  <p class="meta">11-12 AM • Ages 2-6</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £5 • Both: £8</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+                <div class="mini-class-card">
+                  <strong>Tricks & Tumble</strong>
+                  <p class="meta">10-12 AM • Ages 7+</p>
+                  <span class="badge" style="margin-top: 6px;">Free Trial</span>
+                  <p class="meta" style="margin-top: 8px;">Drop-in: £6.50 • £30/mo</p>
+                  <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
+                </div>
+              </div>
             </div>
-
-            <div class="card">
-              <h3>Tiny Twisters Hip Hop</h3>
-              <p class="meta">Saturday, 10-11 AM &middot; Ages 2-6</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;5 &middot; Both classes: &pound;8</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
-            </div>
-
-            <div class="card">
-              <h3>Tiny Twisters Cheerleading</h3>
-              <p class="meta">Saturday, 11-12 AM &middot; Ages 2-6</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;5 &middot; Both classes: &pound;8</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
-            </div>
-
-            <div class="card">
-              <h3>Tricks &amp; Tumble</h3>
-              <p class="meta">Saturday, 10-11 AM or 11-12 AM &middot; Ages 7+</p>
-              <span class="badge">Free Trial</span>
-              <p class="meta">Drop-in: &pound;6.50 &middot; &pound;30/mo &middot; &pound;270 upfront</p>
-              <a class="button" href="class-detail.html" style="margin-top: 10px;">View class</a>
-            </div>
-
+            <div class="diagonal-bg"></div>
           </div>
         </div>
       </section>
 <!-- Section: All Classes (End) -->
+
+      <style>
+        .class-cards-inline {
+          display: grid;
+          gap: 16px;
+          margin-top: 20px;
+        }
+        .mini-class-card {
+          background: rgba(255, 255, 255, 0.95);
+          padding: 20px;
+          border-radius: 16px;
+          border: 1px solid var(--line);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .mini-class-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+        }
+        .mini-class-card strong {
+          display: block;
+          font-size: 18px;
+          margin-bottom: 6px;
+        }
+        @media (min-width: 768px) {
+          .class-cards-inline {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          }
+        }
+      </style>
     </main>
 
     <!-- Footer Include (Start) -->
 <div id="site-footer"></div>
 <!-- Footer Include (End) -->
-      <script src="app.js"></script>
+      <script type="importmap">
+        {
+          "imports": {
+            "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@1.5.5/build/runtime.js"
+          }
+        }
+      </script>
+      <script type="module" src="app.js"></script>
   </body>
 </html>

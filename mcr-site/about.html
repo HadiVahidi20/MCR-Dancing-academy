@@ -9,6 +9,8 @@
     <meta property="og:description" content="Inclusive, nurturing and professional dance coaching in Ashton-under-Lyne." />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="why-mcr-styles.css" />
+    <link rel="stylesheet" href="location-cinematic.css" />
   </head>
   <body>
     <!-- Header Include (Start) -->
@@ -17,69 +19,393 @@
 
     <main>
       <!-- Section: About MCR Dance & Cheer Academy (Start) -->
-<section class="section hero">
-        <div class="section-inner">
-          <nav class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span>About</span>
-          </nav>
+<section class="section hero about-hero">
+  <div class="about-hero-bg">
+    <div class="about-gradient-orb about-orb-1"></div>
+    <div class="about-gradient-orb about-orb-2"></div>
+    <div class="about-gradient-orb about-orb-3"></div>
+  </div>
 
-          <div class="split">
-            <div>
-              <div class="eyebrow">About</div>
-              <h1>About MCR Dance &amp; Cheer Academy</h1>
-              <p class="meta">Based in Ashton-under-Lyne. Inclusive, nurturing and professional coaching for ages 2-16+.</p>
-              <a class="button primary" href="classes.html" style="margin-top: 12px;">View Classes</a>
-            </div>
-            <div class="hero-card">
-              <div class="placeholder tall"></div>
-            </div>
+  <div class="section-inner">
+    <div class="about-hero-content">
+      <div class="about-hero-main">
+        <div class="eyebrow">About MCR</div>
+        <h1 class="about-hero-title">
+          <span class="hero-title-script">Building Confidence</span>
+          <span class="hero-title-sans">Through Dance</span>
+        </h1>
+        <p class="meta" style="font-size: 18px; max-width: 600px; margin-top: 16px;">Based in Ashton-under-Lyne. Inclusive, nurturing and professional coaching for ages 2-16+.</p>
+
+        <div class="hero-actions" style="margin-top: 32px;">
+          <a class="button primary" href="classes.html">View Classes</a>
+          <a class="button outline" href="free-trial.html">Free Trial</a>
+        </div>
+
+        <div class="about-stats" style="margin-top: 64px;">
+          <div class="about-stat-item">
+            <div class="eyebrow">Founded</div>
+            <strong style="font-size: 32px; display: block; margin-top: 4px;">2020</strong>
+          </div>
+          <div class="about-stat-item">
+            <div class="eyebrow">Students</div>
+            <strong style="font-size: 32px; display: block; margin-top: 4px;">100+</strong>
+          </div>
+          <div class="about-stat-item">
+            <div class="eyebrow">Classes</div>
+            <strong style="font-size: 32px; display: block; margin-top: 4px;">11 Weekly</strong>
           </div>
         </div>
-      </section>
+      </div>
+
+      <!-- Floating Team Images -->
+      <div class="about-hero-images">
+        <div class="about-floating-img about-img-1">
+          <img src="https://i.pravatar.cc/200?img=12" alt="Team member" />
+        </div>
+        <div class="about-floating-img about-img-2">
+          <img src="https://i.pravatar.cc/200?img=28" alt="Team member" />
+        </div>
+        <div class="about-floating-img about-img-3">
+          <img src="https://i.pravatar.cc/200?img=47" alt="Team member" />
+        </div>
+        <div class="about-floating-img about-img-4">
+          <img src="https://i.pravatar.cc/200?img=32" alt="Team member" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .about-hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    }
+
+    .about-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .about-gradient-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.6;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .about-orb-1 {
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+      top: -200px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .about-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      bottom: -150px;
+      right: -50px;
+      animation-delay: 7s;
+    }
+
+    .about-orb-3 {
+      width: 350px;
+      height: 350px;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: 14s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      33% {
+        transform: translate(50px, -50px) scale(1.1);
+      }
+      66% {
+        transform: translate(-30px, 30px) scale(0.9);
+      }
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-hero-main {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .about-hero-title {
+      margin: 16px 0 0;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 48px;
+    }
+
+    .about-stat-item {
+      text-align: left;
+    }
+
+    .about-hero-images {
+      position: relative;
+      height: 500px;
+    }
+
+    .about-floating-img {
+      position: absolute;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+      border: 2px solid var(--line);
+    }
+
+    .about-floating-img:hover {
+      transform: scale(1.05) !important;
+    }
+
+    .about-floating-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-img-1 {
+      width: 180px;
+      height: 180px;
+      top: 0;
+      left: 0;
+      animation: floatImage 6s ease-in-out infinite;
+    }
+
+    .about-img-2 {
+      width: 200px;
+      height: 200px;
+      top: 50px;
+      right: 50px;
+      animation: floatImage 7s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .about-img-3 {
+      width: 160px;
+      height: 160px;
+      bottom: 80px;
+      left: 80px;
+      animation: floatImage 8s ease-in-out infinite;
+      animation-delay: 2s;
+    }
+
+    .about-img-4 {
+      width: 140px;
+      height: 140px;
+      bottom: 0;
+      right: 0;
+      animation: floatImage 9s ease-in-out infinite;
+      animation-delay: 3s;
+    }
+
+    @keyframes floatImage {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 968px) {
+      .about-hero-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .about-hero-images {
+        height: 400px;
+      }
+
+      .about-stats {
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .about-hero {
+        min-height: auto;
+        padding: 80px 0;
+      }
+
+      .about-stats {
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .about-hero-images {
+        height: 300px;
+      }
+
+      .about-floating-img {
+        width: 120px !important;
+        height: 120px !important;
+      }
+    }
+  </style>
+</section>
 <!-- Section: About MCR Dance & Cheer Academy (End) -->
 
       <!-- Section: Mission & Values (Start) -->
-<section class="section alt">
-        <div class="section-inner grid-2">
-          <div class="card">
-            <h3>Mission &amp; Values</h3>
-            <p>We help students build confidence, rhythm, coordination and performance skills in a supportive environment.</p>
-            <ul class="list" style="margin-top: 10px;">
-              <li>Adaptive &amp; Inclusive — SEN/SEND friendly</li>
-              <li>Professional, qualified coaching team</li>
-              <li>Community focused — building friendships through dance</li>
-              <li>Ages 2-16+ welcome</li>
-            </ul>
+<section class="section why-mcr" data-why-mcr>
+        <div class="section-inner">
+          <div class="eyebrow">Our Mission</div>
+          <h2>What we stand for</h2>
+        </div>
+
+        <div class="why-diagonal-wrapper">
+          <div class="diagonal-item diagonal-left" data-diagonal-item>
+            <div class="diagonal-content">
+              <span class="diagonal-number">01</span>
+              <h3>Inclusive & Adaptive</h3>
+              <p>We welcome every child, regardless of ability. Our SEN/SEND-friendly classes ensure everyone can experience the joy of dance in a supportive, nurturing environment.</p>
+              <ul class="list" style="margin-top: 16px;">
+                <li>Adaptive teaching methods</li>
+                <li>Individual attention for each learner</li>
+                <li>Safe, supportive atmosphere</li>
+              </ul>
+            </div>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=800&h=600&fit=crop" alt="Inclusive dance" loading="lazy" />
+            </div>
+            <div class="diagonal-bg"></div>
           </div>
-          <div class="card">
-            <h3>Timeline</h3>
-            <div class="panel">Milestones placeholder — founding date, key achievements, growth</div>
+
+          <div class="diagonal-item diagonal-right" data-diagonal-item>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&h=600&fit=crop" alt="Professional coaches" loading="lazy" />
+            </div>
+            <div class="diagonal-content">
+              <span class="diagonal-number">02</span>
+              <h3>Professional Excellence</h3>
+              <p>Our qualified coaching team brings years of experience and passion to every class. We're committed to helping each student reach their potential while having fun.</p>
+              <ul class="list" style="margin-top: 16px;">
+                <li>Fully qualified instructors</li>
+                <li>Ongoing professional development</li>
+                <li>Proven teaching methods</li>
+              </ul>
+            </div>
+            <div class="diagonal-bg"></div>
+          </div>
+
+          <div class="diagonal-item diagonal-left" data-diagonal-item>
+            <div class="diagonal-content">
+              <span class="diagonal-number">03</span>
+              <h3>Community & Confidence</h3>
+              <p>More than just dance classes — we build lasting friendships and confidence. Students learn performance skills, teamwork, and self-expression in a community that celebrates everyone.</p>
+              <ul class="list" style="margin-top: 16px;">
+                <li>Strong sense of community</li>
+                <li>Performance opportunities</li>
+                <li>Building lifelong friendships</li>
+              </ul>
+            </div>
+            <div class="diagonal-image" data-parallax-diagonal>
+              <img src="https://images.unsplash.com/photo-1609619385002-f40f38dc5dd7?w=800&h=600&fit=crop" alt="Community" loading="lazy" />
+            </div>
+            <div class="diagonal-bg"></div>
           </div>
         </div>
       </section>
 <!-- Section: Mission & Values (End) -->
 
       <!-- Section: Meet the Team (Start) -->
-<section class="section">
+<section class="location-modern" data-location-modern style="background: var(--bg);">
         <div class="section-inner">
-          <h2 class="section-title">Meet the Team</h2>
-          <div class="cards">
-            <div class="card">
-              <div class="placeholder avatar"></div>
-              <p style="margin-top: 12px;"><strong>Coach Name</strong></p>
-              <p class="meta">Profile placeholder</p>
+          <div class="location-header" data-location-header>
+            <div class="eyebrow">Our Team</div>
+            <h2>Meet Our Coaches</h2>
+            <p class="meta">Experienced, passionate, and dedicated to your child's success</p>
+          </div>
+
+          <div class="location-cards" data-location-cards style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px;">
+            <div class="location-card" data-location-card data-card-index="0">
+              <div class="location-card-icon">
+                <img src="https://i.pravatar.cc/200?img=12" alt="Head Coach" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;" />
+              </div>
+              <div class="location-card-content">
+                <h3>Sarah Thompson</h3>
+                <p><strong>Head Coach & Founder</strong></p>
+                <p class="meta">15+ years of dance & cheer experience. Specialized in adaptive teaching methods and youth development.</p>
+              </div>
+              <div class="location-card-bg"></div>
             </div>
-            <div class="card">
-              <div class="placeholder avatar"></div>
-              <p style="margin-top: 12px;"><strong>Coach Name</strong></p>
-              <p class="meta">Profile placeholder</p>
+
+            <div class="location-card" data-location-card data-card-index="1">
+              <div class="location-card-icon">
+                <img src="https://i.pravatar.cc/200?img=28" alt="Hip Hop Coach" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;" />
+              </div>
+              <div class="location-card-content">
+                <h3>Marcus Johnson</h3>
+                <p><strong>Hip Hop Instructor</strong></p>
+                <p class="meta">Street dance specialist with competition background. Passionate about building confidence through urban dance styles.</p>
+              </div>
+              <div class="location-card-bg"></div>
             </div>
-            <div class="card">
-              <div class="placeholder avatar"></div>
-              <p style="margin-top: 12px;"><strong>Coach Name</strong></p>
-              <p class="meta">Profile placeholder</p>
+
+            <div class="location-card" data-location-card data-card-index="2">
+              <div class="location-card-icon">
+                <img src="https://i.pravatar.cc/200?img=47" alt="Cheer Coach" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;" />
+              </div>
+              <div class="location-card-content">
+                <h3>Emma Roberts</h3>
+                <p><strong>Cheerleading Coach</strong></p>
+                <p class="meta">Former competitive cheerleader. Specializes in tumbling, stunts, and building team spirit in young athletes.</p>
+              </div>
+              <div class="location-card-bg"></div>
+            </div>
+
+            <div class="location-card" data-location-card data-card-index="3">
+              <div class="location-card-icon">
+                <img src="https://i.pravatar.cc/200?img=32" alt="Jazz Coach" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;" />
+              </div>
+              <div class="location-card-content">
+                <h3>Priya Patel</h3>
+                <p><strong>Lyrical & Jazz Instructor</strong></p>
+                <p class="meta">Trained in multiple dance styles. Expert in technique, expression, and helping students discover their unique style.</p>
+              </div>
+              <div class="location-card-bg"></div>
             </div>
           </div>
         </div>
@@ -87,10 +413,34 @@
 <!-- Section: Meet the Team (End) -->
 
       <!-- Section: Awards & Partners (Start) -->
-<section class="section alt">
+<section class="section" style="background: var(--surface);">
         <div class="section-inner">
-          <h2 class="section-title">Awards &amp; Partners</h2>
-          <div class="panel">Logos placeholder — certifications, associations, partners</div>
+          <div class="eyebrow" style="text-align: center;">Certifications & Affiliations</div>
+          <h2 class="section-title" style="text-align: center;">Recognized Excellence</h2>
+          <p class="meta" style="text-align: center; margin: 16px auto 0; max-width: 600px;">Our coaches are certified professionals, and we're proud members of leading dance and cheer organizations.</p>
+
+          <div class="grid-3" style="margin-top: 48px; gap: 24px;">
+            <div class="card" style="text-align: center; padding: 32px;">
+              <div style="font-size: 48px; margin-bottom: 16px;">🏆</div>
+              <h3>Qualified Coaches</h3>
+              <p class="meta">All instructors hold recognized teaching qualifications and undergo regular training.</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 32px;">
+              <div style="font-size: 48px; margin-bottom: 16px;">✓</div>
+              <h3>DBS Checked</h3>
+              <p class="meta">Every team member is fully DBS checked for your peace of mind and child safety.</p>
+            </div>
+            <div class="card" style="text-align: center; padding: 32px;">
+              <div style="font-size: 48px; margin-bottom: 16px;">🤝</div>
+              <h3>Community Partners</h3>
+              <p class="meta">Working with local schools and organizations to promote inclusive dance education.</p>
+            </div>
+          </div>
+
+          <div style="margin-top: 64px; text-align: center;">
+            <p class="meta" style="margin-bottom: 16px;"><strong>Want to join our team?</strong></p>
+            <a class="button primary" href="contact.html">Get in Touch</a>
+          </div>
         </div>
       </section>
 <!-- Section: Awards & Partners (End) -->
@@ -99,6 +449,53 @@
     <!-- Footer Include (Start) -->
 <div id="site-footer"></div>
 <!-- Footer Include (End) -->
-      <script src="app.js"></script>
+      <script type="importmap">
+        {
+          "imports": {
+            "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@1.5.5/build/runtime.js"
+          }
+        }
+      </script>
+      <script type="module" src="app.js"></script>
+      <script>
+        // Location Modern Animation (for team cards)
+        document.addEventListener('DOMContentLoaded', () => {
+          const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, observerOptions);
+
+          const locationCards = document.querySelectorAll('[data-location-card]');
+          locationCards.forEach(card => observer.observe(card));
+
+          // Add hover effect to cards with tilt
+          locationCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const centerX = rect.width / 2;
+              const centerY = rect.height / 2;
+              const rotateX = (y - centerY) / 20;
+              const rotateY = (centerX - x) / 20;
+
+              card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(8px) translateY(-4px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+              card.style.transform = '';
+            });
+          });
+        });
+      </script>
   </body>
 </html>

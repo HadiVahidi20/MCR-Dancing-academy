@@ -7,6 +7,7 @@
     <meta name="description" content="Your class booking at MCR Dance & Cheer Academy has been confirmed." />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="location-cinematic.css" />
   </head>
   <body>
     <!-- Header Include (Start) -->
@@ -15,50 +16,124 @@
 
     <main>
       <!-- Section: Booking Confirmed (Start) -->
-<section class="section hero">
-        <div class="section-inner">
-          <nav class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span>Booking Confirmed</span>
-          </nav>
+<div class="hero-scroll" data-hero-wheel>
+  <div class="hero-sticky">
+    <section class="section hero" style="min-height: 70vh;">
+      <div class="hero-overlay" style="background: linear-gradient(135deg, var(--accent-soft) 0%, var(--bg) 100%);"></div>
+      <div class="section-inner hero-content" style="text-align: center;">
+        <div style="font-size: 80px; margin-bottom: 24px; animation: celebrate 1s ease-in-out;">🎉</div>
 
-          <div class="eyebrow">Confirmation</div>
-          <h1>Booking Confirmed</h1>
-          <div class="card" style="margin-top: 8px;">
-            <p class="meta">Reference: <strong>MCR-2026-0001</strong></p>
-            <div class="panel" style="margin-top: 12px;">
-              <strong>Hip Hop Upskill</strong>
-              <p class="meta">Wednesday &middot; 6:30-7:30 PM &middot; Ages 7+</p>
-              <p class="meta">Plan: Monthly (&pound;30/mo)</p>
-              <p class="meta">Next class: Next Wednesday</p>
-            </div>
-            <div class="actions" style="margin-top: 16px;">
-              <a class="button" href="#">Add to Calendar</a>
-              <a class="button" href="#">Download Receipt</a>
-              <a class="button primary" href="manage-booking.html">Manage Booking</a>
-            </div>
+        <div class="eyebrow hero-eyebrow">Success!</div>
+        <h1 class="hero-title">
+          <span class="hero-title-script">Booking</span>
+          <span class="hero-title-sans">Confirmed</span>
+        </h1>
+        <p class="meta hero-meta">We can't wait to see you in class!</p>
+
+        <div class="card" style="margin: 48px auto 0; max-width: 600px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
+          <p class="meta">Reference: <strong style="color: var(--accent-hover);">MCR-2026-0001</strong></p>
+          <div class="panel" style="margin-top: 16px; background: var(--accent-soft); border-color: var(--accent);">
+            <strong>Hip Hop Upskill</strong>
+            <p class="meta">Wednesday • 6:30-7:30 PM • Ages 7+</p>
+            <p class="meta">Plan: Monthly (£30/mo)</p>
+            <p class="meta">Next class: Next Wednesday</p>
+          </div>
+          <div class="actions" style="margin-top: 20px; flex-wrap: wrap; justify-content: center;">
+            <a class="button outline" href="#">📅 Add to Calendar</a>
+            <a class="button outline" href="#">📄 Download Receipt</a>
+            <a class="button primary" href="manage-booking.html">Manage Booking</a>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  </div>
+</div>
 <!-- Section: Booking Confirmed (End) -->
 
       <!-- Section: What to expect (Start) -->
-<section class="section alt">
+<section class="location-modern" data-location-modern style="padding: 120px 0;">
         <div class="section-inner">
-          <h2>What to expect</h2>
-          <div class="grid-3" style="margin-top: 16px;">
-            <div class="card">
-              <strong>Arrive early</strong>
-              <p class="meta">Get there 10 minutes before your first session so the coach can welcome you.</p>
+          <div class="location-header" data-location-header style="text-align: center;">
+            <div class="eyebrow">Next Steps</div>
+            <h2>What to expect</h2>
+            <p class="meta">Here's everything you need to know for your first class</p>
+          </div>
+
+          <div class="location-cards" data-location-cards style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px;">
+            <div class="location-card" data-location-card data-card-index="0">
+              <div class="location-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="location-card-content">
+                <h3>Arrive Early</h3>
+                <p>Get there 10 minutes before your first session so the coach can welcome you and show you around the studio.</p>
+              </div>
+              <div class="location-card-bg"></div>
             </div>
-            <div class="card">
-              <strong>What to bring</strong>
-              <p class="meta">Water bottle and comfortable clothing. No special shoes needed for your first class.</p>
+
+            <div class="location-card" data-location-card data-card-index="1">
+              <div class="location-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div class="location-card-content">
+                <h3>What to Bring</h3>
+                <p>Water bottle and comfortable clothing that allows free movement. No special shoes needed for your first class.</p>
+              </div>
+              <div class="location-card-bg"></div>
             </div>
-            <div class="card">
-              <strong>Need help?</strong>
-              <p class="meta">Contact us anytime at mcrdanceacademy@gmail.com or 07850 936754.</p>
+
+            <div class="location-card" data-location-card data-card-index="2">
+              <div class="location-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="location-card-content">
+                <h3>Finding Us</h3>
+                <p>Grosvenor Street, Ashton-under-Lyne, OL7 0RG. Free parking available nearby. 5-minute walk from town center.</p>
+                <a href="contact.html" class="location-card-link" style="margin-top: 12px;">
+                  Get Directions
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <div class="location-card-bg"></div>
+            </div>
+
+            <div class="location-card" data-location-card data-card-index="3">
+              <div class="location-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </div>
+              <div class="location-card-content">
+                <h3>Need Help?</h3>
+                <p>Contact us anytime at mcrdanceacademy@gmail.com or call 07850 936754. We respond within 24 hours.</p>
+                <a href="contact.html" class="location-card-link" style="margin-top: 12px;">
+                  Contact Us
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </a>
+              </div>
+              <div class="location-card-bg"></div>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 64px;">
+            <div class="card" style="display: inline-block; padding: 32px 48px; background: var(--accent-soft); border-color: var(--accent);">
+              <h3 style="margin-bottom: 12px;">📧 Check Your Email</h3>
+              <p class="meta">We've sent a confirmation email with all the details, calendar invite, and studio directions.</p>
             </div>
           </div>
         </div>
@@ -69,6 +144,65 @@
     <!-- Footer Include (Start) -->
 <div id="site-footer"></div>
 <!-- Footer Include (End) -->
-      <script src="app.js"></script>
+      <script type="importmap">
+        {
+          "imports": {
+            "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@1.5.5/build/runtime.js"
+          }
+        }
+      </script>
+      <script type="module" src="app.js"></script>
+      <script>
+        // Celebration animation
+        document.addEventListener('DOMContentLoaded', () => {
+          const style = document.createElement('style');
+          style.textContent = `
+            @keyframes celebrate {
+              0%, 100% { transform: scale(1) rotate(0deg); }
+              25% { transform: scale(1.2) rotate(-10deg); }
+              50% { transform: scale(1.3) rotate(10deg); }
+              75% { transform: scale(1.2) rotate(-10deg); }
+            }
+          `;
+          document.head.appendChild(style);
+
+          // Location cards animation
+          const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -80px 0px'
+          };
+
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, observerOptions);
+
+          const locationCards = document.querySelectorAll('[data-location-card]');
+          locationCards.forEach(card => observer.observe(card));
+
+          // Card hover effects
+          locationCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+              const rect = card.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+              const centerX = rect.width / 2;
+              const centerY = rect.height / 2;
+              const rotateX = (y - centerY) / 20;
+              const rotateY = (centerX - x) / 20;
+
+              card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateX(8px) translateY(-4px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+              card.style.transform = '';
+            });
+          });
+        });
+      </script>
   </body>
 </html>

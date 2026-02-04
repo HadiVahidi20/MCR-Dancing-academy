@@ -17,12 +17,6 @@
       <!-- Section: View and manage your bookings (Start) -->
 <section class="section hero">
         <div class="section-inner">
-          <nav class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span>Manage Booking</span>
-          </nav>
-
           <div class="eyebrow">Manage Booking</div>
           <h1>View and manage your bookings</h1>
           <p class="meta">No account needed. We will verify your identity via a one-time code sent to your email.</p>
@@ -79,6 +73,13 @@
     <!-- Footer Include (Start) -->
 <div id="site-footer"></div>
 <!-- Footer Include (End) -->
-      <script src="app.js"></script>
+      <script type="importmap">
+        {
+          "imports": {
+            "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@1.5.5/build/runtime.js"
+          }
+        }
+      </script>
+      <script type="module" src="app.js"></script>
   </body>
 </html>

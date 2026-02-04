@@ -9,6 +9,7 @@
     <meta property="og:description" content="Try a class for free. No payment needed. Hip Hop, Lyrical, Jazz & Cheerleading in Ashton-under-Lyne." />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="why-mcr-styles.css" />
   </head>
   <body>
     <!-- Header Include (Start) -->
@@ -17,102 +18,496 @@
 
     <main>
       <!-- Section: Book your free trial (Start) -->
-<section class="section hero">
-        <div class="section-inner">
-          <nav class="breadcrumb">
-            <a href="index.html">Home</a>
-            <span class="breadcrumb-sep">/</span>
-            <span>Free Trial</span>
-          </nav>
+<section class="section trial-hero">
+  <div class="trial-hero-bg">
+    <div class="trial-wave trial-wave-1"></div>
+    <div class="trial-wave trial-wave-2"></div>
+    <div class="trial-wave trial-wave-3"></div>
+  </div>
 
-          <div class="eyebrow">No payment needed</div>
-          <h1>Book your free trial</h1>
-          <p class="meta">Try any class for free. Just fill in your details and pick a class — no card required.</p>
+  <div class="section-inner">
+    <div class="trial-hero-grid">
+      <!-- Left Side: Content -->
+      <div class="trial-hero-content">
+        <div class="eyebrow">No payment needed</div>
+        <h1 class="trial-hero-title">
+          <span class="hero-title-script">Try Before</span>
+          <span class="hero-title-sans">You Commit</span>
+        </h1>
+        <p class="meta" style="font-size: 18px; margin-top: 16px; max-width: 500px;">Experience any class for free. No card required, no strings attached. Just pure dance fun.</p>
 
-          <div class="trial-banner">
-            <div class="trial-banner-item">
-              <strong>No payment</strong>
-              <span class="meta">Completely free, no card needed</span>
+        <!-- Benefits Checklist -->
+        <div class="trial-benefits">
+          <div class="trial-benefit-item">
+            <div class="trial-check-icon">✓</div>
+            <div>
+              <strong style="display: block; margin-bottom: 4px;">100% Free</strong>
+              <span class="meta">No payment or card details needed</span>
             </div>
-            <div class="trial-banner-item">
-              <strong>Any class</strong>
-              <span class="meta">Choose from 11 weekly classes</span>
+          </div>
+          <div class="trial-benefit-item">
+            <div class="trial-check-icon">✓</div>
+            <div>
+              <strong style="display: block; margin-bottom: 4px;">Choose Any Class</strong>
+              <span class="meta">11+ classes across all styles and ages</span>
             </div>
-            <div class="trial-banner-item">
-              <strong>Reschedule once</strong>
-              <span class="meta">With 24 hours notice</span>
+          </div>
+          <div class="trial-benefit-item">
+            <div class="trial-check-icon">✓</div>
+            <div>
+              <strong style="display: block; margin-bottom: 4px;">Flexible Rescheduling</strong>
+              <span class="meta">Change your trial date once, free of charge</span>
+            </div>
+          </div>
+          <div class="trial-benefit-item">
+            <div class="trial-check-icon">✓</div>
+            <div>
+              <strong style="display: block; margin-bottom: 4px;">Meet Our Team</strong>
+              <span class="meta">Experience our professional, nurturing coaching</span>
             </div>
           </div>
         </div>
-      </section>
+
+        <a href="#trial-form" class="button primary" style="margin-top: 32px; padding: 16px 40px; font-size: 18px;">Book Free Trial</a>
+      </div>
+
+      <!-- Right Side: FREE Badge & Stats -->
+      <div class="trial-hero-visual">
+        <!-- Large FREE Badge -->
+        <div class="trial-free-badge">
+          <div class="trial-free-stamp">
+            <span class="trial-free-text">100%</span>
+            <span class="trial-free-label">FREE</span>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="trial-stats-cards">
+          <div class="trial-stat-card trial-stat-1">
+            <div class="trial-stat-number">11+</div>
+            <div class="trial-stat-label">Class Options</div>
+          </div>
+          <div class="trial-stat-card trial-stat-2">
+            <div class="trial-stat-number">£0</div>
+            <div class="trial-stat-label">Cost</div>
+          </div>
+          <div class="trial-stat-card trial-stat-3">
+            <div class="trial-stat-number">1</div>
+            <div class="trial-stat-label">Free Reschedule</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .trial-hero {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      padding: 100px 0 120px;
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .trial-hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+    }
+
+    .trial-wave {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 40%;
+      animation: wave 20s linear infinite;
+    }
+
+    .trial-wave-1 {
+      top: -50%;
+      left: -50%;
+      animation-delay: 0s;
+    }
+
+    .trial-wave-2 {
+      bottom: -50%;
+      right: -50%;
+      animation-delay: 7s;
+    }
+
+    .trial-wave-3 {
+      top: 0;
+      left: 0;
+      animation-delay: 14s;
+    }
+
+    @keyframes wave {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .trial-hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .trial-hero-content {
+      animation: fadeInLeft 1s ease-out;
+    }
+
+    .trial-hero-title {
+      margin: 16px 0 0;
+      color: white;
+    }
+
+    .trial-benefits {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .trial-benefit-item {
+      display: flex;
+      align-items: start;
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .trial-benefit-item:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateX(8px);
+    }
+
+    .trial-check-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .trial-hero-visual {
+      position: relative;
+      height: 500px;
+      animation: fadeInRight 1s ease-out;
+    }
+
+    .trial-free-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotate 30s linear infinite;
+    }
+
+    .trial-free-stamp {
+      width: 280px;
+      height: 280px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+      border: 8px dashed rgba(245, 87, 108, 0.5);
+      position: relative;
+    }
+
+    .trial-free-stamp::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 4px solid rgba(245, 87, 108, 0.3);
+      border-radius: 50%;
+      top: -16px;
+      left: 0;
+    }
+
+    .trial-free-text {
+      font-size: 48px;
+      font-weight: 900;
+      color: #f5576c;
+      line-height: 1;
+    }
+
+    .trial-free-label {
+      font-size: 72px;
+      font-weight: 900;
+      color: #f093fb;
+      line-height: 1;
+      margin-top: 8px;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    .trial-stats-cards {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .trial-stat-card {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 24px 28px;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      animation: floatStat 6s ease-in-out infinite;
+    }
+
+    .trial-stat-1 {
+      top: 20px;
+      left: 0;
+      animation-delay: 0s;
+    }
+
+    .trial-stat-2 {
+      top: 200px;
+      right: 20px;
+      animation-delay: 2s;
+    }
+
+    .trial-stat-3 {
+      bottom: 40px;
+      left: 40px;
+      animation-delay: 4s;
+    }
+
+    .trial-stat-number {
+      font-size: 36px;
+      font-weight: 900;
+      color: #f5576c;
+      line-height: 1;
+    }
+
+    .trial-stat-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    @keyframes floatStat {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @media (max-width: 968px) {
+      .trial-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .trial-hero-visual {
+        height: 450px;
+      }
+
+      .trial-free-stamp {
+        width: 240px;
+        height: 240px;
+      }
+
+      .trial-free-text {
+        font-size: 40px;
+      }
+
+      .trial-free-label {
+        font-size: 60px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .trial-hero {
+        padding: 60px 0 80px;
+      }
+
+      .trial-benefits {
+        gap: 16px;
+      }
+
+      .trial-benefit-item {
+        padding: 16px;
+      }
+
+      .trial-hero-visual {
+        height: 400px;
+      }
+
+      .trial-free-stamp {
+        width: 200px;
+        height: 200px;
+      }
+
+      .trial-free-text {
+        font-size: 32px;
+      }
+
+      .trial-free-label {
+        font-size: 48px;
+      }
+
+      .trial-stat-card {
+        padding: 20px 24px;
+      }
+    }
+  </style>
+</section>
 <!-- Section: Book your free trial (End) -->
 
       <!-- Section: Student Information (Start) -->
-<section class="section alt">
-        <div class="section-inner">
-          <div class="split">
-            <div class="card">
-              <h3>Student Information</h3>
-              <form class="form">
-                <label>Student First Name</label>
-                <input type="text" placeholder="e.g., Ava" />
-                <label>Student Last Name</label>
-                <input type="text" placeholder="e.g., Khan" />
-                <label>Date of Birth / Age</label>
-                <input type="text" placeholder="e.g., 2016-04-10" />
-                <label>Parent/Guardian Name</label>
-                <input type="text" placeholder="e.g., Sara Khan" />
-                <label>Parent/Guardian Phone</label>
-                <input type="text" placeholder="e.g., 07xxx" />
-                <label>Parent/Guardian Email</label>
-                <input type="email" placeholder="e.g., parent@email.com" />
-                <label>Medical / Learning Needs (optional)</label>
-                <textarea rows="3" placeholder="Allergies, SEN/SEND support, etc."></textarea>
-                <label>
-                  <input type="checkbox" /> I agree to the policies and consent form
-                </label>
-              </form>
+<section class="section free-trial-split" data-scroll-section style="padding: 120px 0;">
+        <div class="trial-split-container">
+          <!-- Left Side: 4-Column Image Parallax -->
+          <div class="trial-split-image" data-scroll-parallax>
+            <div class="trial-image-grid">
+              <div class="trial-image-column" data-column="1" data-parallax-speed="0.8">
+                <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=400&h=800&fit=crop" alt="Dance class" loading="lazy" />
+              </div>
+              <div class="trial-image-column" data-column="2" data-parallax-speed="-0.6">
+                <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=400&h=800&fit=crop" alt="Cheer class" loading="lazy" />
+              </div>
+              <div class="trial-image-column" data-column="3" data-parallax-speed="0.7">
+                <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?w=400&h=800&fit=crop" alt="Jazz class" loading="lazy" />
+              </div>
+              <div class="trial-image-column" data-column="4" data-parallax-speed="-0.5">
+                <img src="https://images.unsplash.com/photo-1609619385002-f40f38dc5dd7?w=400&h=800&fit=crop" alt="Kids class" loading="lazy" />
+              </div>
             </div>
+            <div class="trial-image-overlay" data-scroll-fade></div>
+          </div>
 
-            <div class="card">
-              <h3>Choose a Trial Class</h3>
-              <div class="form">
-                <label for="trial-day">Day</label>
-                <select id="trial-day">
-                  <option>Select a day</option>
-                  <option>Tuesday</option>
-                  <option>Wednesday</option>
-                  <option>Thursday</option>
-                  <option>Saturday</option>
-                </select>
-                <label for="trial-class">Class</label>
-                <select id="trial-class">
-                  <option>Select a class</option>
-                  <option>Cheer for Fun — Tue 5-6 PM, Ages 7+</option>
-                  <option>Level 3 Plus Tumble — Tue 6-7 PM, Ages 7+</option>
-                  <option>Open Cheerleading — Tue 7-8 PM, Ages 16+</option>
-                  <option>SEND Dance — Wed 5:30-6:30 PM, Ages 6+</option>
-                  <option>Hip Hop Upskill — Wed 6:30-7:30 PM, Ages 7+</option>
-                  <option>Hip Hop Upskill — Wed 7:30-8:30 PM, Ages 13+</option>
-                  <option>Lyrical &amp; Jazz Technique — Thu 6-7 PM, Ages 13+</option>
-                  <option>Hip Hop Street &amp; Break Dance — Thu 7-8 PM, Ages 7+</option>
-                  <option>Tiny Twisters Hip Hop — Sat 10-11 AM, Ages 2-6</option>
-                  <option>Tiny Twisters Cheerleading — Sat 11-12 AM, Ages 2-6</option>
-                  <option>Tricks &amp; Tumble — Sat 10-11 or 11-12, Ages 7+</option>
-                </select>
+          <!-- Curved Divider with Reveal -->
+          <div class="trial-curved-divider" data-scroll-reveal>
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M0,0 Q50,100 100,0 L100,100 L0,100 Z" fill="var(--bg)"/>
+            </svg>
+          </div>
+
+          <!-- Right Side: Form Content -->
+          <div class="trial-split-content">
+            <div class="trial-split-inner">
+              <div class="card" style="margin-bottom: 32px;">
+                <h3>Student Information</h3>
+                <form class="form" style="margin-top: 16px;">
+                  <label>Student First Name</label>
+                  <input type="text" placeholder="e.g., Ava" />
+                  <label>Student Last Name</label>
+                  <input type="text" placeholder="e.g., Khan" />
+                  <label>Date of Birth / Age</label>
+                  <input type="text" placeholder="e.g., 2016-04-10" />
+                  <label>Parent/Guardian Name</label>
+                  <input type="text" placeholder="e.g., Sara Khan" />
+                  <label>Parent/Guardian Phone</label>
+                  <input type="text" placeholder="e.g., 07xxx" />
+                  <label>Parent/Guardian Email</label>
+                  <input type="email" placeholder="e.g., parent@email.com" />
+                  <label>Medical / Learning Needs (optional)</label>
+                  <textarea rows="3" placeholder="Allergies, SEN/SEND support, etc."></textarea>
+                  <label>
+                    <input type="checkbox" /> I agree to the policies and consent form
+                  </label>
+                </form>
               </div>
 
-              <div class="panel" style="margin-top: 18px;">
-                <strong>Trial Summary</strong>
-                <p class="meta">Class: Hip Hop Upskill</p>
-                <p class="meta">Day: Wednesday, 6:30-7:30 PM</p>
-                <p class="meta">Cost: <strong>Free</strong></p>
-              </div>
+              <div class="card">
+                <h3>Choose a Trial Class</h3>
+                <div class="form" style="margin-top: 16px;">
+                  <label for="trial-day">Day</label>
+                  <select id="trial-day">
+                    <option>Select a day</option>
+                    <option>Tuesday</option>
+                    <option>Wednesday</option>
+                    <option>Thursday</option>
+                    <option>Saturday</option>
+                  </select>
+                  <label for="trial-class">Class</label>
+                  <select id="trial-class">
+                    <option>Select a class</option>
+                    <option>Cheer for Fun — Tue 5-6 PM, Ages 7+</option>
+                    <option>Level 3 Plus Tumble — Tue 6-7 PM, Ages 7+</option>
+                    <option>Open Cheerleading — Tue 7-8 PM, Ages 16+</option>
+                    <option>SEND Dance — Wed 5:30-6:30 PM, Ages 6+</option>
+                    <option>Hip Hop Upskill — Wed 6:30-7:30 PM, Ages 7+</option>
+                    <option>Hip Hop Upskill — Wed 7:30-8:30 PM, Ages 13+</option>
+                    <option>Lyrical &amp; Jazz Technique — Thu 6-7 PM, Ages 13+</option>
+                    <option>Hip Hop Street &amp; Break Dance — Thu 7-8 PM, Ages 7+</option>
+                    <option>Tiny Twisters Hip Hop — Sat 10-11 AM, Ages 2-6</option>
+                    <option>Tiny Twisters Cheerleading — Sat 11-12 AM, Ages 2-6</option>
+                    <option>Tricks &amp; Tumble — Sat 10-11 or 11-12, Ages 7+</option>
+                  </select>
+                </div>
 
-              <a class="button primary" href="confirmation.html" style="margin-top: 16px; display: inline-block;">Reserve Free Trial</a>
+                <div class="panel" style="margin-top: 18px; background: var(--accent-soft); border-color: var(--accent);">
+                  <strong>Trial Summary</strong>
+                  <p class="meta">Class: Hip Hop Upskill</p>
+                  <p class="meta">Day: Wednesday, 6:30-7:30 PM</p>
+                  <p class="meta">Cost: <strong style="color: var(--accent-hover);">Free</strong></p>
+                </div>
 
-              <div class="notice" style="margin-top: 12px;">
-                Free trials can be rescheduled once with 24 hours notice. No payment is taken.
+                <a class="button primary" href="confirmation.html" style="margin-top: 16px; display: inline-block; width: 100%;">Reserve Free Trial</a>
+
+                <div class="notice" style="margin-top: 12px;">
+                  Free trials can be rescheduled once with 24 hours notice. No payment is taken.
+                </div>
               </div>
             </div>
           </div>
@@ -124,6 +519,13 @@
     <!-- Footer Include (Start) -->
 <div id="site-footer"></div>
 <!-- Footer Include (End) -->
-      <script src="app.js"></script>
+      <script type="importmap">
+        {
+          "imports": {
+            "@splinetool/runtime": "https://unpkg.com/@splinetool/runtime@1.5.5/build/runtime.js"
+          }
+        }
+      </script>
+      <script type="module" src="app.js"></script>
   </body>
 </html>
