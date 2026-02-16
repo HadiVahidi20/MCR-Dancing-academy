@@ -627,6 +627,10 @@ a {
   margin: 0 auto;
 }
 
+.hero-book-card .hero-img-mobile {
+  display: none;
+}
+
 /* Page counter (top-right) */
 .hero-book-counter {
   position: absolute;
@@ -701,8 +705,16 @@ a {
   }
 
   .hero-book-card img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 55svh;
+  }
+
+  .hero-book-card .hero-img-desktop {
+    display: none;
+  }
+
+  .hero-book-card .hero-img-mobile {
+    display: block;
   }
 
   .hero-book-counter {
