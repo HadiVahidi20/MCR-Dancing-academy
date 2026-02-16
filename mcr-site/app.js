@@ -327,7 +327,10 @@ import { Application } from '@splinetool/runtime';
     var panels = Array.prototype.slice.call(section.querySelectorAll('.sticky-day-panel'));
     var progressIndicator = section.querySelector('[data-progress-indicator]');
     var progressLabels = Array.prototype.slice.call(section.querySelectorAll('[data-day-nav]'));
-    
+    var tabbar = document.querySelector('[data-schedule-tabbar]');
+    var tabButtons = tabbar ? Array.prototype.slice.call(tabbar.querySelectorAll('[data-tab-nav]')) : [];
+    var trialSection = document.querySelector('.free-trial-split');
+
     if (!panels.length) return;
 
     var ticking = false;
@@ -399,6 +402,31 @@ import { Application } from '@splinetool/runtime';
           label.classList.remove('active');
         }
       });
+
+      // Mobile tab bar: show when schedule section at top, hide when trial section arrives
+      if (tabbar) {
+        var show = sectionTop <= 0 && sectionTop > -(sectionHeight - viewportHeight);
+        if (trialSection) {
+          var trialRect = trialSection.getBoundingClientRect();
+          if (trialRect.top <= viewportHeight) {
+            show = false;
+          }
+        }
+        if (show) {
+          tabbar.classList.add('visible');
+        } else {
+          tabbar.classList.remove('visible');
+        }
+
+        // Sync active tab
+        tabButtons.forEach(function(btn, index) {
+          if (index === activeIndex) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
     }
 
     function onScroll() {
@@ -424,9 +452,24 @@ import { Application } from '@splinetool/runtime';
       });
     });
 
+    // Mobile tab bar click navigation
+    tabButtons.forEach(function(btn, index) {
+      btn.addEventListener('click', function() {
+        if (panels[index]) {
+          var panel = panels[index];
+          var rect = panel.getBoundingClientRect();
+          var offsetTop = rect.top + window.pageYOffset - window.innerHeight / 2 + panel.offsetHeight / 2;
+
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
     updateProgress();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
     window.addEventListener('resize', onScroll);
   }
 
