@@ -145,6 +145,8 @@ import { Application } from '@splinetool/runtime';
 
     var counterEl = section.querySelector('.hero-book-current');
     var hintEl = section.querySelector('.hero-book-hint');
+    var heroText = section.querySelector('.hero-text');
+    var heroStats = section.querySelector('.hero-stats');
     var total = cards.length;
     var ticking = false;
 
@@ -185,6 +187,19 @@ import { Application } from '@splinetool/runtime';
       // Hide hint after first card starts appearing
       if (hintEl) {
         hintEl.style.opacity = cardProgress < 0.05 ? '1' : '0';
+      }
+
+      // Fade out hero text and stats as first card enters
+      var fadeOut = Math.max(0, Math.min(1, cardProgress / 0.15));
+      var textOpacity = 1 - fadeOut;
+      var textShift = fadeOut * -30;
+      if (heroText) {
+        heroText.style.opacity = textOpacity.toFixed(3);
+        heroText.style.transform = 'translateY(' + textShift.toFixed(1) + 'px)';
+      }
+      if (heroStats) {
+        heroStats.style.opacity = textOpacity.toFixed(3);
+        heroStats.style.transform = 'translateY(' + textShift.toFixed(1) + 'px)';
       }
 
       cards.forEach(function (card, i) {

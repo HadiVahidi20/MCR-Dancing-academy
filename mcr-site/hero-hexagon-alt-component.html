@@ -1,0 +1,514 @@
+<!-- Reusable Alternative Hexagon Hero Component -->
+<!-- Copy the style block into <head>, the section into <main>, and the script before </body> when needed. -->
+
+<style>
+        /* Hexagon Hero Alternative Section */
+        .hero-hexagon-alt {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 0 5%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f23 100%);
+        }
+
+        /* Hexagon Container */
+        .hexagon-container {
+            position: relative;
+            width: 55%;
+            height: 80vh;
+            perspective: 1200px;
+            z-index: 1;
+        }
+
+        .hexagon-grid {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease-out;
+        }
+
+        /* Individual Hexagon */
+        .hexagon {
+            position: absolute;
+            width: 180px;
+            height: 207px;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hexagon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 165, 0, 0.4));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+
+        .hexagon:hover::before {
+            opacity: 1;
+        }
+
+        .hexagon::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: inherit;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            border: 3px solid rgba(255, 215, 0, 0.6);
+            box-shadow: 
+                0 0 20px rgba(255, 215, 0, 0.4),
+                inset 0 0 20px rgba(255, 215, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 3;
+        }
+
+        .hexagon:hover::after {
+            opacity: 1;
+        }
+
+        .hexagon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .hexagon video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .hexagon:hover img,
+        .hexagon:hover video {
+            transform: scale(1.15);
+        }
+
+        /* Neon Connecting Lines */
+        .hexagon-lines {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hex-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 215, 0, 0.8) 20%, 
+                rgba(255, 215, 0, 0.8) 80%, 
+                transparent);
+            box-shadow: 
+                0 0 8px rgba(255, 215, 0, 0.6),
+                0 0 16px rgba(255, 215, 0, 0.4);
+            transform-origin: left center;
+            animation: lineGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes lineGlow {
+            0%, 100% {
+                opacity: 0.6;
+                box-shadow: 
+                    0 0 8px rgba(255, 215, 0, 0.6),
+                    0 0 16px rgba(255, 215, 0, 0.4);
+            }
+            50% {
+                opacity: 1;
+                box-shadow: 
+                    0 0 12px rgba(255, 215, 0, 0.8),
+                    0 0 24px rgba(255, 215, 0, 0.6),
+                    0 0 32px rgba(255, 215, 0, 0.4);
+            }
+        }
+
+        /* Hexagon Positions - Compact Honeycomb Pattern */
+        .hexagon:nth-child(2) {
+            top: 8%;
+            left: 35%;
+            animation: hexFloat 6s ease-in-out infinite;
+        }
+
+        .hexagon:nth-child(3) {
+            top: 8%;
+            left: 60%;
+            animation: hexFloat 7s ease-in-out infinite 0.5s;
+        }
+
+        .hexagon:nth-child(4) {
+            top: 30%;
+            left: 22%;
+            animation: hexFloat 6.5s ease-in-out infinite 1s;
+        }
+
+        .hexagon:nth-child(5) {
+            top: 30%;
+            left: 47%;
+            animation: hexFloat 7.5s ease-in-out infinite 1.5s;
+        }
+
+        .hexagon:nth-child(6) {
+            top: 30%;
+            left: 72%;
+            animation: hexFloat 6s ease-in-out infinite 2s;
+        }
+
+        .hexagon:nth-child(7) {
+            top: 52%;
+            left: 35%;
+            animation: hexFloat 6.8s ease-in-out infinite 0.8s;
+        }
+
+        .hexagon:nth-child(8) {
+            top: 52%;
+            left: 60%;
+            animation: hexFloat 7.2s ease-in-out infinite 1.2s;
+        }
+
+        @keyframes hexFloat {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-10px) translateX(5px);
+            }
+            50% {
+                transform: translateY(-5px) translateX(-5px);
+            }
+            75% {
+                transform: translateY(5px) translateX(3px);
+            }
+        }
+
+        /* Glowing Particles */
+        .hex-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8), transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleFloat 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(var(--tx, 50px), var(--ty, -100px)) scale(1.5);
+                opacity: 0.8;
+            }
+        }
+
+        .hex-particle:nth-child(1) { top: 20%; left: 15%; --tx: 40px; --ty: -80px; animation-delay: 0s; }
+        .hex-particle:nth-child(2) { top: 40%; left: 80%; --tx: -60px; --ty: -100px; animation-delay: 1.5s; }
+        .hex-particle:nth-child(3) { top: 60%; left: 10%; --tx: 70px; --ty: -60px; animation-delay: 3s; }
+        .hex-particle:nth-child(4) { top: 80%; left: 70%; --tx: -40px; --ty: -90px; animation-delay: 4.5s; }
+        .hex-particle:nth-child(5) { top: 30%; left: 50%; --tx: 50px; --ty: -110px; animation-delay: 2s; }
+        .hex-particle:nth-child(6) { top: 70%; left: 40%; --tx: -55px; --ty: -70px; animation-delay: 5s; }
+
+        /* Hero Content Alt */
+        .hero-content-alt {
+            position: relative;
+            z-index: 10;
+            max-width: 500px;
+            padding: 2rem;
+            flex-shrink: 0;
+        }
+
+        /* Loading Animation */
+        @keyframes hexagonAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.3) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .hexagon {
+            animation: hexagonAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+        }
+
+        .hexagon:nth-child(2) { animation-delay: 0.1s; }
+        .hexagon:nth-child(3) { animation-delay: 0.2s; }
+        .hexagon:nth-child(4) { animation-delay: 0.3s; }
+        .hexagon:nth-child(5) { animation-delay: 0.4s; }
+        .hexagon:nth-child(6) { animation-delay: 0.5s; }
+        .hexagon:nth-child(7) { animation-delay: 0.6s; }
+        .hexagon:nth-child(8) { animation-delay: 0.7s; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hexagon-container {
+                width: 55%;
+            }
+
+            .hero-content-alt {
+                max-width: 450px;
+            }
+
+            .hexagon {
+                width: 140px;
+                height: 161px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-hexagon-alt {
+                flex-direction: column;
+                padding: 2rem 5%;
+            }
+
+            .hexagon-container {
+                width: 100%;
+                height: 50vh;
+                order: 2;
+                margin-top: 2rem;
+            }
+
+            .hero-content-alt {
+                order: 1;
+                text-align: center;
+                width: 100%;
+            }
+
+            .hero-hexagon-alt .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-hexagon-alt .hero-stats {
+                justify-content: center;
+            }
+
+            .hexagon {
+                width: 100px;
+                height: 115px;
+            }
+        }
+    </style>
+
+<!-- Alternative Hexagon Hero Section (Start) -->
+      <section class="hero-hexagon-alt" data-hexagon-hero>
+        <!-- Hero Content -->
+        <div class="hero-content-alt">
+          <div class="eyebrow hero-eyebrow">MCR Dance &amp; Cheer Academy</div>
+          <h1 class="hero-title">
+            <span class="hero-title-script">Dance &amp; Cheer</span>
+            <span class="hero-title-sans">in Ashton&#8209;under&#8209;Lyne</span>
+          </h1>
+          <p class="meta hero-meta">Hip Hop, Lyrical, Jazz &amp; Cheerleading. Inclusive, nurturing and coached by professionals.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="classes.html">Book a Class</a>
+            <a class="button outline-light" href="free-trial.html">Free Trial</a>
+          </div>
+          <div class="hero-stats hex-grid">
+            <div class="hero-stat hex">
+              <div class="eyebrow">Ages</div>
+              <strong>2+ to 16+</strong>
+            </div>
+            <div class="hero-stat hex">
+              <div class="eyebrow">Free Trial</div>
+              <strong>Available</strong>
+            </div>
+            <div class="hero-stat hex">
+              <div class="eyebrow">Coaches</div>
+              <strong>Qualified Team</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hexagon Container -->
+        <div class="hexagon-container">
+          <div class="hexagon-grid" id="hexagonGrid">
+            <!-- Neon Connecting Lines -->
+            <div class="hexagon-lines" id="hexagonLines"></div>
+            
+            <!-- Hexagons with images and videos -->
+            <div class="hexagon">
+              <video autoplay muted loop playsinline preload="auto">
+                <source src="https://www.pexels.com/download/video/5359146/" type="video/mp4">
+              </video>
+            </div>
+            <div class="hexagon">
+              <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=400&h=400&fit=crop&q=80" alt="MCR Dance Team 2" loading="lazy">
+            </div>
+            <div class="hexagon">
+              <video autoplay muted loop playsinline preload="auto">
+                <source src="https://www.pexels.com/download/video/8688463/" type="video/mp4">
+              </video>
+            </div>
+            <div class="hexagon">
+              <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=400&h=400&fit=crop&q=80" alt="Dance class 4" loading="lazy">
+            </div>
+            <div class="hexagon">
+              <video autoplay muted loop playsinline preload="auto">
+                <source src="https://www.pexels.com/download/video/9003388/" type="video/mp4">
+              </video>
+            </div>
+            <div class="hexagon">
+              <img src="https://images.unsplash.com/photo-1535525153412-5a42439a210d?w=400&h=400&fit=crop&q=80" alt="Dance class 6" loading="lazy">
+            </div>
+            <div class="hexagon">
+              <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=400&fit=crop&q=80" alt="Dance class 7" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Glowing Particles -->
+          <div class="hex-particle"></div>
+          <div class="hex-particle"></div>
+          <div class="hex-particle"></div>
+          <div class="hex-particle"></div>
+          <div class="hex-particle"></div>
+          <div class="hex-particle"></div>
+        </div>
+      </section>
+      <!-- Alternative Hexagon Hero Section (End) -->
+
+<script>
+        // Hexagon Hero Alternative - Interactive Animation
+        (function() {
+          // Create neon connecting lines between hexagons
+          function createNeonLines() {
+            const hexagons = document.querySelectorAll('.hexagon');
+            const linesContainer = document.getElementById('hexagonLines');
+            
+            if (!linesContainer || hexagons.length === 0) return;
+            
+            // Define connections between hexagons (indices start at 1 for lines div)
+            const connections = [
+              [1, 2], // Top row
+              [1, 4], [2, 5], // Diagonal down-left
+              [3, 4], [4, 5], [5, 7], // Middle row
+              [4, 6], [5, 7], // Diagonal down
+              [6, 7] // Bottom connections
+            ];
+
+            connections.forEach(([from, to], index) => {
+              const hexFrom = hexagons[from];
+              const hexTo = hexagons[to];
+              
+              if (!hexFrom || !hexTo) return;
+
+              const fromRect = hexFrom.getBoundingClientRect();
+              const toRect = hexTo.getBoundingClientRect();
+              const containerRect = linesContainer.getBoundingClientRect();
+
+              const x1 = fromRect.left + fromRect.width / 2 - containerRect.left;
+              const y1 = fromRect.top + fromRect.height / 2 - containerRect.top;
+              const x2 = toRect.left + toRect.width / 2 - containerRect.left;
+              const y2 = toRect.top + toRect.height / 2 - containerRect.top;
+
+              const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+              const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+
+              const line = document.createElement('div');
+              line.className = 'hex-line';
+              line.style.width = `${length}px`;
+              line.style.left = `${x1}px`;
+              line.style.top = `${y1}px`;
+              line.style.transform = `rotate(${angle}deg)`;
+              line.style.animationDelay = `${index * 0.2}s`;
+              
+              linesContainer.appendChild(line);
+            });
+          }
+
+          // Call after DOM is ready
+          setTimeout(createNeonLines, 200);
+
+          // Recreate lines on window resize
+          let resizeTimer;
+          window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+              const linesContainer = document.getElementById('hexagonLines');
+              if (linesContainer) {
+                linesContainer.innerHTML = '';
+                createNeonLines();
+              }
+            }, 250);
+          });
+
+          // Interactive Mouse Movement
+          const hexagonGrid = document.getElementById('hexagonGrid');
+          const heroSection = document.querySelector('[data-hexagon-hero]');
+          
+          if (!hexagonGrid || !heroSection) return;
+          
+          let mouseX = 0;
+          let mouseY = 0;
+          let targetX = 0;
+          let targetY = 0;
+
+          heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            mouseX = (e.clientX - rect.left - rect.width / 2) / rect.width;
+            mouseY = (e.clientY - rect.top - rect.height / 2) / rect.height;
+          });
+
+          // Smooth animation loop
+          function animate() {
+            targetX += (mouseX - targetX) * 0.05;
+            targetY += (mouseY - targetY) * 0.05;
+
+            const rotateY = targetX * 15;
+            const rotateX = -targetY * 15;
+
+            hexagonGrid.style.transform = `
+              rotateY(${rotateY}deg) 
+              rotateX(${rotateX}deg)
+            `;
+
+            requestAnimationFrame(animate);
+          }
+
+          animate();
+
+          // Add click interaction to hexagons
+          const hexagons = document.querySelectorAll('.hexagon');
+          hexagons.forEach((hex, index) => {
+            hex.addEventListener('click', () => {
+              // Add a pulse effect
+              hex.style.animation = 'none';
+              setTimeout(() => {
+                hex.style.animation = '';
+              }, 10);
+              
+              console.log(`Hexagon ${index + 1} clicked`);
+            });
+          });
+
+          // Parallax effect for particles based on mouse position
+          const particles = document.querySelectorAll('.hex-particle');
+          heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const mouseXPercent = (e.clientX - rect.left) / rect.width;
+            const mouseYPercent = (e.clientY - rect.top) / rect.height;
+
+            particles.forEach((particle, index) => {
+              const speed = (index + 1) * 0.5;
+              const x = (mouseXPercent - 0.5) * speed * 50;
+              const y = (mouseYPercent - 0.5) * speed * 50;
+              particle.style.transform = `translate(${x}px, ${y}px)`;
+            });
+          });
+        })();
+      </script>

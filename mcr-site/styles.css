@@ -700,6 +700,11 @@ a {
     border-radius: 0;
   }
 
+  .hero-book-card img {
+    width: 100%;
+    height: auto;
+  }
+
   .hero-book-counter {
     top: 16px;
     right: 20px;
@@ -745,6 +750,7 @@ a {
 /* ── Hero Free-form Typography ───────────────────────── */
 .hero-text {
   max-width: 640px;
+  will-change: opacity, transform;
 }
 
 .hero-eyebrow {
@@ -802,6 +808,7 @@ a {
 
 /* ── Hero Stats (honeycomb hex cards) ─────────────────── */
 .hero-stats.hex-grid {
+  will-change: opacity, transform;
   --hex-size: clamp(100px, 14vw, 130px);
   --hex-height: calc(var(--hex-size) * 1.15);
   --hex-gap: clamp(10px, 2vw, 16px);
