@@ -583,6 +583,7 @@ a {
   top: 0;
   height: 100svh;
   height: 100dvh;
+  overflow: hidden;
 }
 
 /* 3D stage — anchored to the bottom of the hero viewport */
@@ -697,17 +698,21 @@ a {
 /* Mobile adjustments */
 @media (max-width: 720px) {
   .hero-book-stage {
-    height: 50vh;
+    height: 55svh;
+    overflow: hidden;
   }
 
   .hero-book-card {
     width: 100%;
     border-radius: 0;
+    overflow: hidden;
   }
 
   .hero-book-card img {
     width: auto;
     height: 55svh;
+    max-width: 100%;
+    object-fit: cover;
   }
 
   .hero-book-card .hero-img-desktop {
